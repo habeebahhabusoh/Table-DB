@@ -1,16 +1,36 @@
 const sequelize = require("../../config/sequelize");
 
 exports.addUser = async function (content) {
-  return sequelize.models.User
+  return sequelize.models.General
     .create({
       id: content.id,
-      username: content.username,
-      password: content.hashPassword,
-      displayName: content.displayName,
-      verifyType: content.verifyType,
-      verify: content.verify,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      position1: content.position1,
+      position2: content.position2,
+      stratSalary: content.stratSalary,
+      startDate:Date.now(),
+      perfixTh: content.perfixTh,
+      fNameTh: content.fNameTh,
+      lNameTh: content.lNameTh,
+      perfixEng: content.perfixEng,
+      fNameEng: content.fNameEng,
+      lNameEng: content.lNameEng,
+      birthDate: Date.now(),
+      age: content.age,
+      maritalStatus: content.maritalStatus,
+      sex: content.sex,
+      height: content.height,
+      weight: content.weight,
+      nationality: content.nationality,
+      idCardNo: content.idCardNo,
+      expiryDate: new Date(),
+      drivingLicenseType: content.drivingLicenseTyp,
+      drivingType: content.drivingType,
+      drivingLicenseNo: content.drivingLicenseNo,
+      drivingExpiryDate: new Date(),
+      crimeStatus: content.crimeStatus,
+      crimeData: content. crimeData,
+      disease: content.  disease,
+      diseaseData: content. diseaseData,
     })
     .then(function (result) {
       return result;

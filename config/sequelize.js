@@ -13,13 +13,12 @@ const sequelize = new Sequelize(
 console.log(`ENVIRONMENT: ${process.env.ENVIRONMENT}`);
 
 const modelDefiners = [
-  require("../db/models/clients"),
-  require("../db/models/tokens"),
-  require("../db/models/authorization_codes"),
-  require("../db/models/users"),
-  require("../db/models/otps"),
-  require("../db/models/employees"),
-  require("../db/models/personal"),
+  require("../db/models/general"),
+  require("../db/models/contractaddress"),
+  require("../db/models/history"),
+  require("../db/models/education"),
+  require("../db/models/skill"),
+   require("../db/models/manpower"),
 ];
 
 for (const modelDefiner of modelDefiners) {
