@@ -16,19 +16,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      nameOfInstituteEducation: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      courseTakenCompleted: {
+      major: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      educationFrom: {
+      startDate: {
         allowNull: true,
         type: Sequelize.DATE
       },
-      educationTo: {
+      endDate: {
         allowNull: false,
         type: Sequelize.DATE
       }

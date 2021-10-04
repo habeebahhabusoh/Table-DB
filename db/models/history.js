@@ -21,8 +21,8 @@ module.exports = (sequelize) => {
     companyNameHistory: DataTypes.STRING,
     positionHistory: DataTypes.STRING,
     salaryHistory: DataTypes.STRING,
-    dateEmployedHistory: new Date(),
-    toDateHistory: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
   }, {
     sequelize,
     paranoid: true,

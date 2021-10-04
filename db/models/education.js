@@ -19,10 +19,10 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUID
     },
     educationLevel: DataTypes.STRING,
-    nameOfInstituteEducation: DataTypes.STRING,
-    courseTakenCompleted: DataTypes.STRING,
-    educationFrom: new Date(),
-    educationTo: new Date(),
+    name: DataTypes.STRING,
+    major: DataTypes.STRING,
+    startDate: new Date(),
+    endDate: new Date(),
   }, {
     sequelize,
     paranoid: true,
