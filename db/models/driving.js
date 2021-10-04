@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       // define association here
     }
   };
-  Skill.init({
+  Driving.init({
     id: {
       type: DataTypes.UUID,
      // primaryKey: true,
