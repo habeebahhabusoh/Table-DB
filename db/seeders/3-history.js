@@ -10,8 +10,8 @@ module.exports = {
             companyNameHistory : "cdg ",
             positionHistory: "่ช่างไฟ",
             salaryHistory: "12000",
-            dateEmployedHistory: new Date(),
-            toDateHistory: new Date(),
+            startDate: new Date(),
+            endDate: new Date(),
             
           }
         ]

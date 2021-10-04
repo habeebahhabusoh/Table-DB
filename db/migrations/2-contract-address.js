@@ -12,43 +12,43 @@ module.exports = {
               key: 'generalID',
             },
       },
-      addressTH: {
+      detailTH: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressSubAreaTH: {
+      subAreaTH: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressAreaTH: {
+      areaTH: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressProvinceTH: {
+      provinceTH: {
         allowNull: true,
         type: Sequelize.STRING
       },
-      addressPostalCodeTH: {
+      postalCodeTH: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressEN: {
+      detailEN: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressSubAreaEN: {
+      subAreaEN: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressAreaEN: {
+      areaEN: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressProvinceEN: {
+      provinceEN: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      addressPostalCodeEN: {
+      postalCodeEN: {
         allowNull: false,
         type: Sequelize.STRING
       },

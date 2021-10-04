@@ -24,11 +24,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      dateEmployedHistory: {
+      startDate: {
         allowNull: true,
         type: Sequelize.DATE
       },
-      toDateHistory: {
+      endDate: {
         allowNull: false,
         type: Sequelize.DATE
       }

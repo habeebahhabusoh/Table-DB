@@ -7,10 +7,6 @@ module.exports = {
         [
           {
             generalID: "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
-            position1 : "test",
-            position2: "cat",
-            stratSalary: "12000",
-            startDate: new Date(),
             perfixTH: "นาย",
             firstNameTH: "แมวน้ำ",
             middleNameTH: "แมว",

@@ -8,22 +8,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
-      position1: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      position2: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      stratSalary: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      startDate: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
       perfixTH: {
         allowNull: false,
         type: Sequelize.STRING

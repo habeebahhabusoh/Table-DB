@@ -3,124 +3,124 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('ManPower', {
-      manID: {
+      manpowerID: {
         primaryKey: true,
         allowNull: false,
         type: Sequelize.UUID,
       },
-      manCompany: {
+      company: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manDepartment: {
+      department: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manSection: {
+      section: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manPosition: {
+      position: {
         allowNull: true,
         type: Sequelize.STRING
       },
-      manLevel: {
+      level: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manRequestDate: {
+      requestDate: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      manStartDate: {
+      startDate: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      manNo: {
+      no: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manStaffType: {
+      staffType: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manHiringPeriod: {
+      hiringPeriod: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      manSex: {
+      sex: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manAge: {
+      age: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      manEducation: {
+      education: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manMajor: {
+      major: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manExperience: {
+      experience: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manInfield: {
+      infield: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      manTestScoreEN: {
+      testScoreEN: {
         allowNull: false,
         type: Sequelize.STRING   
     },
-    manSkill: {
+    skill: {
       allowNull: false,
       type: Sequelize.STRING
     },
-    manBy: {
+    by: {
       allowNull: false,
       type: Sequelize.STRING   
     },
-    manCommentHead: {
+    commentHead: {
         allowNull: false,
         type: Sequelize.STRING
       },
-    manSignatureHead: {
+    signatureHead: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manCommentDateHead: {
+    commentDateHead: {
         allowNull: false,
         type: Sequelize.DATE
       },
-    manCommentHR: {
+    commentHR: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manSignatureHR: {
+    signatureHR: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manCommentDateHR: {
+    commentDateHR: {
         allowNull: false,
         type: Sequelize.DATE   
       },
-    manSignatureByHR: {
+    signatureByHR: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manCommentByHR: {
+    commentByHR: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manStatus: {
+    status: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    manRemark: {
+    remark: {
         allowNull: false,
         type: Sequelize.STRING   
       }
