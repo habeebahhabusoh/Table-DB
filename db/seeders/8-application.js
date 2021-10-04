@@ -7,8 +7,8 @@ module.exports = {
       ('Application',
         [
           {
-            id: "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
-            idCardNo : "1515154851312",
+            applicationID: "55ac7ad0-5eab-4e70-af50-aecc1fd04c90",
+            generalID : "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
             no: "00001",
             position1: "1115",
             position2 : "1515154851312",

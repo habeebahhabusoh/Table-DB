@@ -3,18 +3,18 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Application', {
-      id: {
+      applicationID: {
+        primaryKey: true,
        allowNull: false,
-       type: Sequelize.UUID,    
-       references: {
-        model: 'General',
-        key: 'generalID',
+       type: Sequelize.UUID,
       },
-      },
-      idCardNo: {
-        //primaryKey: true,
+      generalID: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.UUID,    
+        references: {
+         model: 'General',
+         key: 'generalID',
+       },
       },
       no: {
         allowNull: false,

@@ -12,13 +12,17 @@ module.exports = (sequelize) => {
       // define association here
     }
   };
-  Skill.init({
-    id: {
+  Application.init({
+    applicationID: {
       type: DataTypes.UUID,
-      //primaryKey: true,
+      primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    idCardNo:DataTypes.STRING,
+    generalID: {
+      type: DataTypes.UUID,
+     // primaryKey: true,
+      defaultValue: DataTypes.UUID
+    },
     no: DataTypes.STRING,
     position1: DataTypes.STRING,
     position2: DataTypes.STRING,
