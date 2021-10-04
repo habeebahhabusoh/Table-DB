@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      position: {
+      positionRequired: {
         allowNull: true,
         type: Sequelize.STRING
       },
@@ -32,15 +32,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      startDate: {
+      commencementDate: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }, //วันที่เริ่มงาน
       no: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      staffType: {
+      employeeType: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -68,53 +68,61 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      infield: {
+      inField: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      testScoreEN: {
+      englishTestScore: {
         allowNull: false,
         type: Sequelize.STRING   
     },
-    skill: {
+    skillAndKnowledge: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.ARRAY(Sequelize.STRING)
     },
-    by: {
+    requestedBy: {
       allowNull: false,
       type: Sequelize.STRING   
     },
-    commentHead: {
+    positionRequisition: {
+      allowNull: false,
+      type: Sequelize.STRING   
+    },
+    dateRequisition: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+    commentByDepartmentHead: {
         allowNull: false,
         type: Sequelize.STRING
       },
-    signatureHead: {
+    signatureByDepartmentHead: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    commentDateHead: {
+    dateByDepartmentHead: {
         allowNull: false,
         type: Sequelize.DATE
       },
-    commentHR: {
+    commentByHRBP: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    signatureHR: {
+    signatureHRBP: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    commentDateHR: {
+    dateHRBP: {
         allowNull: false,
         type: Sequelize.DATE   
       },
-    signatureByHR: {
+    signatureByDirectorHR: {
         allowNull: false,
         type: Sequelize.STRING   
       },
-    commentByHR: {
+      dateByDirectorHR: {
         allowNull: false,
-        type: Sequelize.STRING   
+        type: Sequelize.DATE   
       },
     status: {
         allowNull: false,
