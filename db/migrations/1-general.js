@@ -8,22 +8,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
-      position1: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      position2: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      stratSalary: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      startDate: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
       perfixTH: {
         allowNull: false,
         type: Sequelize.STRING
@@ -89,22 +73,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       expiryDate: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      drivingLicenseType: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      drivingType: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      drivingLicenseNo: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      drivingExpiryDate: {
         allowNull: false,
         type: Sequelize.DATE
       },

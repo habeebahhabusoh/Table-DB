@@ -18,9 +18,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    position1: DataTypes.STRING,
-    position2: DataTypes.STRING,
-    stratSalary: DataTypes.STRING,
+    
     perfixTh: DataTypes.STRING,
     firstNameTH: DataTypes.STRING,
     middleNameTH: DataTypes.STRING,
@@ -38,10 +36,6 @@ module.exports = (sequelize) => {
     nationality:DataTypes.STRING,
     idCardNo:DataTypes.STRING,
     expiryDate: new Date(),
-    drivingLicenseType:DataTypes.STRING,
-    drivingType:DataTypes.STRING,
-    drivingLicenseNo:DataTypes.STRING,
-    drivingExpiryDate: new Date(),
     militaryService:DataTypes.STRING,
     militaryData:DataTypes.STRING,
     crimeStatus:DataTypes.STRING,

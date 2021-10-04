@@ -19,6 +19,9 @@ const modelDefiners = [
   require("../db/models/education"),
   require("../db/models/skill"),
    require("../db/models/manpower"),
+   require("../db/models/driving"),
+   require("../db/models/application"),
+  
 ];
 
 for (const modelDefiner of modelDefiners) {
