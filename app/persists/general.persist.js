@@ -3,18 +3,16 @@ const sequelize = require("../../config/sequelize");
 exports.addUser = async function (content) {
   return sequelize.models.General
     .create({
-      id: content.id,
-      position1: content.position1,
-      position2: content.position2,
-      stratSalary: content.stratSalary,
-      startDate:Date.now(),
-      perfixTh: content.perfixTh,
-      fNameTh: content.fNameTh,
-      lNameTh: content.lNameTh,
-      perfixEng: content.perfixEng,
-      fNameEng: content.fNameEng,
-      lNameEng: content.lNameEng,
-      birthDate: Date.now(),
+      generalID: content.generalID,
+      perfixTH: content.perfixTH,
+      firstNameTH: content.firstNameTH,
+      middleNameTH: content.middleNameTH,
+      lastNameTH: content.lastNameTH,
+      perfixEN: content.perfixEN,
+      firstNameEN: content.firstNameEN,
+      middleNameEN: content.middleNameEN,
+      lastNameEN: content.lastNameEN,
+      birthDate: new Date(),
       age: content.age,
       maritalStatus: content.maritalStatus,
       sex: content.sex,
@@ -23,10 +21,8 @@ exports.addUser = async function (content) {
       nationality: content.nationality,
       idCardNo: content.idCardNo,
       expiryDate: new Date(),
-      drivingLicenseType: content.drivingLicenseTyp,
-      drivingType: content.drivingType,
-      drivingLicenseNo: content.drivingLicenseNo,
-      drivingExpiryDate: new Date(),
+      militaryService: content.militaryService,
+      militaryData: content.militaryData,
       crimeStatus: content.crimeStatus,
       crimeData: content. crimeData,
       disease: content.  disease,
@@ -36,107 +32,107 @@ exports.addUser = async function (content) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.isExistsUsername = function (username) {
-  return sequelize.models.User
+exports.isExistsFirstNameTH = function (firstNameTH) {
+  return sequelize.models.General
     .findOne({
       where: {
-        username: username,
+        firstNameTH: firstNameTH,
       },
     })
     .then(function (result) {
       return result ? true : false;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.findAll = function () {
-  return sequelize.models.User
+  return sequelize.models.General
     .findAll()
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findByUsername = function (username) {
-  return sequelize.models.User
+exports.findByFirstNameTH = function (firstNameTH) {
+  return sequelize.models.General
     .findOne({
       where: {
-        username: username,
+        firstNameTH: firstNameTH,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findById = function (id) {
-  return sequelize.models.User
+exports.findById = function (generalID) {
+  return sequelize.models.General
     .findOne({
       where: {
-        id: id,
+        generalID: generalID,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.updateByUsername = function (username, content) {
-  return sequelize.models.User
+exports.updateByUsername = function (firstNameTH, content) {
+  return sequelize.models.General
     .update(content, {
       where: {
-        username: username,
+        firstNameTH: firstNameTH,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.updateById = function (id, content) {
-  return sequelize.models.User
+exports.updateById = function (generalID, content) {
+  return sequelize.models.General
     .update(content, {
       where: {
-        id: id,
+        generalID: generalID,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.deleteById = function (id) {
-  return sequelize.models.User
+exports.deleteById = function (generalID) {
+  return sequelize.models.General
     .destroy({
       where: {
-        id: id,
+        generalID: generalID,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };

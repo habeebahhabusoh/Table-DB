@@ -2,17 +2,15 @@ const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
 exports.addPerson = async function (content) {
-  return sequelize.models.Personal
+  return sequelize.models.Education
     .create({
-      citizenId: content.citizenId,
-      titleTH: content.titleTH,
-      titleEN: content.titleEN,
-      nameTH: content.nameTH,
-      nameEN: content.nameEN,
-      lastnameTH: content.lastnameTH,
-      lastnameEN: content.lastnameEN,
-      birthday: content.birthday,
-      gender: content.gender,
+      educationID: content.educationID,
+      id: content.titleTH,
+      educationLevel: content.educationLevel,
+      name: content.name,
+      major: content.major,
+      startDate: content.startDate,
+      endDate: content.endDate,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     })
@@ -24,11 +22,11 @@ exports.addPerson = async function (content) {
     });
 };
 
-exports.isExistsPerson = function (citizenId) {
-  return sequelize.models.Personal
+exports.isExistsPerson = function (educationID) {
+  return educationID.models.Education
     .findOne({
       where: {
-        citizenId: citizenId,
+        educationID: educationID,
       },
     })
     .then(function (result) {
@@ -40,7 +38,7 @@ exports.isExistsPerson = function (citizenId) {
 };
 
 exports.findAll = function () {
-  return sequelize.models.Personal
+  return sequelize.models.Education
     .findAll()
     .then(function (result) {
       return result;
@@ -50,11 +48,11 @@ exports.findAll = function () {
     });
 };
 
-exports.findByCitizenId = function (citizenId) {
-  return sequelize.models.Personal
+exports.findByCitizenId = function (educationID) {
+  return educationID.models.Education
     .findOne({
       where: {
-        citizenId: citizenId,
+        educationID: educationID,
       },
     })
     .then(function (result) {
@@ -65,11 +63,11 @@ exports.findByCitizenId = function (citizenId) {
     });
 };
 
-exports.updateByCitizenId = function (citizenId, content) {
-  return sequelize.models.Personal
+exports.updateByCitizenId = function (educationID, content) {
+  return educationID.models.Education
     .update(content, {
       where: {
-        citizenId: citizenId,
+        educationID: educationID,
       },
     })
     .then(function (result) {

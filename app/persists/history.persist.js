@@ -2,20 +2,14 @@ const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
 exports.addEmployee = async function (content) {
-  return sequelize.models.Employee
+  return sequelize.models.History
     .create({
-      employeeId: content.employeeId,
-      citizenId: content.citizenId,
-      position: content.position,
-      section: content.section,
-      department: content.department,
-      company: content.company,
-      level: content.level,
-      status: content.status,
+      historyID: content.historyID,
+      id: content.id,
+      companyNameHistory: content.companyNameHistory,
+      positionHistory: content.positionHistory,
+      salaryHistory: content.salaryHistory,
       startDate: content.startDate,
-      phone: content.phone,
-      lineId: content.line,
-      phone: content.phone,
       endDate: content.endDate,
       createdAt: Date.now(),
       updatedAt: Date.now(),
@@ -28,11 +22,11 @@ exports.addEmployee = async function (content) {
     });
 };
 
-exports.isExistsEmployeeId = function (employeeId) {
-  return sequelize.models.Employee
+exports.isExistsHistoryID = function (historyID) {
+  return sequelize.models.History
     .findOne({
       where: {
-        employeeId: employeeId,
+        historyID: historyID,
       },
     })
     .then(function (result) {
@@ -44,7 +38,7 @@ exports.isExistsEmployeeId = function (employeeId) {
 };
 
 exports.findAll = function () {
-  return sequelize.models.Employee
+  return sequelize.models.History
     .findAll()
     .then(function (result) {
       return result;
@@ -54,11 +48,11 @@ exports.findAll = function () {
     });
 };
 
-exports.findByEmployeeId = function (employeeId) {
-  return sequelize.models.Employee
+exports.findByHistoryID = function (historyID) {
+  return sequelize.models.History
     .findOne({
       where: {
-        employeeId: employeeId,
+        historyID: historyID,
       },
     })
     .then(function (result) {
@@ -69,11 +63,11 @@ exports.findByEmployeeId = function (employeeId) {
     });
 };
 
-exports.findByCitizenId = function (citizenId) {
-  return sequelize.models.Employee
+exports.findByPositionHistory = function (positionHistory) {
+  return sequelize.models.History
     .findOne({
       where: {
-        citizenId: citizenId,
+        positionHistory: positionHistory,
       },
     })
     .then(function (result) {
@@ -84,11 +78,11 @@ exports.findByCitizenId = function (citizenId) {
     });
 };
 
-exports.updateByEmployeeId = function (employeeId, content) {
-  return sequelize.models.Employee
+exports.updateByEmployeeId = function (historyID, content) {
+  return sequelize.models.History
     .update(content, {
       where: {
-        employeeId: employeeId,
+        historyID: historyID,
         updatedAt: Date.now()
       },
     })

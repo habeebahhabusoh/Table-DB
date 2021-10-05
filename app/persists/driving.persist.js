@@ -2,13 +2,14 @@ const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
 exports.add = function (content) {
-  return sequelize.models.Token
+  return sequelize.models.Driving
     .create({
+      drivingID: uuidv4(),
       id: uuidv4(),
-      accessToken: content.accessToken,
-      accessTokenExpiresOn: content.accessTokenExpiresOn,
-      clientId: content.clientId,
-      userId: content.userId,
+      drivingLicenseType: content.drivingLicenseType,
+      drivingType: content.drivingType,
+      drivingLicenseNo: content.drivingLicenseNo,
+      drivingExpiryDate: content.drivingExpiryDate,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     })
@@ -16,54 +17,54 @@ exports.add = function (content) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.findAll = function () {
-  return sequelize.models.Token
+  return sequelize.models.Driving
     .findAll()
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findByUserIdAndClientId = function (userId, clientId) {
-  return sequelize.models.Token
+exports.findByDrivingiIDandID = function (drivingID, id) {
+  return sequelize.models.Driving
     .findOne({
       where: {
-        userId: userId,
-        clientId: clientId,
+        drivingID: drivingID,
+        id: id,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findByAccessToken = function (accessToken) {
-  return sequelize.models.Token
+exports.findBydrivingType = function (drivingType) {
+  return sequelize.models.Driving
     .findOne({
       where: {
-        accessToken: accessToken,
+        drivingType: drivingType,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.findById = function (id) {
-  return sequelize.models.Token
+  return sequelize.models.Driving
     .findOne({
       where: {
         id: id,
@@ -73,14 +74,30 @@ exports.findById = function (id) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.updateById = function (id, content) {
-  return sequelize.models.Token
+exports.updateByDriving = function (drivingID, content) {
+  return sequelize.models.Driving
     .update(content, {
       where: {
+        drivingID: drivingID,
+      },
+    })
+    .then(function (result) {
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
+exports.deleteByDrivingiIDandID = function (drivingID, id) {
+  return sequelize.models.Driving
+    .destroy({
+      where: {
+        drivingID: drivingID,
         id: id,
       },
     })
@@ -88,22 +105,6 @@ exports.updateById = function (id, content) {
       return result;
     })
     .catch(function (error) {
-      return error;
-    });
-};
-
-exports.deleteByUserIdAndClientId = function (userId, clientId) {
-  return sequelize.models.Token
-    .destroy({
-      where: {
-        userId: userId,
-        clientId: clientId,
-      },
-    })
-    .then(function (result) {
-      return result;
-    })
-    .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };

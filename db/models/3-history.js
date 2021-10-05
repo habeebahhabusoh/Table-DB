@@ -13,6 +13,11 @@ module.exports = (sequelize) => {
     }
   };
   History.init({
+    historyID: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUID
+    },
     id: {
       type: DataTypes.UUID,
      // primaryKey: true,

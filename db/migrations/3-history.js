@@ -3,8 +3,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('History', {
+      historyID: {
+        primaryKey: true,
+       allowNull: false,
+       type: Sequelize.UUID,
+      },
         id: {
-            primaryKey: true,
+         //   primaryKey: true,
             allowNull: false,
             type: Sequelize.UUID,
             references: {

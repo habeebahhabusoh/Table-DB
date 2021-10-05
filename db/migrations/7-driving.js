@@ -3,6 +3,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Driving', {
+      drivingID: {
+        primaryKey: true,
+        allowNull: false,
+        type: Sequelize.UUID,
+      },
         id: {
             primaryKey: true,
             allowNull: false,

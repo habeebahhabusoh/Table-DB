@@ -13,6 +13,11 @@ module.exports = (sequelize) => {
     }
   };
   Skill.init({
+    skillID: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUID
+    },
     id: {
       type: DataTypes.UUID,
      // primaryKey: true,

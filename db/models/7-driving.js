@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  class Education extends Model {
+  class Driving extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,23 +12,27 @@ module.exports = (sequelize) => {
       // define association here
     }
   };
-  Education.init({
+  Driving.init({
+    drivingID: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUID
+    },
     id: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    educationLevel: DataTypes.STRING,
-    name: DataTypes.STRING,
-    major: DataTypes.STRING,
-    startDate: new Date(),
-    endDate: new Date(),
+    drivingLicenseType: DataTypes.STRING,
+    drivingType: DataTypes.STRING,
+    drivingLicenseNo: DataTypes.STRING,
+    drivingExpiryDate: new Date(),
   }, {
     sequelize,
     paranoid: true,
-    tableName: 'Education',
-    modelName: 'Education',
+    tableName: 'Driving',
+    modelName: 'Driving',
   });
 
-  return Education;
+  return Driving;
 };

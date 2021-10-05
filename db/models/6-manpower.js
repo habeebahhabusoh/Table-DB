@@ -35,7 +35,7 @@ module.exports = (sequelize) => {
     experience:DataTypes.STRING,
     inField:DataTypes.STRING,
     englishTestScore:DataTypes.STRING,
-    skillAndKnowledge:DataTypes.ARRAY(Sequelize.STRING),
+    skillAndKnowledge:DataTypes.ARRAY(DataTypes.STRING),
     requestedBy:DataTypes.STRING,
     positionRequisition: DataTypes.STRING,
     dateRequisition:DataTypes.STRING,

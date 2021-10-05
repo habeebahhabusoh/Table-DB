@@ -13,14 +13,14 @@ const sequelize = new Sequelize(
 console.log(`ENVIRONMENT: ${process.env.ENVIRONMENT}`);
 
 const modelDefiners = [
-  require("../db/models/general"),
-  require("../db/models/contractaddress"),
-  require("../db/models/history"),
-  require("../db/models/education"),
-  require("../db/models/skill"),
-   require("../db/models/manpower"),
-   require("../db/models/driving"),
-   require("../db/models/application"),
+  require("../db/models/1-general"),
+  require("../db/models/2-contractaddress"),
+  require("../db/models/3-history"),
+  require("../db/models/4-education"),
+  require("../db/models/5-skill"),
+   require("../db/models/6-manpower"),
+   require("../db/models/7-driving"),
+   require("../db/models/8-application"),
   
 ];
 
@@ -28,15 +28,15 @@ for (const modelDefiner of modelDefiners) {
   modelDefiner(sequelize).associate(sequelize.models);
 }
 
-const { spawn } = require('child_process');
-const migrate = spawn("npx", ["sequelize-cli", "db:migrate"]);
+// const { spawn } = require('child_process');
+// const migrate = spawn("npx", ["sequelize-cli", "db:migrate"]);
 
-migrate.stdout.on("data", (data) => {
-  console.log(`${data}`);
-});
+// migrate.stdout.on("data", (data) => {
+//   console.log(`${data}`);
+// });
 
-migrate.stderr.on("data", (data) => {
-  console.error(`${data}`);
-});
+// migrate.stderr.on("data", (data) => {
+//   console.error(`${data}`);
+// });
 
 module.exports = sequelize;

@@ -2,85 +2,80 @@ const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
 exports.add = async function (content) {
-  return sequelize.models.OTP
+  return sequelize.models.Skill
     .create({
+      skillID: uuidv4(),
       id: uuidv4(),
-      userId: content.userId,
-      password: content.password,
-      reference: content.reference,
-      type: content.type,
-      verify: false,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      expiredAt: content.expiredAt,
+      typeOfSkill: content.typeOfSkill,
+      level: content.level,
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.findAll = function () {
-  return sequelize.models.OTP
+  return sequelize.models.Skill
     .findAll()
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findByUsername = function (username) {
-  return sequelize.models.OTP
+exports.findByTypeOfskill = function (typeOfSkill) {
+  return sequelize.models.Skill
     .findOne({
       where: {
-        username: username,
+        typeOfSkill: typeOfSkill,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findAllByUserId = function (userId) {
-  return sequelize.models.OTP
+exports.findAllByLevel = function (level) {
+  return sequelize.models.Skill
     .findAll({
       where: {
-        userId: userId,
+        level: level,
       },
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
-exports.findLatestByUserId = function (userId) {
-  return sequelize.models.OTP
-    .findOne({
-      where: {
-        userId: userId,
-      },
-      order: [ [ 'createdAt', 'DESC' ]]
-    })
-    .then(function (result) {
-      return result;
-    })
-    .catch(function (error) {
-      return error;
-    });
-};
+// exports.findLatestByUserId = function (userId) {
+//   return sequelize.models.OTP
+//     .findOne({
+//       where: {
+//         userId: userId,
+//       },
+//       order: [ [ 'createdAt', 'DESC' ]]
+//     })
+//     .then(function (result) {
+//       return result;
+//     })
+//     .catch(function (error) {
+//       throw new Error(error.original);
+//     });
+// };
 
 exports.findById = function (id) {
-  return sequelize.models.OTP
+  return sequelize.models.Skill
     .findOne({
       where: {
         id: id,
@@ -90,12 +85,12 @@ exports.findById = function (id) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.updateById = function (id, content) {
-  return sequelize.models.OTP
+  return sequelize.models.Skill
     .update(content, {
       where: {
         id: id,
@@ -105,12 +100,12 @@ exports.updateById = function (id, content) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };
 
 exports.deleteById = function (id) {
-  return sequelize.models.OTP
+  return sequelize.models.Skill
     .destroy({
       where: {
         id: id,
@@ -120,6 +115,6 @@ exports.deleteById = function (id) {
       return result;
     })
     .catch(function (error) {
-      return error;
+      throw new Error(error.original);
     });
 };

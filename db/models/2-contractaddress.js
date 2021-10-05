@@ -13,6 +13,11 @@ module.exports = (sequelize) => {
     }
   };
   ContractAddress.init({
+      contractID: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUID
+    },
     id: {
       type: DataTypes.UUID,
      // primaryKey: true,
