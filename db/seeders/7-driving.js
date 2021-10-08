@@ -13,6 +13,8 @@ module.exports = {
             drivingType: "y",
             drivingLicenseNo: "1115",
             drivingExpiryDate: new Date(),
+            createdAt:new Date(),
+            updatedAt:new Date(),
            
           }
         ]

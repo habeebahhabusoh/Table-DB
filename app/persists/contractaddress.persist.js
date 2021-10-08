@@ -22,6 +22,9 @@ exports.add = async function (content) {
       presentAddressPostalCode: content.presentAddressPostalCode,
       contactEmail: content.contactEmail,
       contactPhone: content.contactPhone,
+      createdAt:new Date(),
+      updatedAt:new Date(),
+      
     })
     .then(function (result) {
       return result;

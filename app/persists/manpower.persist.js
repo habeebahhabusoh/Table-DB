@@ -1,9 +1,9 @@
 const sequelize = require("../../config/sequelize");
 
-exports.addUser = async function (content) {
+exports.addManPower = async function (content) {
   return sequelize.models.ManPower
     .create({
-      manpowerID: content.manpowerID,
+      manPowerID: content.manPowerID,
       company: content.company,
       department: content.department,
       section: content.section,
@@ -12,7 +12,7 @@ exports.addUser = async function (content) {
       requestDate: new Date(),
       commencementDate: new Date(),
       no: content.no,
-      employeeType:  content.employeeType,
+      employeeType: content.employeeType,
       hiringPeriod: content.hiringPeriod,
       sex: content.sex,
       age: content.age,
@@ -20,26 +20,29 @@ exports.addUser = async function (content) {
       major: content.major,
       experience: content.experience,
       inField: content.inField,
-      englishTestScore:content.englishTestScore,
+      englishTestScore: content.englishTestScore,
       skillAndKnowledge: content.skillAndKnowledge,
       requestedBy: content.requestedBy,
       positionRequisition: content.positionRequisition,
       dateRequisition: new Date(),
       commentByDepartmentHead: content.commentByDepartmentHead,
-      signatureByDepartmentHead: content. signatureByDepartmentHead,
-      dateByDepartmentHead:  new Date(),
+      signatureByDepartmentHead: content.signatureByDepartmentHead,
+      dateByDepartmentHead: new Date(),
       commentByHRBP: content.commentByHRBP,
       signatureHRBP: content.signatureHRBP,
-      dateHRBP:   new Date(),
-      signatureByDirectorHR: content.  signatureByDirectorHR,
-      dateByDirectorHR:  new Date(),
+      dateHRBP: new Date(),
+      signatureByDirectorHR: content.signatureByDirectorHR,
+      dateByDirectorHR: new Date(),
       status: content.status,
       remark: content.remark,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     })
     .then(function (result) {
       return result;
     })
     .catch(function (error) {
+      console.log(error);
       throw new Error(error.original);
     });
 };
@@ -85,11 +88,11 @@ exports.findByCompany = function (company) {
     });
 };
 
-exports.findById = function (manpowerID) {
+exports.findById = function (manPowerID) {
   return sequelize.models.ManPower
     .findOne({
       where: {
-        manpowerID: manpowerID,
+        manPowerID: manPowerID,
       },
     })
     .then(function (result) {
@@ -115,11 +118,11 @@ exports.updateByCompany = function (company, content) {
     });
 };
 
-exports.updateById = function (manpowerID, content) {
+exports.updateById = function (manPowerID, content) {
   return sequelize.models.ManPower
     .update(content, {
       where: {
-        manpowerID: manpowerID,
+        manPowerID: manPowerID,
       },
     })
     .then(function (result) {
@@ -130,11 +133,11 @@ exports.updateById = function (manpowerID, content) {
     });
 };
 
-exports.deleteById = function (manpowerID) {
+exports.deleteById = function (manPowerID) {
   return sequelize.models.ManPower
     .destroy({
       where: {
-        manpowerID: manpowerID,
+        manPowerID: manPowerID,
       },
     })
     .then(function (result) {

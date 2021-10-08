@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('ManPower', {
-      manpowerID: {
+      manPowerID: {
         primaryKey: true,
         allowNull: false,
         type: Sequelize.UUID,
@@ -131,7 +131,15 @@ module.exports = {
     remark: {
         allowNull: false,
         type: Sequelize.STRING   
-      }
+      },
+    createdAt:{
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt:{
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
     });
   },
 

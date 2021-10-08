@@ -11,8 +11,8 @@ exports.addEmployee = async function (content) {
       salaryHistory: content.salaryHistory,
       startDate: content.startDate,
       endDate: content.endDate,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;

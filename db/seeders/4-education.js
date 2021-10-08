@@ -13,6 +13,8 @@ module.exports = {
             major: "ศาสนาและสามัญ",
             startDate: new Date(),
             endDate: new Date(),
+            createdAt:new Date(),
+            updatedAt:new Date(),
             
           }
         ]

@@ -1,6 +1,6 @@
 const sequelize = require("../../config/sequelize");
 
-exports.addUser = async function (content) {
+exports.addGeneral = async function (content) {
   return sequelize.models.General
     .create({
       generalID: content.generalID,
@@ -27,6 +27,8 @@ exports.addUser = async function (content) {
       crimeData: content. crimeData,
       disease: content.  disease,
       diseaseData: content. diseaseData,
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;

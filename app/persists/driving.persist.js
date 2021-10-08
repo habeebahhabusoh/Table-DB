@@ -10,8 +10,8 @@ exports.add = function (content) {
       drivingType: content.drivingType,
       drivingLicenseNo: content.drivingLicenseNo,
       drivingExpiryDate: content.drivingExpiryDate,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;
@@ -48,7 +48,7 @@ exports.findByDrivingiIDandID = function (drivingID, id) {
     });
 };
 
-exports.findBydrivingType = function (drivingType) {
+exports.findByDrivingType = function (drivingType) {
   return sequelize.models.Driving
     .findOne({
       where: {

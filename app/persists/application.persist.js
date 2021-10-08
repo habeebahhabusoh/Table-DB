@@ -11,8 +11,8 @@ exports.add = function (content) {
       position2: content.position2,
       expectedSalary: content.expectedSalary,
       availableDate: new Date(),
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;

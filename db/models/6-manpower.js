@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     }
   };
   ManPower.init({
-    mampowerID: {
+    manPowerID: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUID
@@ -23,8 +23,8 @@ module.exports = (sequelize) => {
     section: DataTypes.STRING,
     positionRequired: DataTypes.STRING,
     level: DataTypes.STRING,
-    requestDate: new Date(),
-    commencementDate: new Date(),
+    requestDate: DataTypes.DATE,
+    commencementDate: DataTypes.DATE,
     no: DataTypes.STRING,
     employeeType: DataTypes.STRING,
     hiringPeriod: DataTypes.INTEGER,
@@ -38,15 +38,15 @@ module.exports = (sequelize) => {
     skillAndKnowledge:DataTypes.ARRAY(DataTypes.STRING),
     requestedBy:DataTypes.STRING,
     positionRequisition: DataTypes.STRING,
-    dateRequisition:DataTypes.STRING,
+    dateRequisition:DataTypes.DATE,
     commentByDepartmentHead:DataTypes.STRING,
     signatureByDepartmentHead:DataTypes.STRING,
-    dateByDepartmentHead:new Date(),
+    dateByDepartmentHead:DataTypes.DATE,
     commentByHRBP:DataTypes.STRING,
     signatureHRBP:DataTypes.STRING,
-    dateHRBP:new Date(),
+    dateHRBP:DataTypes.DATE,
     signatureByDirectorHR:DataTypes.STRING,
-    dateByDirectorHR:new Date(),
+    dateByDirectorHR:DataTypes.DATE,
     status:DataTypes.STRING,
     remark:DataTypes.STRING,
   }, {

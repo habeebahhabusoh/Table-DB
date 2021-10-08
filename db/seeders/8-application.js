@@ -14,6 +14,8 @@ module.exports = {
             position2 : "1515154851312",
             expectedSalary: "12000",
             availableDate: new Date(),
+            createdAt:new Date(),
+            updatedAt:new Date(),
            
           }
         ]

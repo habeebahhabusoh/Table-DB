@@ -25,6 +25,8 @@ module.exports = {
             presentAddressPostalCode: "same",
             contactEmail: "Mffw@gmail.com",
             contactPhone: "0888888888",
+            createdAt:new Date(),
+            updatedAt:new Date(),
           }
         ]
       );

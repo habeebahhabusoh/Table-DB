@@ -13,6 +13,8 @@ module.exports = {
             salaryHistory: "12000",
             startDate: new Date(),
             endDate: new Date(),
+            createdAt:new Date(),
+            updatedAt:new Date(),
             
           }
         ]

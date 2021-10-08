@@ -1,13 +1,18 @@
 const sequelize = require("../../config/sequelize");
-const { v4: uuidv4 } = require('uuid');
+//const { v4: uuidv4 } = require('uuid');
 
 exports.add = async function (content) {
   return sequelize.models.Skill
     .create({
-      skillID: uuidv4(),
-      id: uuidv4(),
+
+      skillID:content.skillID,
+      id:content.id,
+      // skillID: uuidv4(),
+      // id: uuidv4(),
       typeOfSkill: content.typeOfSkill,
       level: content.level,
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;
@@ -57,22 +62,6 @@ exports.findAllByLevel = function (level) {
       throw new Error(error.original);
     });
 };
-
-// exports.findLatestByUserId = function (userId) {
-//   return sequelize.models.OTP
-//     .findOne({
-//       where: {
-//         userId: userId,
-//       },
-//       order: [ [ 'createdAt', 'DESC' ]]
-//     })
-//     .then(function (result) {
-//       return result;
-//     })
-//     .catch(function (error) {
-//       throw new Error(error.original);
-//     });
-// };
 
 exports.findById = function (id) {
   return sequelize.models.Skill

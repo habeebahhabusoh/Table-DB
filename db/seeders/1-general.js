@@ -12,9 +12,9 @@ module.exports = {
             middleNameTH: "แมว",
             lastNameTH: "ไม่ใช่แมว",
             perfixEN: "Mr",
-            firstNameEN: "water cat",
-            middleNameEN: "cat",
-            lastNameEN: "not cat",
+            firstNameEN: "sara",
+            middleNameEN: "nayoo",
+            lastNameEN: "nyuha",
             birthDate:  new Date(),
             age: "18",
             maritalStatus: "not cat",
@@ -24,12 +24,14 @@ module.exports = {
             nationality: "thai",
             idCardNo: "1515154851312",
             expiryDate: new Date(),
-            militaryService: "not cat",
+            militaryService: "yes",
             militaryData: "เกณแล้วคับ",
-            crimeStatus: "y",
-            crimeData: "not cat",
-            disease: "y",
-            diseaseData: "not cat"
+            crimeStatus: "no",
+            crimeData: "nothing",
+            disease: "no",
+            diseaseData: "nothing",
+            createdAt:new Date(),
+            updatedAt:new Date(),
           }
         ]
       );

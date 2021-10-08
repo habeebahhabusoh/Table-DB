@@ -11,8 +11,8 @@ exports.addPerson = async function (content) {
       major: content.major,
       startDate: content.startDate,
       endDate: content.endDate,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      createdAt:new Date(),
+      updatedAt:new Date(),
     })
     .then(function (result) {
       return result;
