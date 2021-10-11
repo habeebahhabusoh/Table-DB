@@ -1,11 +1,11 @@
 const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
-exports.addEmployee = async function (content) {
+exports.addHistory = async function (content) {
   return sequelize.models.History
     .create({
-      historyID: content.historyID,
-      id: content.id,
+      historyID: uuidv4(),
+      generalID: content.generalID,
       companyNameHistory: content.companyNameHistory,
       positionHistory: content.positionHistory,
       salaryHistory: content.salaryHistory,
@@ -48,7 +48,7 @@ exports.findAll = function () {
     });
 };
 
-exports.findByHistoryID = function (historyID) {
+exports.findById = function (historyID) {
   return sequelize.models.History
     .findOne({
       where: {
@@ -78,12 +78,27 @@ exports.findByPositionHistory = function (positionHistory) {
     });
 };
 
-exports.updateByEmployeeId = function (historyID, content) {
+exports.updateById = function (historyID, content) {
   return sequelize.models.History
     .update(content, {
       where: {
         historyID: historyID,
-        updatedAt: Date.now()
+      },
+    })
+    .then(function (result) {
+      console.log(result);
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
+exports.deleteById = function (historyID) {
+  return sequelize.models.History
+    .destroy({
+      where: {
+        historyID: historyID,
       },
     })
     .then(function (result) {

@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    id: {
+    generalID: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
     endDate: new Date(),
   }, {
     sequelize,
-    paranoid: true,
+    //paranoid: true,
     tableName: 'Education',
     modelName: 'Education',
   });

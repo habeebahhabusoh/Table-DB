@@ -8,7 +8,7 @@ module.exports = {
        allowNull: false,
        type: Sequelize.UUID,
       },
-        id: {
+      generalID: {
          //   primaryKey: true,
             allowNull: false,
             type: Sequelize.UUID,
@@ -34,7 +34,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       endDate: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       createdAt:{

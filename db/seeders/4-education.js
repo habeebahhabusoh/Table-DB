@@ -7,7 +7,7 @@ module.exports = {
         [
           {
             educationID: "56ac7ad0-5eab-4e70-af50-aecc1fd04c88",
-            id: "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
+            generalID: "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
             educationLevel : "มัธยมศึกษา ",
             name: "อรุณศาน์วิทยามูลนิธิ",
             major: "ศาสนาและสามัญ",

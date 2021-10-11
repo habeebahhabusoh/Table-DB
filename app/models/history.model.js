@@ -1,21 +1,17 @@
-const educationPersist = require('../persists/education.persist');
+const historyPersist = require('../persists/history.persist');
 
 exports.findAll = function(){
-    return educationPersist.findAll();
+    return historyPersist.findAll();
 };
 
-exports.findById = function(educationID){
-    return educationPersist.findById(educationID);
-};
-
-exports.addEducation = async function (content){
+exports.addHistory = async function (content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await educationPersist.addEducation(content);
+        json.result = await historyPersist.addHistory(content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -24,14 +20,18 @@ exports.addEducation = async function (content){
     }
 };
 
-exports.updateEducationById = async function (educationID,content){
+exports.findById = function(historyID){
+    return historyPersist.findById(historyID);
+};
+
+exports.updateHistoryById = async function (historyID,content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await educationPersist.updateById(educationID,content);
+        json.result = await historyPersist.updateById(historyID,content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -40,14 +40,15 @@ exports.updateEducationById = async function (educationID,content){
     }
 };
 
-exports.deleteEducationById = async function (educationID){
+
+exports.deleteHistoryById = async function (historyID){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await educationPersist.deleteById(educationID);
+        json.result = await historyPersist.deleteById(historyID);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -55,4 +56,3 @@ exports.deleteEducationById = async function (educationID){
         return json;
     }
 };
-
