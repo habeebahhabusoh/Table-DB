@@ -27,10 +27,9 @@ module.exports = (sequelize) => {
     position1: DataTypes.STRING,
     position2: DataTypes.STRING,
     expectedSalary: DataTypes.STRING,
-    availableDate: new Date(),
+    availableDate: DataTypes.DATE,
   }, {
     sequelize,
-    paranoid: true,
     tableName: 'Application',
     modelName: 'Application',
   });

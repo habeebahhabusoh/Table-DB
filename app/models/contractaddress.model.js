@@ -1,21 +1,21 @@
-const skillPersist = require('../persists/skill.persist');
+const contractAddressPersist = require('../persists/contractaddress.persist');
 
 exports.findAll = function(){
-    return skillPersist.findAll();
+    return contractAddressPersist.findAll();
 };
 
-exports.findById = function(id){
-    return skillPersist.findById(id);
+exports.findById = function(contractID){
+    return contractAddressPersist.findById(contractID);
 };
 
-exports.addSkill = async function (content){
+exports.addContractAddress = async function (content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.addSkill(content);
+        json.result = await contractAddressPersist.addContractAddress(content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -24,14 +24,14 @@ exports.addSkill = async function (content){
     }
 };
 
-exports.updateSkillById = async function (skillID,content){
+exports.updateContractAddressById = async function (contractID,content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.updateById(skillID,content);
+        json.result = await contractAddressPersist.updateById(contractID,content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -40,14 +40,14 @@ exports.updateSkillById = async function (skillID,content){
     }
 };
 
-exports.deleteSkillById = async function (skillID){
+exports.deleteContractAddressById = async function (contractID){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.deleteById(skillID);
+        json.result = await contractAddressPersist.deleteById(contractID);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());

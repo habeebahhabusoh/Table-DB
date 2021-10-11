@@ -1,12 +1,12 @@
 const sequelize = require("../../config/sequelize");
-//const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
-exports.add = async function (content) {
+exports.addSkill = async function (content) {
   return sequelize.models.Skill
     .create({
 
-      skillID:content.skillID,
-      id:content.id,
+      skillID:uuidv4(),
+      generalID: content.generalID,
       // skillID: uuidv4(),
       // id: uuidv4(),
       typeOfSkill: content.typeOfSkill,
@@ -63,11 +63,11 @@ exports.findAllByLevel = function (level) {
     });
 };
 
-exports.findById = function (id) {
+exports.findById = function (skillID) {
   return sequelize.models.Skill
     .findOne({
       where: {
-        id: id,
+        skillID: skillID,
       },
     })
     .then(function (result) {
@@ -78,11 +78,11 @@ exports.findById = function (id) {
     });
 };
 
-exports.updateById = function (id, content) {
+exports.updateById = function (skillID, content) {
   return sequelize.models.Skill
     .update(content, {
       where: {
-        id: id,
+        skillID: skillID,
       },
     })
     .then(function (result) {
@@ -93,11 +93,11 @@ exports.updateById = function (id, content) {
     });
 };
 
-exports.deleteById = function (id) {
+exports.deleteById = function (skillID) {
   return sequelize.models.Skill
     .destroy({
       where: {
-        id: id,
+        skillID: skillID,
       },
     })
     .then(function (result) {

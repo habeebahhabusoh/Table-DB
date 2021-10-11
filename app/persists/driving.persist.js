@@ -1,11 +1,11 @@
 const sequelize = require("../../config/sequelize");
 const { v4: uuidv4 } = require('uuid');
 
-exports.add = function (content) {
+exports.addDriving = function (content) {
   return sequelize.models.Driving
     .create({
-      drivingID: uuidv4(),
-      id: uuidv4(),
+      drivingID:uuidv4(),
+      generalID: content.generalID,
       drivingLicenseType: content.drivingLicenseType,
       drivingType: content.drivingType,
       drivingLicenseNo: content.drivingLicenseNo,
@@ -32,21 +32,21 @@ exports.findAll = function () {
     });
 };
 
-exports.findByDrivingiIDandID = function (drivingID, id) {
-  return sequelize.models.Driving
-    .findOne({
-      where: {
-        drivingID: drivingID,
-        id: id,
-      },
-    })
-    .then(function (result) {
-      return result;
-    })
-    .catch(function (error) {
-      throw new Error(error.original);
-    });
-};
+// exports.findByDrivingiIDandID = function (drivingID, id) {
+//   return sequelize.models.Driving
+//     .findOne({
+//       where: {
+//         drivingID: drivingID,
+//         id: id,
+//       },
+//     })
+//     .then(function (result) {
+//       return result;
+//     })
+//     .catch(function (error) {
+//       throw new Error(error.original);
+//     });
+// };
 
 exports.findByDrivingType = function (drivingType) {
   return sequelize.models.Driving
@@ -63,11 +63,11 @@ exports.findByDrivingType = function (drivingType) {
     });
 };
 
-exports.findById = function (id) {
+exports.findById = function (drivingID) {
   return sequelize.models.Driving
     .findOne({
       where: {
-        id: id,
+        drivingID: drivingID,
       },
     })
     .then(function (result) {
@@ -78,7 +78,7 @@ exports.findById = function (id) {
     });
 };
 
-exports.updateByDriving = function (drivingID, content) {
+exports.updateById = function (drivingID, content) {
   return sequelize.models.Driving
     .update(content, {
       where: {
@@ -93,12 +93,11 @@ exports.updateByDriving = function (drivingID, content) {
     });
 };
 
-exports.deleteByDrivingiIDandID = function (drivingID, id) {
+exports.deleteById = function (drivingID) {
   return sequelize.models.Driving
     .destroy({
       where: {
         drivingID: drivingID,
-        id: id,
       },
     })
     .then(function (result) {
@@ -108,3 +107,4 @@ exports.deleteByDrivingiIDandID = function (drivingID, id) {
       throw new Error(error.original);
     });
 };
+

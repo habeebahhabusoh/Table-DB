@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    id: {
+    generalID: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
@@ -27,7 +27,6 @@ module.exports = (sequelize) => {
     level: DataTypes.STRING,
   }, {
     sequelize,
-    paranoid: true,
     tableName: 'Skill',
     modelName: 'Skill',
   });
