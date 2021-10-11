@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    id: {
+    generalID: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
@@ -42,7 +42,6 @@ module.exports = (sequelize) => {
     contactPhone: DataTypes.STRING,
   }, {
     sequelize,
-    paranoid: true,
     tableName: 'ContractAddress',
     modelName: 'ContractAddress',
   });

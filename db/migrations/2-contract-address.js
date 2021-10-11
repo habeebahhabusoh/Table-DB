@@ -8,7 +8,7 @@ module.exports = {
        allowNull: false,
        type: Sequelize.UUID,
       },
-        id: {
+      generalID: {
          //   primaryKey: true,
             allowNull: false,
             type: Sequelize.UUID,

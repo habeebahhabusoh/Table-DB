@@ -1,10 +1,11 @@
 const sequelize = require("../../config/sequelize");
+const { v4: uuidv4 } = require('uuid');
 
-exports.add = async function (content) {
+exports.addContractAddress = async function (content) {
   return sequelize.models.ContractAddress
     .create({
-      contractID: content.contractID,
-      id: content.id,
+      contractID:uuidv4(),
+      generalID: content.generalID,
       detailTH: content.detailTH,
       subAreaTH: content.subAreaTH,
       areaTH: content.areaTH,
@@ -45,6 +46,21 @@ exports.findAll = function () {
     });
 };
 
+exports.findById = function (contractID) {
+  return sequelize.models.ContractAddress
+    .findOne({
+      where: {
+        contractID: contractID,
+      },
+    })
+    .then(function (result) {
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
 exports.findByCode = function (postalCodeTH) {
   return sequelize.models.ContractAddress
     .findOne({
@@ -75,11 +91,26 @@ exports.update = function (postalCodeTH, content) {
     });
 };
 
-exports.delete = function (postalCodeTH) {
+exports.updateById = function (contractID, content) {
+  return sequelize.models.ContractAddress
+    .update(content, {
+      where: {
+        contractID: contractID,
+      },
+    })
+    .then(function (result) {
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
+exports.deleteById = function (contractID) {
   return sequelize.models.ContractAddress
     .destroy({
       where: {
-        postalCodeTH: postalCodeTH,
+        contractID: contractID,
       },
     })
     .then(function (result) {

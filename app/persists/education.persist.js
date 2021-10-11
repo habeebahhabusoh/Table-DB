@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 exports.addPerson = async function (content) {
   return sequelize.models.Education
     .create({
-      educationID: content.educationID,
+      educationID: uuidv4(),
       id: content.titleTH,
       educationLevel: content.educationLevel,
       name: content.name,

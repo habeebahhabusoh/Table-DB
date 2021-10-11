@@ -1,21 +1,21 @@
-const skillPersist = require('../persists/skill.persist');
+const applicationPersist = require('../persists/application.persist');
 
 exports.findAll = function(){
-    return skillPersist.findAll();
+    return applicationPersist.findAll();
 };
 
-exports.findById = function(id){
-    return skillPersist.findById(id);
+exports.findById = function(applicationID){
+    return applicationPersist.findById(applicationID);
 };
 
-exports.addSkill = async function (content){
+exports.addApplication = async function (content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.addSkill(content);
+        json.result = await applicationPersist.addApplication(content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -24,14 +24,14 @@ exports.addSkill = async function (content){
     }
 };
 
-exports.updateSkillById = async function (skillID,content){
+exports.updateApplicationById = async function (drivingID,content){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.updateById(skillID,content);
+        json.result = await applicationPersist.updateById(drivingID,content);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());
@@ -40,14 +40,14 @@ exports.updateSkillById = async function (skillID,content){
     }
 };
 
-exports.deleteSkillById = async function (skillID){
+exports.deleteApplicationById = async function (drivingID){
     const json = {
         successfully: true,
         messages:[],
     };
 
     try{
-        json.result = await skillPersist.deleteById(skillID);
+        json.result = await applicationPersist.deleteById(drivingID);
     } catch (error) {
         json.successfully = false;
         json.messages.push(error.toString());

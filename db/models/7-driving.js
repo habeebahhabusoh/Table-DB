@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    id: {
+    generalID: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
@@ -26,10 +26,9 @@ module.exports = (sequelize) => {
     drivingLicenseType: DataTypes.STRING,
     drivingType: DataTypes.STRING,
     drivingLicenseNo: DataTypes.STRING,
-    drivingExpiryDate: new Date(),
+    drivingExpiryDate: DataTypes.DATE,
   }, {
     sequelize,
-    paranoid: true,
     tableName: 'Driving',
     modelName: 'Driving',
   });
