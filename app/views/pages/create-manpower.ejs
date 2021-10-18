@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Manpower</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <script>
+
+async function createData(){
+            let response = await fetch('http://localhost:8080/manpower/',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "manPowerID": document.getElementById("manPowerID"),
+                    // var manPowerID = document.getElementById("manPowerID");
+                    "company": document.getElementById("company"),
+                    "department": document.getElementById("department"),
+                    "section": document.getElementById("section"),
+                    "positionRequired": document.getElementById("positionRequired"),
+                    "level": document.getElementById("level"),
+                    "no": document.getElementById("no"),
+                    "employeeType": document.getElementById("employeeType"),
+                    "hiringPeriod": document.getElementById("hiringPeriod"),
+                    "sex": document.getElementById("sex"),
+                    "age": document.getElementById("age"),
+                    "education": document.getElementById("education"),
+                    "major": document.getElementById("inField"),
+                    "englishTestScore": document.getElementById("englishTestScore"),
+                    "skillAndKnowledge": document.getElementById("skillAndKnowledge"),
+                    "requestedBy": document.getElementById("requestedBy"),
+                    "positionRequisition": document.getElementById("positionRequisition"),
+                    "commentByDepartmentHead": document.getElementById("commentByDepartmentHead"),
+                    "signatureByDepartmentHead": document.getElementById("signatureByDepartmentHead"),
+                    "commentByHRBP": document.getElementById("commentByHRBP"),
+                    "signatureHRBP": document.getElementById("signatureHRBP"),
+                    "signatureByDirectorHR": document.getElementById("signatureByDirectorHR"),
+                    "status": document.getElementById("status"),
+                    "remark": document.getElementById("remark")
+                })
+            })
+                .then(response => console.log(response))
+                .catch(err => console.log(err));
+                
+            }
+    </script>
+</head>
+<body>
+    <%- include ("../layouts/navbar.ejs") -%>
+</div>
+<!-- <form action="/action_page.php"> -->
+    <form action="http://localhost:8080/manpower/" method="POST">
+        <label for="manPowerID">ID:</label><br>
+        <input type="text" id="manPowerID"  value=""><br>
+        <label for="company">Company:</label><br>
+        <input type="text" id="company"  value=""><br>
+        <label for="department">department:</label><br>
+        <input type="text" id="department"  value=""><br>
+        <label for="section">section:</label><br>
+        <input type="text" id="section"  value=""><br>
+        <label for="positionRequired">position:</label><br>
+        <input type="text" id="positionRequired" value=""><br>
+        <label for="level">level:</label><br>
+        <input type="text" id="level"  value=""><br>
+        <label for="commencementDate">commencementDate:</label><br>
+        <input type="text" id="commencementDate"  value=""><br>
+        <label for="no">จำนวน:</label><br>
+        <input type="text" id="no"  value=""><br>
+        <label for="employeeType">employeeType:</label><br>
+        <input type="text" id="employeeType" value=""><br>
+        <label for="hiringPeriod">ระยะเวลาการว่างจ้าง:</label><br>
+        <input type="text" id="hiringPeriod" value=""><br>
+        <label for="sex">เพศ:</label><br>
+        <input type="text" id="sex"  value=""><br>
+        <label for="age">อายุ:</label><br>
+        <input type="text" id="age"  value=""><br>
+        <label for="education">การศึกษา:</label><br>
+        <input type="text" id="education"  value=""><br>
+        <label for="major">สาขาวิชา:</label><br>
+        <input type="text" id="major"  value=""><br>
+        <label for="experience">ประสบการณ์:</label><br>
+        <input type="text" id="experience" value=""><br>
+        <label for="inField">ทางด้าน:</label><br>
+        <input type="text" id="inField" value=""><br>
+        <label for="englishTestScore">คะแนนภาษาอังทฤษ:</label><br>
+        <input type="text" id="englishTestScore" value=""><br>
+        <label for="skillAndKnowledge">ทักษะความรู้:</label><br>
+        <input type="text" id="skillAndKnowledge"  value=""><br>
+        <label for="requestedBy">ผู้ขอ:</label><br>
+        <input type="text" id="requestedBy" value=""><br>
+        <label for="positionRequisition">ตำแหน่งผู้ขอ:</label><br>
+        <input type="text" id="positionRequisition"  value=""><br>
+        <label for="commentByDepartmentHead">ความเห็นของผู้บังคับบัญชา:</label><br>
+        <input type="text" id="commentByDepartmentHead" value=""><br>
+        <label for="signatureByDepartmentHead">ลงชื่อ:</label><br>
+        <input type="text" id="signatureByDepartmentHead" value=""><br>
+        <label for="commentByHRBP">ความเห็นของฝ่ายทรัพยากรบุคคล:</label><br>
+        <input type="text" id="commentByHRBP"  value=""><br>
+        <label for="signatureHRBP">ลงชื่อ:</label><br>
+        <input type="text" id="signatureHRBP"  value=""><br>
+        <label for="signatureByDirectorHR">ลงชื่อ:</label><br>
+        <input type="text" id="signatureByDirectorHR"  value=""><br>
+        <label for="status">status:</label><br>
+        <input type="text" id="status"  value=""><br>
+        <label for="remark">remark:</label><br>
+        <input type="text" id="remark"  value=""><br>
+    <br>   <button type="button" class="btn btn-secondary" onclick="createData()"> addData </button>
+  </form>
+  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>

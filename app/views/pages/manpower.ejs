@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manpower</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    <script>
+        async function getData(){
+            let response = await fetch('http://localhost:8080/manpower/all',{
+            })
+            let rawData = await response.text()
+            let data = JSON.parse(rawData)
+            console.log(rawData)
+            console.log(data.result.length)
+            //console.log(data.results)
+          
+
+       
+            var myTable = document.getElementById("table");
+            for (let i =0; i < data.result.length ; i++){
+                var row = myTable.insertRow(i);
+ 
+            row.insertCell(0).innerHTML = data.result[i].manPowerID;
+            row.insertCell(1).innerHTML = (data.result[i].company);
+            row.insertCell(2).innerHTML = (data.result[i].department);
+            row.insertCell(3).innerHTML = (data.result[i].section);
+            row.insertCell(4).innerHTML = (data.result[i].positionRequired);
+            row.insertCell(5).innerHTML = (data.result[i].no);
+          
+
+            
+            // row += '<tr>';
+            // row += '<th>'+data.results.length[i].manPowerID+'</th>' ;
+            // row += '<th>'+data.results.length['company']+'</th>' ;
+            // row += '<th>'+data.results.length['department']+'</th>' ;
+            // row += '<th>'+data.results.length['positionRequired']+'</th>' ;
+            // row += '<th>'+data.results.length['no']+'</th>' ;
+            // row += '<th>'+data.results.length['employeeType']+'</th>' ;
+            // row += '<th><button type="button" class="btn btn-outline-secondary" onclick="showUserEditBox('+data.results.length['manPowerID']+')">Edit</button>';
+            // row += '<button type="button" class="btn btn-outline-danger" onclick="userDelete('+data.results.length['manPowerID']+')">Del</button></th>';
+            // row += "</tr>";    
+
+        }
+      
+    }
+    </script>
+</head>
+
+<body>
+    <%- include ("../layouts/navbar.ejs") -%>
+</div>
+      
+<div >
+
+  <table class="table">
+    <thead>
+      <tr> 
+        <th scope="col">manPowerID</th>
+        <th scope="col">company</th>
+        <th scope="col">department</th>
+        <th scope="col">section</th>
+        <th scope="col">positionRequired</th>
+        <th scope="col">no</th> 
+        <th scope="col">Action</th> 
+        <th></th>
+      </tr>
+    </thead>
+
+     <tbody id="table">
+    </tbody> 
+  </table>
+</div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

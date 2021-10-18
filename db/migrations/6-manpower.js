@@ -39,7 +39,7 @@ module.exports = {
       no: {
         allowNull: false,
         type: Sequelize.STRING
-      },
+      }, //จำนวน
       employeeType: {
         allowNull: false,
         type: Sequelize.STRING
