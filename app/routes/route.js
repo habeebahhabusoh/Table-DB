@@ -11,4 +11,11 @@ module.exports = function (app) {
     app.use('/driving',require('./driving.route'));
     app.use('/application',require('./application.route'));
 
+    const siteController = require('../controllers/site.controller');
+    const manPowerController = require('../controllers/manpower.controller');
+
+    app.get('/manpower1',manPowerController.findAllManPowerContents);
+
+    app.get("/arm",siteController.index);
+
 }

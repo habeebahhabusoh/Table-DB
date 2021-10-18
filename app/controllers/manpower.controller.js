@@ -3,6 +3,11 @@ exports.findAllManPowerContents = function (request, response){
     content.findAll().then((result)=>{
         response.json({result});
     });
+    response.render("pages/index.ejs",{
+       
+        company: content.company
+       
+    });
 } ;
 
 exports.addManPower = function (request, response){
