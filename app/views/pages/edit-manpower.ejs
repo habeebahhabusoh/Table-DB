@@ -11,8 +11,7 @@
 
     <script>
 
-        async function createData() {
-            
+        async function UpdateData(id) {
             const companyval = document.querySelector('input[name="company"]:checked').value;
             console.log(companyval)
             const departmentval = document.querySelector('input[name="department"]:checked').value;
@@ -45,8 +44,6 @@
             console.log(englishTestScoreval)
             const skillAndKnowledgeList = []
             skillAndKnowledgeList.push(document.getElementById("skillAndKnowledge").value);
-            // const skillAndKnowledgeval = document.getElementById("skillAndKnowledge").value;
-            // console.log(skillAndKnowledgeval)
             const requestedByval = document.getElementById("requestedBy").value;
             console.log(requestedByval)
             const positionRequisitionval = document.getElementById("positionRequisition").value;
@@ -65,8 +62,9 @@
             console.log(statusval)
             const remarkval = document.getElementById("remark").value;
             console.log(remarkval)
-            let response = await fetch('http://localhost:8080/api/manpower/', {
-                method: 'POST',
+            
+            let response = await fetch(`http://localhost:8080/api/manpower/${id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -103,105 +101,111 @@
                 .catch(err => console.log(err));
 
         }
+        async function getData(id){
+            let response = await fetch(`http://localhost:8080/api/manpower/${id}`, {    
+            })
+                .then(response => console.log(response))
+                .catch(err => console.log(err));
+        }
     </script>
 </head>
 
 <body>
     <%- include ("../layouts/navbar.ejs") -%>
     </div>
-    <!-- <form action="/action_page.php"> -->
-    <form action="http://localhost:8080/api/manpower/" method="POST">
 
+    <form >
         <label id="company" for="company"><b> Company :</b></label><br>
-        <input type="radio" name="company" value="companyA" checked> Company A<br>
-        <input type="radio" name="company" value="companyB"> Company B<br>
-        <input type="radio" name="company" value="companyC"> Company C<br>
+        <input type="radio" name="company" value="companyA" <% if (data.company === "companyA"){%> checked <% } %>> Company A<br>
+        <input type="radio" name="company" value="companyB" <% if (data.company === "companyB"){%> checked <% } %>> Company B<br>
+        <input type="radio" name="company" value="companyC" <% if (data.company === "companyC"){%> checked <% } %>> Company C<br>
 
         <label id="department" for="department"><b> Department : </b></label><br>
-        <input type="radio" name="department" value="departmentA" checked> Department A <br>
-        <input type="radio" name="department" value="departmentB"> Department B<br>
-        <input type="radio" name="department" value="departmentC"> Department C<br>
+        <input type="radio" name="department" value="departmentA" <% if (data.department === "departmentA"){%> checked <% } %>> Department A <br>
+        <input type="radio" name="department" value="departmentB" <% if (data.department === "departmentB"){%> checked <% } %>> Department B<br>
+        <input type="radio" name="department" value="departmentC" <% if (data.department === "departmentC"){%> checked <% } %>> Department C<br>
 
         <label id="section" for="section"><b>Section : </b></label><br>
-        <input type="radio" name="section" value="sectionA" checked> Section A <br>
-        <input type="radio" name="section" value="sectionB"> Section B<br>
-        <input type="radio" name="section" value="sectionC"> Section C<br>
+        <input type="radio" name="section" value="sectionA" <% if (data.section === "sectionA"){%> checked <% } %>> Section A <br>
+        <input type="radio" name="section" value="sectionB" <% if (data.section === "sectionB"){%> checked <% } %>> Section B<br>
+        <input type="radio" name="section" value="sectionC" <% if (data.section === "sectionC"){%> checked <% } %>> Section C<br>
 
         <label id="positionRequired" for="positionRequired"><b>Position :</label></b><br>
-        <input type="radio" name="positionRequired" value="positionRequiredA" checked> Position A <br>
-        <input type="radio" name="positionRequired" value="positionRequiredB"> Position B<br>
-        <input type="radio" name="positionRequired" value="positionRequiredC"> Position C<br>
+        <input type="radio" name="positionRequired" value="positionRequiredA" <% if (data.positionRequired === "positionRequiredA"){%> checked <% } %>> Position A<br>
+        <input type="radio" name="positionRequired" value="positionRequiredB" <% if (data.positionRequired === "positionRequiredB"){%> checked <% } %>> Position B<br>
+        <input type="radio" name="positionRequired" value="positionRequiredC" <% if (data.positionRequired === "positionRequiredC"){%> checked <% } %>> Position C<br>
 
         <label id="level" for="level"><b> Level :</b></label><br>
-        <input type="radio" name="level" value="levelA" checked> Level A <br>
-        <input type="radio" name="level" value="levelB"> Level B<br>
-        <input type="radio" name="level" value="levelC"> Level C<br>
+        <input type="radio" name="level" value="levelA" <% if (data.level === "levelA"){%> checked <% } %>> Level A <br>
+        <input type="radio" name="level" value="levelB" <% if (data.level === "levelB"){%> checked <% } %>> Level B<br>
+        <input type="radio" name="level" value="levelC" <% if (data.level === "levelC"){%> checked <% } %>> Level C<br>
+      
 
         <label for="no"><b> จำนวน :</b></label><br>
-        <input type="text" id="no" name="no" value=""><br>
+        <input type="text" id="no" name="no" value="<%= data.no %>"><br>
 
         <label for="employeeType"><b> EmployeeType :</b></label><br>
-        <input type="text" id="employeeType" name="employeeType" value=""><br>
+        <input type="text" id="employeeType" name="employeeType" value="<%= data.employeeType %>"><br>
 
         <label for="hiringPeriod"><b> ระยะเวลาการว่างจ้าง :</b></label><br>
-        <input type="text" id="hiringPeriod" name="hiringPeriod" value=""><br>
+        <input type="text" id="hiringPeriod" name="hiringPeriod" value="<%= data.hiringPeriod %>"><br>
 
         <label id="sex" for="sex"><b> Gender:</b></label><br>
-        <input type="radio" name="sex" value="sexA" checked> Male <br>
-        <input type="radio" name="sex" value="sexB"> Female<br>
+        <input type="radio" name="sex" value="sexA" <% if (data.sex === "sexA"){%> checked <% } %>> Male <br>
+        <input type="radio" name="sex" value="sexB" <% if (data.sex === "sexB"){%> checked <% } %>> Female<br>
 
 
         <label for="age"><b> อายุ:</b></label><br>
-        <input type="text" id="age" name="age" value=""><br>
+        <input type="text" id="age" name="age" value="<%= data.age %>"><br>
 
         <label for="education"><b> การศึกษา: </b></label><br>
-        <input type="text" id="education" name="education" value=""><br>
+        <input type="text" id="education" name="education" value="<%= data.education %>"><br>
 
         <label for="major"><b> สาขาวิชา: </b></label><br>
-        <input type="text" id="major" name="major" value=""><br>
+        <input type="text" id="major" name="major" value="<%= data.major %>"><br>
 
         <label for="experience"><b> ประสบการณ์: </b></label><br>
-        <input type="text" id="experience" name="experience" value=""><br>
+        <input type="text" id="experience" name="experience" value="<%= data.experience %>"><br>
 
         <label for="inField"><b> ทางด้าน: </b></label><br>
-        <input type="text" id="inField" name="inField" value=""><br>
+        <input type="text" id="inField" name="inField" value="<%= data.inField %>"><br>
 
         <label for="englishTestScore"><b> คะแนนภาษาอังทฤษ: </b></label><br>
-        <input type="text" id="englishTestScore" name="englishTestScore" value=""><br>
+        <input type="text" id="englishTestScore" name="englishTestScore" value="<%= data.englishTestScore %>"><br>
 
         <label for="skillAndKnowledge"><b> ทักษะความรู้:</b></label><br>
-        <input type="text" id="skillAndKnowledge" name="skillAndKnowledge" value=""><br>
+        <input type="text" id="skillAndKnowledge" name="skillAndKnowledge" value="<%= data.skillAndKnowledge %>"><br>
 
         <label for="requestedBy"><b> ผู้ขอ: </b></label><br>
-        <input type="text" id="requestedBy" name="requestedBy" value=""><br>
+        <input type="text" id="requestedBy" name="requestedBy" value="<%= data.requestedBy %>"><br>
 
         <label for="positionRequisition"><b> ตำแหน่งผู้ขอ:</b></label><br>
-        <input type="text" id="positionRequisition" name="positionRequisition" value=""><br>
+        <input type="text" id="positionRequisition" name="positionRequisition" value="<%= data.positionRequisition %>"><br>
 
         <label for="commentByDepartmentHead"><b> ความเห็นของผู้บังคับบัญชา:</b></label><br>
-        <input type="text" id="commentByDepartmentHead" name="commentByDepartmentHead" value=""><br>
+        <input type="text" id="commentByDepartmentHead" name="commentByDepartmentHead" value="<%= data.commentByDepartmentHead %>"><br>
 
         <label for="signatureByDepartmentHead"><b> ลงชื่อ: </b></label><br>
-        <input type="text" id="signatureByDepartmentHead" name="signatureByDepartmentHead" value=""><br>
+        <input type="text" id="signatureByDepartmentHead" name="signatureByDepartmentHead" value="<%= data.signatureByDepartmentHead %>"><br>
 
         <label for="commentByHRBP"><b>ความเห็นของฝ่ายทรัพยากรบุคคล:</b></label><br>
-        <input type="text" id="commentByHRBP" name="commentByHRBP" value=""><br>
+        <input type="text" id="commentByHRBP" name="commentByHRBP" value="<%= data.commentByHRBP %>"><br>
 
         <label for="signatureHRBP"><b>ลงชื่อ:</b></label><br>
-        <input type="text" id="signatureHRBP" name="signatureHRBP" value=""><br>
+        <input type="text" id="signatureHRBP" name="signatureHRBP" value="<%= data.signatureHRBP %>"><br>
 
         <label for="signatureByDirectorHR"><b>ลงชื่อ:</b></label><br>
-        <input type="text" id="signatureByDirectorHR" name="signatureByDirectorHR" value=""><br>
+        <input type="text" id="signatureByDirectorHR" name="signatureByDirectorHR" value="<%= data.signatureByDirectorHR %>"><br>
 
         <label for="status"><b>status:</b></label><br>
-        <input type="text" id="status" name="status" value=""><br>
+        <input type="text" id="status" name="status" value="<%= data.status %>"><br>
 
         <label for="remark"><b>remark:</b></label><br>
-        <input type="text" id="remark" name="remark" value=""><br>
+        <input type="text" id="remark" name="remark" value="<%= data.remark %>"><br>
         <br>
 
 
-        <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+        <button type="button" class="btn btn-secondary" onclick="UpdateData('<%= data.manPowerID %>')">UpdateData</button>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

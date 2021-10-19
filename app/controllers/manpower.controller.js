@@ -1,21 +1,3 @@
-exports.manpower = async function (request, response){
-    const content = require("../models/manpower.model");
-    const manpower = await content.findAll();
-    response.render("pages/manpower.ejs",{
-        data: manpower
-    });
-    
-};
-exports.addmanpower = async function (request, response){
-    const content = require("../models/manpower.model");
-    const manpower = await content.addManPower(request.body).then((result)=>{
-    response.render("pages/create-manpower.ejs");
-        data: manpower
-        result.successfully
-        ? response.status(200).json(result)
-        : response.status(500).json(result)
-    });
-};
 
 exports.findAllManPowerContents = function (request, response){
     const content = require('../models/manpower.model');
@@ -24,12 +6,14 @@ exports.findAllManPowerContents = function (request, response){
     });
 } ;
 
-exports.addManPower = function (request, response){
+exports.addManPower =  async function (request, response){
+    console.log(request.body)
     const content = require('../models/manpower.model');
-    content.addManPower(request.body).then((result)=>{
+    await content.addManPower(request.body).then((result)=>{
         result.successfully
         ? response.status(200).json(result)
         : response.status(500).json(result)
+
     });
 } ;
 
