@@ -16,6 +16,7 @@ module.exports = function (app) {
 
     app.get('/manpower1',manPowerController.findAllManPowerContents);
 
-    app.get("/arm",siteController.index);
-
+    app.get("/man-power",manPowerController.index);
+    app.get("/man-power/add",manPowerController.indexAdd);
+    // app.u("/man-power/add",manPowerController.addManPower);
 }

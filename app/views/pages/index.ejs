@@ -5,17 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
+<body class="container" style="margin-top: 50px;">
     <%- include ("../layouts/Navbar.ejs") %>
 
-
+  
     
-     
     
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-link">Manpower</li>
+                <li class="nav-link ml-auto">
+                    <a href="/man-power/add" class="nav-link active">Add Manpower</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <% if(data.length){ %>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">company</th>
+                            <th scope="col">department</th>
+                            <th scope="col">section</th>
+                            <th scope="col">positionRequired</th>
+                            <th scope="col">no</th>
+                            <th width="200px">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr>
+                                <th scope="row"><%= %></th>
+                                <td><%= data[0].company %></td>
+                                <td><%= data[2].department %></td>
+                                <td><%= data[0].section %></td>
+                                <td><%= data[0].positionRequired %></td>
+                                <td><%= data[1].no %></td>
+                                <td>
+                                    <a href="#" class="btn btn-success edit">dit</a>
+                                    <a href="#" class="btn btn-danger delete">Delete</a>
+                                </td>
+                            </tr>
+              
+                    </tbody>
+                </table>
+            <% } %>
+        </div>
+    </div>
    
-   <div><% for (let i = 0; i < data.length ; i++)%></div>
-   <div>I AM <%=data.length[i].manPowerID %>  </div>
+  
  
 
     

@@ -4,8 +4,8 @@ exports.findAll = function(){
     return skillPersist.findAll();
 };
 
-exports.findById = function(id){
-    return skillPersist.findById(id);
+exports.findById = function(generalID){
+    return skillPersist.findById(generalID);
 };
 
 exports.addSkill = async function (content){

@@ -12,6 +12,20 @@ exports.findById = function (request, response){
     });
 } ;
 
+exports.findAllByIdGeneralID = function (request, response){
+    const content = require('../models/application.model');
+    content.findAllApplicationIDByIdGeneralID(request.params.id).then((result)=>{
+        response.json({result});
+    });
+} ;
+
+exports.findByApplicatioIDandGeneralID = function (request, response){
+    const content = require('../models/application.model');
+    content.findByApplicatioIDandGeneralID(request.params.id).then((result)=>{
+        response.json({result});
+    });
+} ;
+
 
 exports.addApplication= function (request, response){
     const content = require('../models/application.model');

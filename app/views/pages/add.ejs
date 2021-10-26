@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function createData() {
+            const companyval = document.getElementById("company").value;
+            console.log(companyval)
+            const departmentval = document.getElementById("department").value;
+            console.log(departmentval)
+            const sectionval = document.getElementById("section").value;
+            console.log(sectionval)
+            const positionRequiredval = document.getElementById("positionRequired").value;
+            console.log(positionRequiredval)
+            const levelval = document.getElementById("level").value;
+            console.log(levelval)
+            const noval = document.getElementById("no").value;
+            console.log(noval)
+            const employeeTypeval = document.getElementById("employeeType").value;
+            console.log(employeeTypeval)
+            const hiringPeriodval = document.getElementById("hiringPeriod").value;
+            console.log(hiringPeriodval)
+            const sexval = document.getElementById("sex").value;
+            console.log(sexval)
+            const ageval = document.getElementById("age").value;
+            console.log(ageval)
+            const educationval = document.getElementById("education").value;
+            console.log(educationval)
+            const majorval = document.getElementById("major").value;
+            console.log(majorval)
+            const experienceval = document.getElementById("experience").value;
+            console.log(experienceval)
+            const inFieldval = document.getElementById("inField").value;
+            const englishTestScoreval = document.getElementById("englishTestScore").value;
+            const skillAndKnowledgeval = document.getElementById("skillAndKnowledge").value;
+            const requestedByval = document.getElementById("requestedBy").value;
+            const positionRequisitionval = document.getElementById("positionRequisition").value;
+            const commentByDepartmentHeadval = document.getElementById("commentByDepartmentHead").value;
+            const signatureByDepartmentHeadval = document.getElementById("signatureByDepartmentHead").value;
+            const commentByHRBPval = document.getElementById("commentByHRBP").value;
+            const signatureHRBPval = document.getElementById("signatureHRBP").value;
+            const signatureByDirectorHRval = document.getElementById("signatureByDirectorHR").value;
+            const statusval = document.getElementById("status").value;
+            const remarkval = document.getElementById("remark").value;
+            // let response = await fetch('http://localhost:8080/manpower', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+
+            //     },
+            //     body: JSON.stringify({
+            //         company: companyval.value,
+            //             department: departmentval.value,
+            //             section: sectionval.value,
+            //             positionRequired: positionRequiredval.value,
+            //             level: levelval.value,
+            //             no: noval.value,
+            //             employeeType: employeeTypeval.value,
+            //             hiringPeriod: parseInt(hiringPeriodval).value,
+            //             sex: sexval.value,
+            //             age: parseInt(ageval).value,
+            //             education: educationval.value,
+            //             major: majorval.value,
+            //             experience:  experienceval.value ,
+            //             inField:inFieldval.value ,
+            //             englishTestScore: englishTestScoreval.value,
+            //             skillAndKnowledge: skillAndKnowledgeval.value,
+            //             requestedBy: requestedByval.value,
+            //             positionRequisition: positionRequisitionval.value,
+            //             commentByDepartmentHead:commentByDepartmentHeadval.value,
+            //             signatureByDepartmentHead:signatureByDepartmentHeadval.value,
+            //             commentByHRBP: commentByHRBPval.value,
+            //             signatureHRBP: signatureHRBPval.value,
+            //             signatureByDirectorHR: signatureByDirectorHRval.value,
+            //             status: statusval.value,
+            //             remark: remarkval.value
+            //     })
+            // })
+            //     .then(response => console.log(response))
+            //     .catch(err => console.log(err));
+
+        }</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="container" style="margin-top: 50px;">
+    <%- include ("../layouts/Navbar.ejs") %>
+
+
+        <div class="card">
+            <div class="card-header">
+                Add Manpower
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-info" value="Add" onclick="createData()">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">company:</label>
+                        <input type="text" class="form-control" id="company" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="department">department:</label>
+                        <input type="text" class="form-control" id="department" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="positionRequired">positionRequired:</label>
+                        <input type="text" class="form-control" id="positionRequired" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="level">level:</label>
+                        <input type="text" class="form-control" id="level" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="no">no:</label>
+                        <input type="text" class="form-control" id="no" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeType">employeeType:</label>
+                        <input type="text" class="form-control" id="employeeType" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="hiringPeriod">hiringPeriod:</label>
+                        <input type="text" class="form-control" id="hiringPeriod" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">sex:</label>
+                        <input type="text" class="form-control" id="sex" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">age:</label>
+                        <input type="text" class="form-control" id="age" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="education">education:</label>
+                        <input type="text" class="form-control" id="education" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="major">major:</label>
+                        <input type="text" class="form-control" id="major" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">experience:</label>
+                        <input type="text" class="form-control" id="experience" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="inField">inField:</label>
+                        <input type="text" class="form-control" id="inField" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="englishTestScore">englishTestScore:</label>
+                        <input type="text" class="form-control" id="englishTestScore" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="skillAndKnowledge">skillAndKnowledge:</label>
+                        <input type="text" class="form-control" id="skillAndKnowledge" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="requestedBy">requestedBy:</label>
+                        <input type="text" class="form-control" id="requestedBy" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="positionRequisition">positionRequisition:</label>
+                        <input type="text" class="form-control" id="positionRequisition" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="commentByDepartmentHead">commentByDepartmentHead:</label>
+                        <input type="text" class="form-control" id="commentByDepartmentHead" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="signatureByDepartmentHead">signatureByDepartmentHead:</label>
+                        <input type="text" class="form-control" id="signatureByDepartmentHead" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="commentByHRBP">commentByHRBP:</label>
+                        <input type="text" class="form-control" id="commentByHRBP" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="signatureHRBP">signatureHRBP:</label>
+                        <input type="text" class="form-control" id="signatureHRBP" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="signatureByDirectorHR">signatureByDirectorHR:</label>
+                        <input type="text" class="form-control" id="signatureByDirectorHR" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label form="status">status:</label>
+                        <input type="text" class="form-control" id="status" value="" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">remark:</label>
+                        <input type="text" class="form-control" id="remark" value="" autocomplete="off">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+</body>
+
+</html>

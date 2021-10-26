@@ -1,13 +1,33 @@
+exports.index = async function (request, response){
+    const model = require("../models/manpower.model");
+    const manpower = await model.findAll();
+    console.log(manpower)
+    response.render("pages/index.ejs",{
+        data: manpower
+    });
+};
+
+exports.indexAdd = async function (request, response){
+    response.render("pages/add.ejs",{
+    });
+};
+
+exports.indexAddManPower = function (request, response){
+    const content = require('../models/manpower.model');
+    content.addManPower(request.body).then((result)=>{
+        result.successfully
+        ? response.status(200).json(result)
+        : response.status(500).json(result)
+        
+    });
+} ;
+
 exports.findAllManPowerContents = function (request, response){
     const content = require('../models/manpower.model');
     content.findAll().then((result)=>{
         response.json({result});
     });
-    response.render("pages/index.ejs",{
-       
-        company: content.company
-       
-    });
+    
 } ;
 
 exports.addManPower = function (request, response){

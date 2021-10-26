@@ -1,9 +1,10 @@
 const sequelize = require("../../config/sequelize");
+const { v4: uuidv4 } = require('uuid');
 
 exports.addManPower = async function (content) {
   return sequelize.models.ManPower
     .create({
-      manPowerID: content.manPowerID,
+      manPowerID: uuidv4(),
       company: content.company,
       department: content.department,
       section: content.section,

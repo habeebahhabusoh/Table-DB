@@ -48,6 +48,21 @@ exports.findById = function (applicationID) {
     });
 };
 
+exports.findByIdgeneralID = function (generalID) {
+  return sequelize.models.Skill
+    .findOne({
+      where: {
+        generalID: generalID,
+      },
+    })
+    .then(function (result) {
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
 exports.updateById = function (applicationID, content) {
   return sequelize.models.Application
     .update(content, {

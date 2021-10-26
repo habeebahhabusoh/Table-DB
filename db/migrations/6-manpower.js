@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       positionRequired: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.STRING
       },
       level: {
