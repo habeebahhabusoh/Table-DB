@@ -5,6 +5,16 @@ exports.findAllApplicationContents = function (request, response){
     });
 } ;
 
+exports.findAllByApplication = function (request, response) {
+    const content = require('../models/application.model');
+    content.findAllByApplication(request.params.id).then((result)=>{
+        result.successfully
+        ? response.status(200).json(result)
+        : response.status(500).json(result)
+    });
+  };
+
+
 exports.findById = function (request, response){
     const content = require('../models/application.model');
     content.findById(request.params.id).then((result)=>{

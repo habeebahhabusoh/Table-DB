@@ -6,11 +6,12 @@ exports.addApplication = function (content) {
     .create({
       applicationID: uuidv4(),
       generalID: content.generalID,
-      no: content.no,
+      numberOrder: content.numberOrder,
       position1: content.position1,
       position2: content.position2,
       expectedSalary: content.expectedSalary,
       availableDate: new Date(),
+      status: content.status,
       createdAt:new Date(),
       updatedAt:new Date(),
     })
@@ -24,7 +25,9 @@ exports.addApplication = function (content) {
 
 exports.findAll = function () {
   return sequelize.models.Application
-    .findAll()
+    .findAll({
+      order: [["createdAt", "DESC"]],
+    })
     .then(function (result) {
       return result;
     })
@@ -79,19 +82,20 @@ exports.deleteById = function (applicationID) {
 };
 
 
-exports.findByApplicatioIDandGeneralID = function (applicationID, generalID) {
+exports.findAllByApplication = function (applicationID) {
   return sequelize.models.Application
     .findOne({
       where: {
         applicationID: applicationID,
-        generalID: generalID,
+        // generalID: generalID,
       },
     })
     .then(function (result) {
       return result;
     })
-    .catch(function (error) {
-      throw new Error(error.original);
+    .catch((error) => {
+      assert.isNotOk(error,'Promise error');
+      done();
     });
 };
 

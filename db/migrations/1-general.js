@@ -46,7 +46,7 @@ module.exports = {
       },
       age: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       maritalStatus: {
         allowNull: false,

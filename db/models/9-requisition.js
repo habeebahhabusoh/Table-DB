@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  class Application extends Model {
+  class Requisition extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,28 +12,27 @@ module.exports = (sequelize) => {
       // define association here
     }
   };
-  Application.init({
-    applicationID: {
+  Requisition.init({
+    requisitionID: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    generalID: {
+    manPowerID: {
       type: DataTypes.UUID,
      // primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    numberOrder: DataTypes.INTEGER,
-    position1: DataTypes.STRING,
-    position2: DataTypes.STRING,
-    expectedSalary: DataTypes.STRING,
-    availableDate: DataTypes.DATE,
-    status:DataTypes.STRING,
+    applicationID: {
+        type: DataTypes.UUID,
+       // primaryKey: true,
+        defaultValue: DataTypes.UUID
+      },
   }, {
     sequelize,
-    tableName: 'Application',
-    modelName: 'Application',
+    tableName: 'Requisition',
+    modelName: 'Requisition',
   });
 
-  return Application;
+  return Requisition;
 };

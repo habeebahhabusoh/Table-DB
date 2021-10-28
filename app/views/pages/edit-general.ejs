@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Manpower</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        async function UpdateData() {
+            const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
+            console.log(perfixTHval)
+
+            const firstNameTHval = document.getElementById("firstNameTH").value;
+            console.log(firstNameTHval)
+
+            const middleNameTHval = document.getElementById("middleNameTH").value;
+            console.log(middleNameTHval)
+
+            const lastNameTHval = document.getElementById("lastNameTH").value;
+            console.log(lastNameTHval)
+
+            const perfixENval = document.querySelector('input[name="perfixEN"]:checked').value;
+            console.log(perfixENval)
+
+            const firstNameENval = document.getElementById("firstNameEN").value;
+            console.log(firstNameENval)
+
+            const middleNameENval = document.getElementById("middleNameEN").value;
+            console.log(middleNameENval)
+
+            const lastNameENval = document.getElementById("lastNameEN").value;
+            console.log(lastNameENval)
+
+            const ageval = document.getElementById("age").value;
+            console.log(ageval)
+
+            const maritalStatusval = document.getElementById("maritalStatus").value;
+            console.log(maritalStatusval)
+            const sexval = document.querySelector('input[name="sex"]:checked').value;
+            console.log(sexval)
+
+            const heightval= document.getElementById("height").value;
+            console.log(heightval)
+
+            const weightval = document.getElementById("weight").value;
+            console.log(weightval)
+
+            const nationalityval = document.getElementById("nationality").value;
+            console.log(nationalityval)
+    
+            const idCardNoval = document.getElementById("idCardNo").value;
+            console.log(idCardNoval)
+
+            const militaryServiceval = document.querySelector('input[name="militaryService"]:checked').value;
+            console.log(militaryServiceval)
+
+            const militaryDataval = document.getElementById("militaryData").value;
+            console.log(militaryDataval)
+
+            const crimeStatusval = document.querySelector('input[name="crimeStatus"]:checked').value;
+            console.log(crimeStatusval)
+
+            const crimeDataval = document.getElementById("crimeData").value;
+            console.log(crimeDataval)
+
+            const diseaseval =  document.querySelector('input[name="disease"]:checked').value;
+            console.log(diseaseval)
+
+            const diseaseDataval = document.getElementById("diseaseData").value;
+            console.log(diseaseDataval)
+
+            let response = await fetch(`http://localhost:8080/api/general/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "perfixTH": perfixTHval,
+                    "firstNameTH": firstNameTHval,
+                    "middleNameTH": middleNameTHval,
+                    "lastNameTH": lastNameTHval,
+                    "perfixEN": perfixENval,
+                    "firstNameEN": firstNameENval,
+                    "middleNameEN": middleNameENval,
+                    "lastNameEN": lastNameENval,
+                    "age": parseInt(ageval),
+                    "maritalStatus": maritalStatusval,
+                    "sex": sexval,
+                    "height": heightval,
+                    "weight": weightval,
+                    "nationality": nationalityval,
+                    "idCardNo": idCardNoval,
+                    
+                    "militaryService": militaryServiceval,
+                    "militaryData": militaryDataval,
+                    "crimeStatus": crimeStatusval,
+                    "crimeData": crimeDataval,
+                    "disease": diseaseval,
+                    "diseaseData": diseaseDataval,
+                })
+            })
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'Add Data Complete',
+                // footer: '<a href="/manpower">Back to ManPower</a>'
+})
+                .then(response => (response))
+                .catch(err => console.log(err))
+            
+        }
+        async function getData(id) {
+            let response = await fetch(`http://localhost:8080/api/general/${id}`, {
+            })
+                .then(response => console.log(response))
+                .catch(err => console.log(err));
+        }
+    </script>
+</head>
+
+<body>
+    
+    <%- include ("../layouts/navbar.ejs") -%>
+    </div>
+    <h1>Edit Data</h1>
+   
+    <form action="http://localhost:8080/api/application/" method="POST">
+       
+
+        <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
+        <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาย"){%> checked <% } %>> นาย<br>
+        <input type="radio" name="perfixTH" value="นาง" <% if (data.perfixTH === "นาง"){%> checked <% } %>> นาง<br>
+        <input type="radio" name="perfixTH" value="นางสาว" <% if (data.perfixTH === "นางสาว"){%> checked <% } %>> นางสาว<br>
+
+        <label for="firstNameTH"><b> ชื่อ:</b></label><br>
+        <input type="text" id="firstNameTH" name="firstNameTH" value="<%= data.firstNameTH %>"><br>
+
+        <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
+        <input type="text" id="middleNameTH" name="middleNameTH" value="<%= data.middleNameTH %>"><br>
+
+        <label for="lastNameTH"><b> นามสกุล:</b></label><br>
+        <input type="text" id="lastNameTH" name="lastNameTH" value="<%= data.lastNameTH %>"><br>
+
+        <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
+        <input type="radio" name="perfixEN" value="Mr." <% if (data.perfixEN === "Mr."){%> checked <% } %>> Mr. <br>
+        <input type="radio" name="perfixEN" value="Ms." <% if (data.perfixEN === "Ms."){%> checked <% } %>> Ms.<br>
+
+        <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
+        <input type="text" id="firstNameEN" name="firstNameEN" value="<%= data.firstNameEN %>"><br>
+
+        <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
+        <input type="text" id="middleNameEN" name="middleNameEN" value="<%= data.middleNameEN %>"><br>
+
+        <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
+        <input type="text" id="lastNameEN" name="lastNameEN" value="<%= data.lastNameEN %>"><br>
+
+        <label for="age"><b>อายุ:</b></label><br>
+        <input type="text" id="age" name="age" value="<%= data.age %>"><br>
+
+        <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
+        <input type="text" id="maritalStatus" name="maritalStatus" value="<%= data.maritalStatus %>"><br>
+
+        <label id="sex" for="sex"><b> เพศ :</b></label><br>
+        <input type="radio" name="sex" value="Male" <% if (data.sex === "Male"){%> checked <% } %>> Male <br>
+        <input type="radio" name="sex" value="Female" <% if (data.sex === "Female"){%> checked <% } %>> Female<br>
+
+        <label for="height"><b> ส่วนสูง:</b></label><br>
+        <input type="text" id="height" name="height" value="<%= data.height %>"><br>
+
+        <label for="weight"><b> น้ำหนัก:</b></label><br>
+        <input type="text" id="weight" name="weight" value="<%= data.weight %>"><br>
+
+        <label for="nationality"><b> สัญชาติ: </b></label><br>
+        <input type="text" id="nationality" name="nationality" value="<%= data.nationality %>"><br>
+
+        <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
+        <input type="text" id="idCardNo" name="idCardNo" value="<%= data.idCardNo %>"><br>
+
+       
+        <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
+        <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร" <% if (data.militaryService === "เคยเกณฑ์ทหาร"){%> checked <% } %>> Yes<br>
+        <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร" <% if (data.militaryService === "ไม่เคยเกณฑ์ทหาร"){%> checked <% } %>> No<br>
+
+        <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
+        <input type="text" id="militaryData" name="militaryData" value="<%= data.militaryData %>"><br>
+
+        <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
+        <input type="radio" name="crimeStatus" value="เคยมีคดี" <% if (data.crimeStatus === "เคยมีคดี"){%> checked <% } %>> Yes <br>
+        <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี" <% if (data.crimeStatus === "ไม่เคยมีคดี"){%> checked <% } %>> No <br>
+
+        <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
+        <input type="text" id="crimeData" name="crimeData" value="<%= data.crimeData %>"><br>
+
+        <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
+        <input type="radio" name="disease" value="มีโรค" <% if (data.disease === "มีโรค"){%> checked <% } %>> Yes <br>
+        <input type="radio" name="disease" value="ไม่มีโรค" <% if (data.disease === "ไม่มีโรค"){%> checked <% } %>> No<br>
+        <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
+        <input type="text" id="diseaseData" name="diseaseData" value="<%= data.diseaseData %>"><br>
+        <br>
+
+
+        <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+        <button type="button" class="btn btn-secondary"  ><a href="/application">Home</a> </button>
+
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>general</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <script>
+       
+        async function DeleteData(id) {
+
+            let response = await fetch(`http://localhost:8080/api/general/${id}`, {
+                method: 'delete',
+            
+            })
+                .then(response => console.log(response))
+                .catch(err => console.log(err));
+        }
+    </script>
+</head>
+
+<body>
+    <%- include ("../layouts/navbar.ejs") -%>
+    <form >
+    </div>
+    <h1>general</h1>
+    <a class="btn btn-secondary" href="/addGeneral">addData</a>
+    <div class="card-body">
+        <% if(data.length){ %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">generalID</th>
+                    <th scope="col">perfixTH</th>
+                    <th scope="col">firstNameTH</th>
+                    <th scope="col">lastNameTH</th>
+                    <th scope="col">sex</th>
+                    <th width="200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < data.length; i++){ %>
+                    <% console.log(data.length) %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= data[i].generalID %></td>
+                    <td><%= data[i].perfixTH %></td>
+                    <td><%= data[i].firstNameTH %></td>
+                    <td><%= data[i].lastNameTH %></td>
+                    <td><%= data[i].sex %></td>
+                   
+                  
+                    <td>
+                        <a href="/editgeneral/<%= data[i].generalID %>" class="btn btn-success edit">Edit</a>
+                        <a onclick="DeleteData('<%= data[i].generalID %>')" class="btn btn-danger delete">Delete</a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <% } %>
+    </div>
+    </div>
+
+
+</form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

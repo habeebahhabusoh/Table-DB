@@ -1,9 +1,10 @@
 const sequelize = require("../../config/sequelize");
+const { v4: uuidv4 } = require('uuid');
 
 exports.addGeneral = async function (content) {
   return sequelize.models.General
     .create({
-      generalID: content.generalID,
+      generalID: uuidv4(),
       perfixTH: content.perfixTH,
       firstNameTH: content.firstNameTH,
       middleNameTH: content.middleNameTH,

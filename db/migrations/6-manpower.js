@@ -36,10 +36,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }, //วันที่เริ่มงาน
-      no: {
+      numberOrder: {
         allowNull: false,
-        type: Sequelize.STRING
-      }, //จำนวน
+        autoIncrement: true,
+        type: Sequelize.INTEGER
+       },
       employeeType: {
         allowNull: false,
         type: Sequelize.STRING

@@ -9,6 +9,7 @@ module.exports = function (app) {
     app.use('/api/contractaddress',require('./contractaddress.route'));
     app.use('/api/driving',require('./driving.route'));
     app.use('/api/application',require('./application.route'));
+    app.use('/api/requisition',require('./requisition.route'));
     
 
 }

@@ -7,5 +7,13 @@ router.get("/manpower", siteController.manpower);
 router.get("/add", siteController.addmanpower);
 router.get("/edit/:id", siteController.editManPower);
 
+router.get("/application", siteController.application);
+router.get("/addApplication", siteController.addapplication);
+
+router.get("/pagecontrol", siteController.addpagecontrol);
+
+router.get("/general", siteController.general);
+router.get("/addGeneral", siteController.addgeneral);
+router.get("/editgeneral/:id", siteController.editgeneral);
 
 module.exports = router;

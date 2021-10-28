@@ -15,7 +15,7 @@ module.exports = {
             level: "5",
             requestDate: new Date(),
             commencementDate: new Date(),
-            no: "5",
+            numberOrder: 9,
             employeeType: "Destroy",
             hiringPeriod: 2,
             sex: "cat",

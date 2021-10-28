@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+
+        async function createData() {
+            const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
+            console.log(perfixTHval)
+
+            const firstNameTHval = document.getElementById("firstNameTH").value;
+            console.log(firstNameTHval)
+
+            const middleNameTHval = document.getElementById("middleNameTH").value;
+            console.log(middleNameTHval)
+
+            const lastNameTHval = document.getElementById("lastNameTH").value;
+            console.log(lastNameTHval)
+
+            const perfixENval = document.querySelector('input[name="perfixEN"]:checked').value;
+            console.log(perfixENval)
+
+            const firstNameENval = document.getElementById("firstNameEN").value;
+            console.log(firstNameENval)
+
+            const middleNameENval = document.getElementById("middleNameEN").value;
+            console.log(middleNameENval)
+
+            const lastNameENval = document.getElementById("lastNameEN").value;
+            console.log(lastNameENval)
+
+            const ageval = document.getElementById("age").value;
+            console.log(ageval)
+
+            const maritalStatusval = document.getElementById("maritalStatus").value;
+            console.log(maritalStatusval)
+            const sexval = document.querySelector('input[name="sex"]:checked').value;
+            console.log(sexval)
+
+            const heightval = document.getElementById("height").value;
+            console.log(heightval)
+
+            const weightval = document.getElementById("weight").value;
+            console.log(weightval)
+
+            const nationalityval = document.getElementById("nationality").value;
+            console.log(nationalityval)
+
+            const idCardNoval = document.getElementById("idCardNo").value;
+            console.log(idCardNoval)
+
+            const militaryServiceval = document.querySelector('input[name="militaryService"]:checked').value;
+            console.log(militaryServiceval)
+
+            const militaryDataval = document.getElementById("militaryData").value;
+            console.log(militaryDataval)
+
+            const crimeStatusval = document.querySelector('input[name="crimeStatus"]:checked').value;
+            console.log(crimeStatusval)
+
+            const crimeDataval = document.getElementById("crimeData").value;
+            console.log(crimeDataval)
+
+            const diseaseval = document.querySelector('input[name="disease"]:checked').value;
+            console.log(diseaseval)
+
+            const diseaseDataval = document.getElementById("diseaseData").value;
+            console.log(diseaseDataval)
+
+            let response = await fetch('http://localhost:8080/api/general/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "perfixTH": perfixTHval,
+                    "firstNameTH": firstNameTHval,
+                    "middleNameTH": middleNameTHval,
+                    "lastNameTH": lastNameTHval,
+                    "perfixEN": perfixENval,
+                    "firstNameEN": firstNameENval,
+                    "middleNameEN": middleNameENval,
+                    "lastNameEN": lastNameENval,
+                    "age": parseInt(ageval),
+                    "maritalStatus": maritalStatusval,
+                    "sex": sexval,
+                    "height": heightval,
+                    "weight": weightval,
+                    "nationality": nationalityval,
+                    "idCardNo": idCardNoval,
+
+                    "militaryService": militaryServiceval,
+                    "militaryData": militaryDataval,
+                    "crimeStatus": crimeStatusval,
+                    "crimeData": crimeDataval,
+                    "disease": diseaseval,
+                    "diseaseData": diseaseDataval,
+                })
+            })
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'Add Data Complete',
+                // footer: '<a href="/manpower">Back to ManPower</a>'
+            })
+                .then(response => (response))
+                .catch(err => console.log(err))
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <h1>Add Data</h1>
+
+    <form action="http://localhost:8080/api/general/" method="POST">
+        <div class="page slide-page">
+            <div class="field">
+                <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
+                <input type="radio" name="perfixTH" value="นาย"> นาย<br>
+                <input type="radio" name="perfixTH" value="นาง"> นาง<br>
+                <input type="radio" name="perfixTH" value="นางสาว"> นางสาว<br>
+            </div>
+            <div class="field">
+                <label for="firstNameTH"><b> ชื่อ:</b></label><br>
+                <input type="text" id="firstNameTH" name="firstNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
+                <input type="text" id="middleNameTH" name="middleNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label for="lastNameTH"><b> นามสกุล:</b></label><br>
+                <input type="text" id="lastNameTH" name="lastNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
+                <input type="radio" name="perfixEN" value="Mr."> Mr. <br>
+                <input type="radio" name="perfixEN" value="Ms."> Ms.<br>
+            </div>
+            <div class="field">
+                <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="firstNameEN" name="firstNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="middleNameEN" name="middleNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="lastNameEN" name="lastNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="age"><b>อายุ:</b></label><br>
+                <input type="text" id="age" name="age" value=""><br>
+            </div>
+            <div class="field">
+                <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
+                <input type="text" id="maritalStatus" name="maritalStatus" value=""><br>
+            </div>
+            <div class="field">
+                <label id="sex" for="sex"><b> เพศ :</b></label><br>
+                <input type="radio" name="sex" value="Male"> Male <br>
+                <input type="radio" name="sex" value="Female"> Female<br>
+            </div>
+            <div class="field">
+                <label for="height"><b> ส่วนสูง:</b></label><br>
+                <input type="text" id="height" name="height" value=""><br>
+            </div>
+            <div class="field">
+                <label for="weight"><b> น้ำหนัก:</b></label><br>
+                <input type="text" id="weight" name="weight" value=""><br>
+            </div>
+            <div class="field">
+                <label for="nationality"><b> สัญชาติ: </b></label><br>
+                <input type="text" id="nationality" name="nationality" value=""><br>
+            </div>
+            <div class="field">
+                <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
+                <input type="text" id="idCardNo" name="idCardNo" value=""><br>
+            </div>
+            <div class="field">
+
+                <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
+                <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร"> Yes<br>
+                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร"> No<br>
+            </div>
+            <div class="field">
+                <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
+                <input type="text" id="militaryData" name="militaryData" value=""><br>
+            </div>
+            <div class="field">
+                <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
+                <input type="radio" name="crimeStatus" value="เคยมีคดี"> Yes <br>
+                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี"> No<br>
+            </div>
+            <div class="field">
+                <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
+                <input type="text" id="crimeData" name="crimeData" value=""><br>
+            </div>
+            <div class="field">
+                <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
+                <input type="radio" name="disease" value="มีโรค"> Yes <br>
+                <input type="radio" name="disease" value="ไม่มีโรค"> No<br>
+                <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
+                <input type="text" id="diseaseData" name="diseaseData" value=""><br>
+                <br>
+
+
+
+
+                <button class="next-1 next">Next</button>
+                <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+
+            </div>
+    </form>
+
+
+
+</body>
+
+</html>

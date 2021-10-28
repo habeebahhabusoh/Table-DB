@@ -16,7 +16,7 @@ module.exports = {
             middleNameEN: "nayoo",
             lastNameEN: "nyuha",
             birthDate:  new Date(),
-            age: "18",
+            age: 18,
             maritalStatus: "not cat",
             sex: "M",
             height: "188",

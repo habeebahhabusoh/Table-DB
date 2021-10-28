@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+</head>
+
+
+<body>
+<h1 >Add data</h1>
+  <form action="http://localhost:8080/api/application/" method="POST">
+    <div class="page">
+    <label for="companyNameHistory"><b>ชื่อบริษัท:</b></label><br>
+        <input type="text" id="companyNameHistory" name="companyNameHistory" value=""><br>
+
+        <label for="positionHistory"><b>ตำแหน่ง:</b></label><br>
+        <input type="text" id="positionHistory" name="positionHistory" value=""><br>
+
+        <label for="salaryHistory"><b>เงินเดือน:</b></label><br>
+        <input type="text" id="salaryHistory" name="salaryHistory" value=""><br>
+
+        <label for="startDate"><b>วันที่เริ่มงาน:</b></label><br>
+        <input type="date" id="startDate" name="startDate" value=""><br>
+
+        <label for="endDate"><b>ถึง:</b></label><br>
+        <input type="date" id="endDate" name="endDate" value=""><br>
+        <br>
+            
+        <button class="next-1 next">Next</button>
+    <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+    </div>
+
+</form>
+
+</body>
+</html>
