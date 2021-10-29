@@ -19,15 +19,15 @@ module.exports = {
       },
       companyNameHistory: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       positionHistory: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       salaryHistory: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       startDate: {
         allowNull: true,

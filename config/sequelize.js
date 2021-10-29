@@ -21,7 +21,8 @@ const modelDefiners = [
    require("../db/models/6-manpower"),
    require("../db/models/7-driving"),
    require("../db/models/8-application"),
-   //require("../db/models/9-test"),
+   require("../db/models/9-requisition"),
+  
   
 ];
 

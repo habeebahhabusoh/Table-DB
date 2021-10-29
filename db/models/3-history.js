@@ -23,9 +23,9 @@ module.exports = (sequelize) => {
      // primaryKey: true,
       defaultValue: DataTypes.UUID
     },
-    companyNameHistory: DataTypes.STRING,
-    positionHistory: DataTypes.STRING,
-    salaryHistory: DataTypes.STRING,
+    companyNameHistory: DataTypes.ARRAY(DataTypes.STRING),
+    positionHistory: DataTypes.ARRAY(DataTypes.STRING),
+    salaryHistory: DataTypes.ARRAY(DataTypes.STRING),
     startDate:  DataTypes.DATE,
     endDate:  DataTypes.DATE,
   }, {

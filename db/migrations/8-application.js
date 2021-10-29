@@ -16,10 +16,11 @@ module.exports = {
          key: 'generalID',
        },
       },
-      no: {
+      numberOrder: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
+        autoIncrement: true,
+        type: Sequelize.INTEGER
+       },
       position1: {
         allowNull: false,
         type: Sequelize.STRING
@@ -36,6 +37,10 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE
       },
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING   
+      },
       createdAt:{
         allowNull: false,
         type: Sequelize.DATE,
@@ -44,6 +49,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+
     });
   },
 

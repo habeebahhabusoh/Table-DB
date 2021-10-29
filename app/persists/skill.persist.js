@@ -62,12 +62,12 @@ exports.findAllByLevel = function (level) {
       throw new Error(error.original);
     });
 };
-
-exports.findById = function (skillID) {
+/////// เพิ่ม function
+exports.findById = function (generalID) {
   return sequelize.models.Skill
     .findOne({
       where: {
-        skillID: skillID,
+        generalID: generalID,
       },
     })
     .then(function (result) {

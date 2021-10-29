@@ -12,7 +12,7 @@ exports.addManPower = async function (content) {
       level: content.level,
       requestDate: new Date(),
       commencementDate: new Date(),
-      no: content.no,
+      numberOrder: content.numberOrder,
       employeeType: content.employeeType,
       hiringPeriod: content.hiringPeriod,
       sex: content.sex,
@@ -65,7 +65,9 @@ exports.isExistsCompany = function (company) {
 
 exports.findAll = function () {
   return sequelize.models.ManPower
-    .findAll()
+    .findAll({
+      order: [["createdAt", "DESC"]],
+    })
     .then(function (result) {
       return result;
     })

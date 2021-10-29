@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+</head>
+
+
+<body>
+<h1 >Add data</h1>
+  <form action="http://localhost:8080/api/application/" method="POST">
+    <div class="page">
+    <label for="drivingLicenseType"><b>ใบขับขี่:</b></label>
+        <select name="drivingLicenseType" id="drivingLicenseType" form="statusform">
+        <option value="drivingLicenseTypeA">ใบขับขี่รถจักรยานยนต์</option>
+        <option value="drivingLicenseTypB">ใบขับขี่รถยนต์</option>
+        </select>
+        <br>
+        <label for="drivingType"><b>drivingType:</b></label><br>
+        <input type="text" id="drivingType" name="drivingType" value=""><br>
+
+        <label for="drivingLicenseNo"><b>เลขใบขับขี่:</b></label><br>
+        <input type="text" id="drivingLicenseNo" name="drivingLicenseNo" value=""><br>
+
+        <label for="drivingExpiryDate"><b>วันหมดอายุ:</b></label><br>
+        <input type="date" id="drivingExpiryDate" name="drivingExpiryDate" value=""><br>
+        <br>
+            
+    <button class="next-4 next">Next</button>
+    <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+    
+    </div>
+</form>
+
+</body>
+</html>
+
+
+  

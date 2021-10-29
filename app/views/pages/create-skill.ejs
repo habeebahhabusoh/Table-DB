@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+</head>
+
+
+<body>
+<h1 >Add data</h1>
+  <form action="http://localhost:8080/api/application/" method="POST">
+    <div class="page">
+    <label for="typeOfSkill"><b>ความสามารถ:</b></label>
+    <select name="typeOfSkill" id="typeOfSkill" form="skillform">
+    <option value="computer">computer</option>
+    <option value="readingEnglish">การอ่านภาษาอังกฤษ</option>
+    </select>
+    <br>
+    <label id="level" for="level"><b> ระดับ:</b></label><br>
+    <input type="radio" name="level" value="level1" > level1 <br>
+    <input type="radio" name="level" value="level2"> level2<br>
+    <input type="radio" name="level" value="level3"> level3<br>
+            
+    <button class="next-1 next">Next</button>
+    <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+    
+    </div>
+</form>
+
+</body>
+</html>

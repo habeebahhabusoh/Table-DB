@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     level: DataTypes.STRING,
     requestDate: DataTypes.DATE,
     commencementDate: DataTypes.DATE,
-    no: DataTypes.STRING,
+    numberOrder: DataTypes.INTEGER,
     employeeType: DataTypes.STRING,
     hiringPeriod: DataTypes.INTEGER,
     sex: DataTypes.STRING,

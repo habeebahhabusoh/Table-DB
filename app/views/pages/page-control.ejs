@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Manpower</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+<style type="text/css">
+    .step {
+        display: none;
+    }
+
+    .step.active {
+        display: block;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .form-group input {
+        width: 100%;
+        border: 1.5px solid rgba(128, 128, 128, 0.418);
+        padding: 5px;
+        font-size: 18px;
+        margin-top: 5px;
+        border-radius: 4px;
+    }
+
+    button.next-btn,
+    button.previous-btn,
+    button.submit-btn {
+        float: right;
+        margin-top: 20px;
+        padding: 10px 30px;
+        border: none;
+        outline: none;
+        background-color: rgb(180, 220, 255);
+        font-family: "Montserrat";
+        font-size: 18px;
+        cursor: pointer;
+        /* text-align: right; */
+    }
+
+    button.previous-btn {
+        float: right;
+    }
+
+    button.submit-btn {
+        background-color: aquamarine;
+    }
+</style>
+
+
+<body>
+    <div>
+        <%- include ("../layouts/navbar.ejs") -%>
+    </div>
+
+
+   <h1>Add data</h1></br>
+    
+    <form>
+        <div class="step step-1 active">
+            <h4>General Data</h4>
+            <div class="field">
+                <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
+                <input type="radio" name="perfixTH" value="นาย"> นาย<br>
+                <input type="radio" name="perfixTH" value="นาง"> นาง<br>
+                <input type="radio" name="perfixTH" value="นางสาว"> นางสาว<br>
+            </div>
+            <div class="field">
+                <label for="firstNameTH"><b> ชื่อ:</b></label><br>
+                <input type="text" id="firstNameTH" name="firstNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
+                <input type="text" id="middleNameTH" name="middleNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label for="lastNameTH"><b> นามสกุล:</b></label><br>
+                <input type="text" id="lastNameTH" name="lastNameTH" value=""><br>
+            </div>
+            <div class="field">
+                <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
+                <input type="radio" name="perfixEN" value="Mr."> Mr. <br>
+                <input type="radio" name="perfixEN" value="Ms."> Ms.<br>
+            </div>
+            <div class="field">
+                <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="firstNameEN" name="firstNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="middleNameEN" name="middleNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
+                <input type="text" id="lastNameEN" name="lastNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="age"><b>อายุ:</b></label><br>
+                <input type="text" id="age" name="age" value=""><br>
+            </div>
+            <div class="field">
+                <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
+                <input type="text" id="maritalStatus" name="maritalStatus" value=""><br>
+            </div>
+            <div class="field">
+                <label id="sex" for="sex"><b> เพศ :</b></label><br>
+                <input type="radio" name="sex" value="Male"> Male <br>
+                <input type="radio" name="sex" value="Female"> Female<br>
+            </div>
+            <div class="field">
+                <label for="height"><b> ส่วนสูง:</b></label><br>
+                <input type="text" id="height" name="height" value=""><br>
+            </div>
+            <div class="field">
+                <label for="weight"><b> น้ำหนัก:</b></label><br>
+                <input type="text" id="weight" name="weight" value=""><br>
+            </div>
+            <div class="field">
+                <label for="nationality"><b> สัญชาติ: </b></label><br>
+                <input type="text" id="nationality" name="nationality" value=""><br>
+            </div>
+            <div class="field">
+                <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
+                <input type="text" id="idCardNo" name="idCardNo" value=""><br>
+            </div>
+            <div class="field">
+
+                <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
+                <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร"> Yes<br>
+                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร"> No<br>
+            </div>
+            <div class="field">
+                <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
+                <input type="text" id="militaryData" name="militaryData" value=""><br>
+            </div>
+            <div class="field">
+                <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
+                <input type="radio" name="crimeStatus" value="เคยมีคดี"> Yes <br>
+                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี"> No<br>
+            </div>
+            <div class="field">
+                <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
+                <input type="text" id="crimeData" name="crimeData" value=""><br>
+            </div>
+            <div class="field">
+                <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
+                <input type="radio" name="disease" value="มีโรค"> Yes <br>
+                <input type="radio" name="disease" value="ไม่มีโรค"> No<br>
+                <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
+                <input type="text" id="diseaseData" name="diseaseData" value=""><br>
+                <br>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+        </div>
+        <div class="step step-2 ">
+            <h4>Application Data</h4>
+            <label id="position1" for="position1"><b> ตำแหน่งที่ 1:</b></label><br>
+            <input type="radio" name="position1" value="positionA"> positionA <br>
+            <input type="radio" name="position1" value="positionB"> positionB<br>
+            <input type="radio" name="position1" value="positionC"> positionC<br>
+
+            <label id="position2" for="position2"><b> ตำแหน่งที่ 2:</b></label><br>
+            <input type="radio" name="position2" value="positionA"> positionA <br>
+            <input type="radio" name="position2" value="positionB"> positionB<br>
+            <input type="radio" name="position2" value="positionC"> positionC<br>
+
+            <label for="expectedSalary"><b> เงินเดือนที่ต้องการ:</b></label><br>
+            <input type="text" id="expectedSalary" name="expectedSalary" value=""><br>
+
+            <label for="availableDate"><b> วันที่พร้อมเริ่มงาน:</b></label><br>
+            <input type="date" id="availableDate" name="availableDate" value=""><br>
+
+            <br>
+            <label for="status"><b>Status:</b></label>
+            <select name="status" id="status" form="statusform">
+                <option value="statusA">statusA</option>
+                <option value="statusB">statusB</option>
+                <option value="statusC">statusC</option>
+            </select>
+            <br>
+            <br>
+            <button type="button" class="next-btn">Next</button>
+            <button type="button" class="previous-btn">Prev</button>
+   
+        </div>
+        <div class="step step-3 ">
+            <h4>Contact-Address Data</h4>
+                <label for="detailTH"><b>ที่อยู่ (ไทย):</b></label><br>
+                <input type="text" id="detailTH" name="detailTH" value=""><br>
+                
+                <label for="subAreaTH"><b>ตำบล (ไทย):</b></label><br>
+                <input type="text" id="subAreaTH" name="subAreaTH" value=""><br>
+                
+                <label for="areaTH"><b>อำเภอ (ไทย):</b></label><br>
+                <input type="text" id="areaTH" name="areaTH" value=""><br>
+                
+                <label for="provinceTH"><b>จังหวัด (ไทย):</b></label><br>
+                <input type="text" id="provinceTH" name="provinceTH" value=""><br>
+                
+                <label for="postalCodeTH"><b>รหัสไปรษณีย์ (ไทย):</b></label><br>
+                <input type="text" id="postalCodeTH" name="postalCodeTH" value=""><br>
+                
+                <label for="detailEN"><b>ที่อยู่ (อังกฤษ):</b></label><br>
+                <input type="text" id="detailEN" name="detailEN" value=""><br>
+                
+                <label for="subAreaEN"><b>ตำบล (อังกฤษ):</b></label><br>
+                <input type="text" id="subAreaEN" name="subAreaEN" value=""><br>
+                
+                <label for="areaEN"><b>อำเภอ (อังกฤษ):</b></label><br>
+                <input type="text" id="areaEN" name="areaEN" value=""><br>
+                
+                <label for="provinceEN"><b>จังหวัด (อังกฤษ):</b></label><br>
+                <input type="text" id="provinceEN" name="provinceEN" value=""><br>
+                
+                <label for="postalCodeEN"><b>รหัสไปรษณีย์ (อังกฤษ):</b></label><br>
+                <input type="text" id="postalCodeEN" name="postalCodeEN" value=""><br>
+                
+                <label for="presentAddress"><b>ที่อยู่ปัจจุบัน:</b></label><br>
+                <input type="text" id="presentAddress" name="presentAddress" value=""><br>
+                
+                <label for="presentAddressSubArea"><b>ตำบลปัจจุบัน:</b></label><br>
+                <input type="text" id="presentAddressSubArea" name="presentAddressSubArea" value=""><br>
+                
+                <label for="presentAddressArea"><b>อำเภอปัจจุบัน:</b></label><br>
+                <input type="text" id="presentAddressArea" name="presentAddressArea" value=""><br>
+                
+                <label for="presentAddressProvince"><b>จังหวัดปัจจุบัน:</b></label><br>
+                <input type="text" id="presentAddressProvince" name="presentAddressProvince" value=""><br>
+                
+                <label for="contactPhone"><b>เบอร์โทรติดต่อ:</b></label><br>
+                <input type="text" id="contactPhone" name="contactPhone" value=""><br>
+                
+                <label for="contactEmail"><b>E-mail:</b></label><br>
+                <input type="text" id="contactEmail" name="contactEmail" value=""><br>
+                <br>
+                <button type="button" class="next-btn">Next</button>
+                <button type="button" class="previous-btn">Prev</button>
+                
+        </div>
+        <div class="step step-4 ">
+            <h4>Driving Data</h4>
+            <label for="drivingLicenseType"><b>ใบขับขี่:</b></label>
+            <select name="drivingLicenseType" id="drivingLicenseType" form="statusform">
+            <option value="drivingLicenseTypeA">ใบขับขี่รถจักรยานยนต์</option>
+            <option value="drivingLicenseTypB">ใบขับขี่รถยนต์</option>
+            </select>
+            <br>
+            <label for="drivingType"><b>drivingType:</b></label><br>
+            <input type="text" id="drivingType" name="drivingType" value=""><br>
+    
+            <label for="drivingLicenseNo"><b>เลขใบขับขี่:</b></label><br>
+            <input type="text" id="drivingLicenseNo" name="drivingLicenseNo" value=""><br>
+    
+            <label for="drivingExpiryDate"><b>วันหมดอายุ:</b></label><br>
+            <input type="date" id="drivingExpiryDate" name="drivingExpiryDate" value=""><br>
+            <br>
+            <button type="button" class="next-btn">Next</button>
+            <button type="button" class="previous-btn">Prev</button>
+        </div>
+        <div class="step step-5 ">
+            <h4>History Data</h4>
+            <label for="companyNameHistory"><b>ชื่อบริษัท:</b></label><br>
+            <input type="text" id="companyNameHistory" name="companyNameHistory" value=""><br>
+    
+            <label for="positionHistory"><b>ตำแหน่ง:</b></label><br>
+            <input type="text" id="positionHistory" name="positionHistory" value=""><br>
+    
+            <label for="salaryHistory"><b>เงินเดือน:</b></label><br>
+            <input type="text" id="salaryHistory" name="salaryHistory" value=""><br>
+    
+            <label for="startDate"><b>วันที่เริ่มงาน:</b></label><br>
+            <input type="date" id="startDate" name="startDate" value=""><br>
+    
+            <label for="endDate"><b>ถึง:</b></label><br>
+            <input type="date" id="endDate" name="endDate" value=""><br>
+            <br>
+                
+            <button type="button" class="next-btn">Next</button>
+            <button type="button" class="previous-btn">Prev</button>
+        </div>
+        <div class="step step-6 ">
+            <h4>Education Data</h4>
+            <label for="educationLevel"><b>ระดับการศึกษา:</b></label>
+            <select name="educationLevel" id="educationLevel" form="educationform">
+            <option value="educationLevelA">ปริญญาตรี</option>
+            <option value="educationLevelB">ปริญญาโท</option>
+            </select>
+            <br>
+            <label for="name"><b>ชื่อสถาบัน:</b></label><br>
+            <input type="text" id="name" name="name" value=""><br>
+        
+            <label for="major"><b>วิชาที่ศึกษา/วุฒติที่ได้รับ:</b></label><br>
+            <input type="text" id="major" name="major" value=""><br>
+        
+            <label for="startDate"><b>ปีที่เริ่มศึษา:</b></label><br>
+            <input type="date" id="startDate" name="startDate" value=""><br>
+        
+            <label for="endDate"><b>ปีที่จบการศึกษา:</b></label><br>
+            <input type="date" id="endDate" name="endDate" value=""><br>
+            <br>
+                    
+                
+            <button type="button" class="next-btn">Next</button>
+            <button type="button" class="previous-btn">Prev</button>
+        </div>
+
+        <div class="step step-7 ">
+            <h4>Skill Data</h4>
+        <label for="typeOfSkill"><b>ความสามารถ:</b></label>
+        <select name="typeOfSkill" id="typeOfSkill" form="skillform">
+        <option value="computer">computer</option>
+        <option value="readingEnglish">การอ่านภาษาอังกฤษ</option>
+        </select>
+        <br>
+        <label id="level" for="level"><b> ระดับ:</b></label><br>
+        <input type="radio" name="level" value="level1" > level1 <br>
+        <input type="radio" name="level" value="level2"> level2<br>
+        <input type="radio" name="level" value="level3"> level3<br>
+
+        <button type="submit" class="submit-btn" >Submit</button>
+        <button type="button" class="next-btn">Next</button>
+        <button type="button" class="previous-btn">Prev</button>
+
+    </div>
+        <div>
+            <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+        </div>
+    </form>
+
+</body>
+
+
+<script>
+    const steps = Array.from(document.querySelectorAll("form .step"));
+    const nextBtn = document.querySelectorAll("form .next-btn");
+    const prevBtn = document.querySelectorAll("form .previous-btn");
+    const form = document.querySelector("form");
+
+    nextBtn.forEach((button) => {
+        button.addEventListener("click", () => {
+            changeStep("next");
+        });
+    });
+    prevBtn.forEach((button) => {
+        button.addEventListener("click", () => {
+            changeStep("prev");
+        });
+    });
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const inputs = [];
+        form.querySelectorAll("input").forEach((input) => {
+            const { name, value } = input;
+            inputs.push({ name, value });
+        });
+        console.log(inputs);
+        form.reset();
+    });
+
+    function changeStep(btn) {
+        let index = 0;
+        const active = document.querySelector(".active");
+        index = steps.indexOf(active);
+        steps[index].classList.remove("active");
+        if (btn === "next") {
+            index++;
+        } else if (btn === "prev") {
+            index--;
+        }
+        steps[index].classList.add("active");
+    }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</html>

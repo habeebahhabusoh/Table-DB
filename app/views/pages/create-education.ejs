@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+</head>
+
+
+<body>
+<h1 >Add data</h1>
+  <form action="http://localhost:8080/api/application/" method="POST">
+    <div class="page">
+    <label for="educationLevel"><b>ระดับการศึกษา:</b></label>
+    <select name="educationLevel" id="educationLevel" form="educationform">
+    <option value="educationLevelA">ปริญญาตรี</option>
+    <option value="educationLevelB">ปริญญาโท</option>
+    </select>
+    <br>
+    <label for="name"><b>ชื่อสถาบัน:</b></label><br>
+    <input type="text" id="name" name="name" value=""><br>
+
+    <label for="major"><b>วิชาที่ศึกษา/วุฒติที่ได้รับ:</b></label><br>
+    <input type="text" id="major" name="major" value=""><br>
+
+    <label for="startDate"><b>ปีที่เริ่มศึษา:</b></label><br>
+    <input type="date" id="startDate" name="startDate" value=""><br>
+
+    <label for="endDate"><b>ปีที่จบการศึกษา:</b></label><br>
+    <input type="date" id="endDate" name="endDate" value=""><br>
+    <br>
+            
+    <button class="next-1 next">Next</button>
+    <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+   
+    </div>
+</form>
+
+</body>
+</html>

@@ -8,11 +8,10 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
         async function createData() {
-            
             const companyval = document.querySelector('input[name="company"]:checked').value;
             console.log(companyval)
             const departmentval = document.querySelector('input[name="department"]:checked').value;
@@ -23,8 +22,6 @@
             console.log(positionRequiredval)
             const levelval = document.querySelector('input[name="level"]:checked').value;
             console.log(levelval)
-            const noval = document.getElementById("no").value;
-            console.log(noval)
             const employeeTypeval = document.getElementById("employeeType").value;
             console.log(employeeTypeval)
             const hiringPeriodval = document.getElementById("hiringPeriod").value;
@@ -76,15 +73,14 @@
                     "section": sectionval,
                     "positionRequired": positionRequiredval,
                     "level": levelval,
-                    "no": noval,
                     "employeeType": employeeTypeval,
                     "hiringPeriod": parseInt(hiringPeriodval),
                     "sex": sexval,
                     "age": parseInt(ageval),
                     "education": educationval,
                     "major": majorval,
-                    "experience":  experienceval ,
-                    "inField":inFieldval ,
+                    "experience": experienceval,
+                    "inField": inFieldval,
                     "englishTestScore": englishTestScoreval,
                     "skillAndKnowledge": skillAndKnowledgeList,
                     "requestedBy": requestedByval,
@@ -96,12 +92,20 @@
                     "signatureByDirectorHR": signatureByDirectorHRval,
                     "status": statusval,
                     "remark": remarkval
-           
+
                 })
             })
-                .then(response => console.log(response))
-                .catch(err => console.log(err));
-
+            Swal.fire({
+                icon: 'success',
+                title: 'Good job!',
+                text: 'Add Data Complete',
+                // footer: '<a href="/manpower">Back to ManPower</a>'
+})
+                .then(response => (response))
+                .catch(err => console.log(err))
+            
+               
+            
         }
     </script>
 </head>
@@ -109,36 +113,35 @@
 <body>
     <%- include ("../layouts/navbar.ejs") -%>
     </div>
-    <!-- <form action="/action_page.php"> -->
+    <h1>Add Data</h1>
+   
     <form action="http://localhost:8080/api/manpower/" method="POST">
 
         <label id="company" for="company"><b> Company :</b></label><br>
-        <input type="radio" name="company" value="companyA" checked> Company A<br>
+        <input type="radio" name="company" value="companyA" > Company A<br>
         <input type="radio" name="company" value="companyB"> Company B<br>
         <input type="radio" name="company" value="companyC"> Company C<br>
 
         <label id="department" for="department"><b> Department : </b></label><br>
-        <input type="radio" name="department" value="departmentA" checked> Department A <br>
+        <input type="radio" name="department" value="departmentA" > Department A <br>
         <input type="radio" name="department" value="departmentB"> Department B<br>
         <input type="radio" name="department" value="departmentC"> Department C<br>
 
         <label id="section" for="section"><b>Section : </b></label><br>
-        <input type="radio" name="section" value="sectionA" checked> Section A <br>
+        <input type="radio" name="section" value="sectionA" > Section A <br>
         <input type="radio" name="section" value="sectionB"> Section B<br>
         <input type="radio" name="section" value="sectionC"> Section C<br>
 
         <label id="positionRequired" for="positionRequired"><b>Position :</label></b><br>
-        <input type="radio" name="positionRequired" value="positionRequiredA" checked> Position A <br>
+        <input type="radio" name="positionRequired" value="positionRequiredA" > Position A <br>
         <input type="radio" name="positionRequired" value="positionRequiredB"> Position B<br>
         <input type="radio" name="positionRequired" value="positionRequiredC"> Position C<br>
 
         <label id="level" for="level"><b> Level :</b></label><br>
-        <input type="radio" name="level" value="levelA" checked> Level A <br>
+        <input type="radio" name="level" value="levelA" > Level A <br>
         <input type="radio" name="level" value="levelB"> Level B<br>
         <input type="radio" name="level" value="levelC"> Level C<br>
 
-        <label for="no"><b> จำนวน :</b></label><br>
-        <input type="text" id="no" name="no" value=""><br>
 
         <label for="employeeType"><b> EmployeeType :</b></label><br>
         <input type="text" id="employeeType" name="employeeType" value=""><br>
@@ -147,7 +150,7 @@
         <input type="text" id="hiringPeriod" name="hiringPeriod" value=""><br>
 
         <label id="sex" for="sex"><b> Gender:</b></label><br>
-        <input type="radio" name="sex" value="sexA" checked> Male <br>
+        <input type="radio" name="sex" value="sexA" > Male <br>
         <input type="radio" name="sex" value="sexB"> Female<br>
 
 
@@ -202,6 +205,8 @@
 
 
         <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+        <button type="button" class="btn btn-secondary"  ><a href="/manpower">Home</a> </button>
+
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>

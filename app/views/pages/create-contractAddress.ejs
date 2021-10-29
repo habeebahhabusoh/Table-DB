@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+</head>
+
+
+<body>
+<h1 >Add data</h1>
+  <form action="http://localhost:8080/api/application/" method="POST">
+    <div class="page">
+    <label for="detailTH"><b>ที่อยู่ (ไทย):</b></label><br>
+    <input type="text" id="detailTH" name="detailTH" value=""><br>
+    
+    <label for="subAreaTH"><b>ตำบล (ไทย):</b></label><br>
+    <input type="text" id="subAreaTH" name="subAreaTH" value=""><br>
+    
+    <label for="areaTH"><b>อำเภอ (ไทย):</b></label><br>
+    <input type="text" id="areaTH" name="areaTH" value=""><br>
+    
+    <label for="provinceTH"><b>จังหวัด (ไทย):</b></label><br>
+    <input type="text" id="provinceTH" name="provinceTH" value=""><br>
+    
+    <label for="postalCodeTH"><b>รหัสไปรษณีย์ (ไทย):</b></label><br>
+    <input type="text" id="postalCodeTH" name="postalCodeTH" value=""><br>
+    
+    <label for="detailEN"><b>ที่อยู่ (อังกฤษ):</b></label><br>
+    <input type="text" id="detailEN" name="detailEN" value=""><br>
+    
+    <label for="subAreaEN"><b>ตำบล (อังกฤษ):</b></label><br>
+    <input type="text" id="subAreaEN" name="subAreaEN" value=""><br>
+    
+    <label for="areaEN"><b>อำเภอ (อังกฤษ):</b></label><br>
+    <input type="text" id="areaEN" name="areaEN" value=""><br>
+    
+    <label for="provinceEN"><b>จังหวัด (อังกฤษ):</b></label><br>
+    <input type="text" id="provinceEN" name="provinceEN" value=""><br>
+    
+    <label for="postalCodeEN"><b>รหัสไปรษณีย์ (อังกฤษ):</b></label><br>
+    <input type="text" id="postalCodeEN" name="postalCodeEN" value=""><br>
+    
+    <label for="presentAddress"><b>ที่อยู่ปัจจุบัน:</b></label><br>
+    <input type="text" id="presentAddress" name="presentAddress" value=""><br>
+    
+    <label for="presentAddressSubArea"><b>ตำบลปัจจุบัน:</b></label><br>
+    <input type="text" id="presentAddressSubArea" name="presentAddressSubArea" value=""><br>
+    
+    <label for="presentAddressArea"><b>อำเภอปัจจุบัน:</b></label><br>
+    <input type="text" id="presentAddressArea" name="presentAddressArea" value=""><br>
+    
+    <label for="presentAddressProvince"><b>จังหวัดปัจจุบัน:</b></label><br>
+    <input type="text" id="presentAddressProvince" name="presentAddressProvince" value=""><br>
+    
+    <label for="contactPhone"><b>เบอร์โทรติดต่อ:</b></label><br>
+    <input type="text" id="contactPhone" name="contactPhone" value=""><br>
+    
+    <label for="contactEmail"><b>E-mail:</b></label><br>
+    <input type="text" id="contactEmail" name="contactEmail" value=""><br>
+    <br>
+            
+    <button class="next-3 next">Next</button>
+    <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+   
+    </div>
+</form>
+
+</body>
+</html>
