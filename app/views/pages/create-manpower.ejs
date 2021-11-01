@@ -95,14 +95,16 @@
 
                 })
             })
-            Swal.fire({
-                icon: 'success',
-                title: 'Good job!',
-                text: 'Add Data Complete',
-                // footer: '<a href="/manpower">Back to ManPower</a>'
-})
-                .then(response => (response))
-                .catch(err => console.log(err))
+            .then(response => (response.JSON()))
+            .catch(err => console.log(err))
+            // Swal.fire({
+            //     icon: 'success',
+            //     title: 'Good job!',
+            //     text: 'Add Data Complete',
+            //     // footer: '<a href="/manpower">Back to ManPower</a>'
+            // })
+            //     .then(response => (response.JSON()))
+            //     .catch(err => console.log(err))
             
                
             

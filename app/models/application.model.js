@@ -4,11 +4,9 @@ const skillPersist = require('../persists/skill.persist');
 
 exports.findAll = async function () {
     const application = await applicationPersist.findAll();
-    
     return application
 };
 exports.findAllGeneral = async function () {
-    
     const general = await generalPersist.findAll();
     return general
 };
