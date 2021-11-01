@@ -28,7 +28,7 @@
     <form >
     </div>
     <h1>Application</h1>
-    <a class="btn btn-secondary" href="/addGeneral">addData</a>
+    <a class="btn btn-secondary" href="/pagecontrol">addData</a>
     <div class="card-body">
         <% if(data.length){ %>
             <% if(data2.length){ %>
@@ -51,7 +51,7 @@
                     <% console.log(data.length) %>
                     <% console.log(data2.length) %>
                 <tr>
-                    <th scope="row"><%= (i+1) %></th>
+                    <th scope="row"><%= (j+1) %></th>
                     <td><%= data[i].applicationID %></td>
                     <td><%= data[i].generalID %></td>
                     <td><%= data2[j].firstNameTH %></jd>
@@ -61,7 +61,7 @@
                    
                   
                     <td>
-                        <a href="/editgeneral/<%= data[i].applicationID %>" class="btn btn-success edit">Edit</a>
+                        <a href="/editpagecontrol/<%= data[i].applicationID %>" class="btn btn-success edit">Edit</a>
                         <a onclick="DeleteData('<%= data[i].applicationID %>')" class="btn btn-danger delete">Delete</a>
                     </td>
                 </tr>

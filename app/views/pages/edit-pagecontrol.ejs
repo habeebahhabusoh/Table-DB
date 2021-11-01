@@ -61,7 +61,7 @@
     }
 </style>
 <script>
-    async function createData() {
+    async function Ubdatedata(id) {
         const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
         console.log(perfixTHval)
 
@@ -125,8 +125,8 @@
         const diseaseDataval = document.getElementById("diseaseData").value;
         console.log(diseaseDataval)
 
-        let response = await fetch('http://localhost:8080/api/general/', {
-            method: 'POST',
+        let response = await fetch(`http://localhost:8080/api/general/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -146,7 +146,6 @@
                 "weight": weightval,
                 "nationality": nationalityval,
                 "idCardNo": idCardNoval,
-
                 "militaryService": militaryServiceval,
                 "militaryData": militaryDataval,
                 "crimeStatus": crimeStatusval,
@@ -155,8 +154,6 @@
                 "diseaseData": diseaseDataval,
             })
         })
-        .then(response => console.log(response.json()))
-            .catch(err => console.log(err))
 
         Swal.fire({
             icon: 'success',
@@ -167,7 +164,7 @@
             .catch(err => console.log(err))
     }
 
-    async function createData2() {
+    async function createData2(id) {
     
         const position1val = document.querySelector('input[name="position1"]:checked').value;
         console.log(position1val)
@@ -185,8 +182,8 @@
         console.log(statusval)
 
 
-        let response2 = await fetch('http://localhost:8080/api/application/', {
-            method: 'POST',
+        let response2 = await fetch(`http://localhost:8080/api/application/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -407,6 +404,7 @@
 
         }
 
+      
 </script>
 
 
@@ -416,33 +414,36 @@
     </div>
 
 
-    <h1>Add data</h1></br>
+    <h1>Edit data</h1></br>
 
     <form>
-        <div class="step step-1 active">
+        <div class="step step-1 ">
             <h4>General Data</h4>
             <div class="field">
                 <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
-                <input type="radio" name="perfixTH" value="นาย"> นาย<br>
-                <input type="radio" name="perfixTH" value="นาง"> นาง<br>
-                <input type="radio" name="perfixTH" value="นางสาว"> นางสาว<br>
+                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาย"){%> checked <% } %>> 
+                นาย<br>
+                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาง"){%> checked <% } %>> 
+                นาง<br>
+                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นางสาว"){%> checked <% } %>> 
+                นางสาว<br>
             </div>
             <div class="field">
                 <label for="firstNameTH"><b> ชื่อ:</b></label><br>
-                <input type="text" id="firstNameTH" name="firstNameTH" value=""><br>
+                <input type="text" id="firstNameTH" name="firstNameTH" value="<%= data.firstNameTH %>"><br>
             </div>
             <div class="field">
                 <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
-                <input type="text" id="middleNameTH" name="middleNameTH" value=""><br>
+                <input type="text" id="middleNameTH" name="middleNameTH" value="<%= data.middleNameTH %>"><br>
             </div>
             <div class="field">
                 <label for="lastNameTH"><b> นามสกุล:</b></label><br>
-                <input type="text" id="lastNameTH" name="lastNameTH" value=""><br>
+                <input type="text" id="lastNameTH" name="lastNameTH" value="<%= data.lastNameTH %>"><br>
             </div>
             <div class="field">
                 <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
-                <input type="radio" name="perfixEN" value="Mr."> Mr. <br>
-                <input type="radio" name="perfixEN" value="Ms."> Ms.<br>
+                <input type="radio" name="perfixEN" value="Mr." <% if (data.perfixEN === "Mr."){%> checked <% } %>> Mr. <br>
+                <input type="radio" name="perfixEN" value="Ms."  <% if (data.perfixEN === "Ms."){%> checked <% } %>> Ms.<br>
             </div>
             <div class="field">
                 <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
@@ -514,7 +515,7 @@
             </div>
 
         </div>
-        <div class="step step-2 ">
+        <div class="step step-2 active">
             <h4>Application Data</h4>
 
             <label id="position1" for="position1"><b> ตำแหน่งที่ 1:</b></label><br>
@@ -528,7 +529,7 @@
             <input type="radio" name="position2" value="positionC"> positionC<br>
 
             <label for="expectedSalary"><b> เงินเดือนที่ต้องการ:</b></label><br>
-            <input type="text" id="expectedSalary" name="expectedSalary" value=""><br>
+            <input type="text" id="expectedSalary" name="expectedSalary" value="<%= data.expectedSalary %>"><br>
 
             <!-- <label for="availableDate"><b> วันที่พร้อมเริ่มงาน:</b></label><br>
             <input type="date" id="availableDate" name="availableDate" value=""><br>

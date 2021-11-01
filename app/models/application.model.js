@@ -1,6 +1,6 @@
 const applicationPersist = require('../persists/application.persist');
 const generalPersist = require('../persists/general.persist');
-const skillPersist = require('../persists/skill.persist');
+
 
 exports.findAll = async function () {
     const application = await applicationPersist.findAll();
@@ -11,13 +11,11 @@ exports.findAllGeneral = async function () {
     return general
 };
 
+
 exports.findAllByApplication = async function (applicationID) {
         const application = await applicationPersist.findById(applicationID);
         const general = await generalPersist.findById(application.generalID);
-        // const skill = await skillPersist.findById(application.generalID);
-
         return [application,general];
-        
 };
 
 exports.findById = function (applicationID) {

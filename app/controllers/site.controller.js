@@ -42,6 +42,15 @@ exports.addpagecontrol = function (request, response){
     response.render("pages/page-control.ejs");
 };
 
+exports.editpagecontrol = async function (request, response){
+    const content = require("../models/application.model");
+    const application = await content.findById(request.params.id)
+    const contractaddress = await content.findById(request.params.id)
+    response.render("pages/edit-pagecontrol.ejs",{
+        data: application
+    });  
+};
+
 exports.addapplication = function (request, response){
     response.render("pages/create-application.ejs");
 };
@@ -54,7 +63,7 @@ exports.editManPower = async function (request, response){
     const content = require("../models/manpower.model");
     const manPower = await content.findById(request.params.id)
     response.render("pages/edit-manpower.ejs",{
-        data:manPower
+        data2:manPower
     });  
 };
 

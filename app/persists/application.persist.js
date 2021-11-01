@@ -87,7 +87,7 @@ exports.findAllByApplication = function (applicationID) {
     .findOne({
       where: {
         applicationID: applicationID,
-        // generalID: generalID,
+        
       },
     })
     .then(function (result) {
