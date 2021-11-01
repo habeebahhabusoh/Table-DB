@@ -7,8 +7,7 @@ exports.addSkill = async function (content) {
 
       skillID:uuidv4(),
       generalID: content.generalID,
-      // skillID: uuidv4(),
-      // id: uuidv4(),
+
       typeOfSkill: content.typeOfSkill,
       level: content.level,
       createdAt:new Date(),
@@ -63,11 +62,11 @@ exports.findAllByLevel = function (level) {
     });
 };
 /////// เพิ่ม function
-exports.findById = function (generalID) {
+exports.findById = function (skillID) {
   return sequelize.models.Skill
     .findOne({
       where: {
-        generalID: generalID,
+        skillID: skillID,
       },
     })
     .then(function (result) {

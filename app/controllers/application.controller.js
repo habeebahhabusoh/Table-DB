@@ -34,7 +34,7 @@ exports.addApplication= function (request, response){
 
 exports.updateApplicationById = function (request, response){
     const content = require('../models/application.model');
-    content.updateApplicationById(request.params.id, request.body).then((result)=>{
+    content.findAllByApplication (request.params.id, request.body).then((result)=>{
         result.successfully
         ? response.status(200).json(result)
         : response.status(500).json(result)
