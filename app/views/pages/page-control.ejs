@@ -61,6 +61,7 @@
     }
 </style>
 <script>
+    
     async function createData() {
         const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
         console.log(perfixTHval)
@@ -130,6 +131,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
+            
             body: JSON.stringify({
                 "perfixTH": perfixTHval,
                 "firstNameTH": firstNameTHval,
@@ -146,7 +148,6 @@
                 "weight": weightval,
                 "nationality": nationalityval,
                 "idCardNo": idCardNoval,
-
                 "militaryService": militaryServiceval,
                 "militaryData": militaryDataval,
                 "crimeStatus": crimeStatusval,
@@ -154,21 +155,17 @@
                 "disease": diseaseval,
                 "diseaseData": diseaseDataval,
             })
+            
         })
-        .then(response => console.log(response.json()))
-            .catch(err => console.log(err))
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Good job!',
-            text: 'Add Data Complete',
-        })
-            .then(response => console.log(response))
-            .catch(err => console.log(err))
+        .then(res => console.log(res.json()))
+        .catch(err => console.log(err))
+        
     }
 
+   
     async function createData2() {
     
+
         const position1val = document.querySelector('input[name="position1"]:checked').value;
         console.log(position1val)
 
@@ -191,7 +188,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": "900c7911-c614-40ba-b81e-a21f0ebd15f3" ,
                 "position1": position1val,
                 "position2": position2val,
                 "expectedSalary": expectedSalaryval,
@@ -199,16 +196,10 @@
                 "status": statusval,
             })
         })
-            .then(response2 => (response2.json()))
+        .then(res => console.log(res.json()))
             .catch(err => console.log(err))
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Good job!',
-            text: 'Add Data Complete'
-        })
-            .then(response2 => (response2))
-            .catch(err => console.log(err))
+  
     }
     async function createData3() {
         const detailTHval = document.getElementById("detailTH").value;
@@ -268,7 +259,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": "900c7911-c614-40ba-b81e-a21f0ebd15f3" ,
                 "detailTH": detailTHval,
                 "subAreaTH": subAreaTHval,
                 "areaTH": areaTHval,
@@ -429,15 +420,15 @@
             </div>
             <div class="field">
                 <label for="firstNameTH"><b> ชื่อ:</b></label><br>
-                <input type="text" id="firstNameTH" name="firstNameTH" value=""><br>
+                <input type="text" id="firstNameTH" name="firstNameTH" value="dd"><br>
             </div>
             <div class="field">
                 <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
-                <input type="text" id="middleNameTH" name="middleNameTH" value=""><br>
+                <input type="text" id="middleNameTH" name="middleNameTH" value="dd"><br>
             </div>
             <div class="field">
                 <label for="lastNameTH"><b> นามสกุล:</b></label><br>
-                <input type="text" id="lastNameTH" name="lastNameTH" value=""><br>
+                <input type="text" id="lastNameTH" name="lastNameTH" value="dd"><br>
             </div>
             <div class="field">
                 <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
@@ -446,15 +437,15 @@
             </div>
             <div class="field">
                 <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="firstNameEN" name="firstNameEN" value=""><br>
+                <input type="text" id="firstNameEN" name="firstNameEN" value="dd"><br>
             </div>
             <div class="field">
                 <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="middleNameEN" name="middleNameEN" value=""><br>
+                <input type="text" id="middleNameEN" name="middleNameEN" value="dd"><br>
             </div>
             <div class="field">
                 <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="lastNameEN" name="lastNameEN" value=""><br>
+                <input type="text" id="lastNameEN" name="lastNameEN" value="dd"><br>
             </div>
             <div class="field">
                 <label for="age"><b>อายุ:</b></label><br>
@@ -462,7 +453,7 @@
             </div>
             <div class="field">
                 <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
-                <input type="text" id="maritalStatus" name="maritalStatus" value=""><br>
+                <input type="text" id="maritalStatus" name="maritalStatus" value="dd"><br>
             </div>
             <div class="field">
                 <label id="sex" for="sex"><b> เพศ :</b></label><br>
@@ -471,19 +462,19 @@
             </div>
             <div class="field">
                 <label for="height"><b> ส่วนสูง:</b></label><br>
-                <input type="text" id="height" name="height" value=""><br>
+                <input type="text" id="height" name="height" value="dd"><br>
             </div>
             <div class="field">
                 <label for="weight"><b> น้ำหนัก:</b></label><br>
-                <input type="text" id="weight" name="weight" value=""><br>
+                <input type="text" id="weight" name="weight" value="dd"><br>
             </div>
             <div class="field">
                 <label for="nationality"><b> สัญชาติ: </b></label><br>
-                <input type="text" id="nationality" name="nationality" value=""><br>
+                <input type="text" id="nationality" name="nationality" value="dd"><br>
             </div>
             <div class="field">
                 <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
-                <input type="text" id="idCardNo" name="idCardNo" value=""><br>
+                <input type="text" id="idCardNo" name="idCardNo" value="dd"><br>
             </div>
             <div class="field">
                 <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
@@ -492,7 +483,7 @@
             </div>
             <div class="field">
                 <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
-                <input type="text" id="militaryData" name="militaryData" value=""><br>
+                <input type="text" id="militaryData" name="militaryData" value="dd"><br>
             </div>
             <div class="field">
                 <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
@@ -501,14 +492,14 @@
             </div>
             <div class="field">
                 <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
-                <input type="text" id="crimeData" name="crimeData" value=""><br>
+                <input type="text" id="crimeData" name="crimeData" value="dd"><br>
             </div>
             <div class="field">
                 <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
                 <input type="radio" name="disease" value="มีโรค"> Yes <br>
                 <input type="radio" name="disease" value="ไม่มีโรค"> No<br>
                 <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
-                <input type="text" id="diseaseData" name="diseaseData" value=""><br>
+                <input type="text" id="diseaseData" name="diseaseData" value="dd"><br>
                 <br>
                 <button type="button" class="next-btn" onclick="createData()">Next</button>
             </div>
