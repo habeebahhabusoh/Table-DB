@@ -14,14 +14,17 @@ exports.findAllGeneral = async function () {
 };
 
 
-exports.findAllByApplication = async function (applicationID) {
-        const application = await applicationPersist.findById(applicationID);
-        const general = await generalPersist.findById(application.generalID);
-        return [application,general];
-};
+// exports.findAllByIDApplication = function (applicationID) {
+//         const application = applicationPersist.findById(applicationID);
+//         const general = generalPersist.findById(application.generalID);
+//         return [application,general];
+// };
 
 exports.findById = function (applicationID) {
     return applicationPersist.findById(applicationID);
+};
+exports.findByIdGen = function (generalID) {
+    return generalPersist.findById(generalID);
 };
 
 exports.addApplication = async function (content) {

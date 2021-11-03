@@ -61,8 +61,8 @@
                    
                   
                     <td>
-                        <a href="/editpagecontrol/<%= data[i].applicationID %>" class="btn btn-success edit">Edit</a>
-                        <a onclick="DeleteData('<%= data[i].applicationID %>')" class="btn btn-danger delete">Delete</a>
+                        <a href="/editpagecontrol/<%= data[i].generalID %>/<%= data[i].applicationID %>" class="btn btn-success edit">Edit</a>
+                        <a onclick="DeleteData('<%= data[i].generalID %>')" class="btn btn-danger delete">Delete</a>
                     </td>
                 </tr>
                     <% } %>

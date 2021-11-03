@@ -61,7 +61,7 @@
     }
 </style>
 <script>
-    async function Ubdatedata(id) {
+    async function Updatedata(id) {
         const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
         console.log(perfixTHval)
 
@@ -124,7 +124,7 @@
 
         const diseaseDataval = document.getElementById("diseaseData").value;
         console.log(diseaseDataval)
-
+        console.log(id)
         let response = await fetch(`http://localhost:8080/api/general/${id}`, {
             method: 'PUT',
             headers: {
@@ -154,17 +154,21 @@
                 "diseaseData": diseaseDataval,
             })
         })
+        .then(async response =>  {
+           let data1 =  await response.json()
+           test.innerHTML = data1.result.generalID
+        })
+            .catch(err => console.log(err))
 
         Swal.fire({
             icon: 'success',
             title: 'Good job!',
             text: 'Add Data Complete',
         })
-            .then(response => console.log(response))
-            .catch(err => console.log(err))
     }
 
-    async function createData2(id) {
+    async function Updatedata2(id) {
+        let generalID = document.getElementById("generalID").innerHTML
     
         const position1val = document.querySelector('input[name="position1"]:checked').value;
         console.log(position1val)
@@ -188,7 +192,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "position1": position1val,
                 "position2": position2val,
                 "expectedSalary": expectedSalaryval,
@@ -196,18 +200,23 @@
                 "status": statusval,
             })
         })
-            .then(response2 => (response2.json()))
+        .then(async response2 =>  {
+           let data1 =  await response2.json()
+           test.innerHTML = data1.result.generalID
+        })
             .catch(err => console.log(err))
+
+
 
         Swal.fire({
             icon: 'success',
             title: 'Good job!',
             text: 'Add Data Complete'
         })
-            .then(response2 => (response2))
-            .catch(err => console.log(err))
     }
-    async function createData3() {
+    async function createData3(id) {
+        let generalID = document.getElementById("generalID").innerHTML
+
         const detailTHval = document.getElementById("detailTH").value;
         console.log(detailTHval)
 
@@ -259,13 +268,13 @@
         const contactPhoneval = document.getElementById("contactPhone").value;
         console.log(contactPhoneval)
 
-        let response3 = await fetch('http://localhost:8080/api/contractaddress/', {
-            method: 'POST',
+        let response3 = await fetch(`http://localhost:8080/api/contractaddress/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "detailTH": detailTHval,
                 "subAreaTH": subAreaTHval,
                 "areaTH": areaTHval,
@@ -417,17 +426,15 @@
     <h1>Edit data</h1></br>
 
     <form>
-        <div class="step step-1 ">
+        <div class="step step-1 active">
             <h4>General Data</h4>
             <div class="field">
                 <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
-                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาย"){%> checked <% } %>> 
-                นาย<br>
-                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาง"){%> checked <% } %>> 
-                นาง<br>
-                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นางสาว"){%> checked <% } %>> 
-                นางสาว<br>
+                <input type="radio" name="perfixTH" value="นาย" <% if (data.perfixTH === "นาย"){%> checked <% } %>> นาย<br>
+                <input type="radio" name="perfixTH" value="นาง" <% if (data.perfixTH === "นาง"){%> checked <% } %>> นาง<br>
+                <input type="radio" name="perfixTH" value="นางสาว" <% if (data.perfixTH === "นางสาว"){%> checked <% } %>> นางสาว<br>
             </div>
+
             <div class="field">
                 <label for="firstNameTH"><b> ชื่อ:</b></label><br>
                 <input type="text" id="firstNameTH" name="firstNameTH" value="<%= data.firstNameTH %>"><br>
@@ -447,106 +454,108 @@
             </div>
             <div class="field">
                 <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="firstNameEN" name="firstNameEN" value=""><br>
+                <input type="text" id="firstNameEN" name="firstNameEN" value="<%= data.firstNameEN %>"><br>
             </div>
             <div class="field">
                 <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="middleNameEN" name="middleNameEN" value=""><br>
+                <input type="text" id="middleNameEN" name="middleNameEN" value="<%= data.middleNameEN %>"><br>
             </div>
             <div class="field">
                 <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="lastNameEN" name="lastNameEN" value=""><br>
+                <input type="text" id="lastNameEN" name="lastNameEN" value="<%= data.lastNameEN %>"><br>
             </div>
             <div class="field">
                 <label for="age"><b>อายุ:</b></label><br>
-                <input type="text" id="age" name="age" value=""><br>
+                <input type="text" id="age" name="age" value="<%= data.age %>"><br>
             </div>
             <div class="field">
                 <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
-                <input type="text" id="maritalStatus" name="maritalStatus" value=""><br>
+                <input type="text" id="maritalStatus" name="maritalStatus" value="<%= data.maritalStatus %>"><br>
             </div>
             <div class="field">
                 <label id="sex" for="sex"><b> เพศ :</b></label><br>
-                <input type="radio" name="sex" value="Male"> Male <br>
-                <input type="radio" name="sex" value="Female"> Female<br>
+                <input type="radio" name="sex" value="Male" <% if (data.sex === "Male"){%> checked <% } %>> Male <br>
+                <input type="radio" name="sex" value="Female" <% if (data.sex === "Female"){%> checked <% } %>> Female<br>
             </div>
             <div class="field">
                 <label for="height"><b> ส่วนสูง:</b></label><br>
-                <input type="text" id="height" name="height" value=""><br>
+                <input type="text" id="height" name="height" value="<%= data.height %>"><br>
             </div>
             <div class="field">
                 <label for="weight"><b> น้ำหนัก:</b></label><br>
-                <input type="text" id="weight" name="weight" value=""><br>
+                <input type="text" id="weight" name="weight" value="<%= data.weight %>"><br>
             </div>
             <div class="field">
                 <label for="nationality"><b> สัญชาติ: </b></label><br>
-                <input type="text" id="nationality" name="nationality" value=""><br>
+                <input type="text" id="nationality" name="nationality" value="<%= data.nationality %>"><br>
             </div>
             <div class="field">
                 <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
-                <input type="text" id="idCardNo" name="idCardNo" value=""><br>
+                <input type="text" id="idCardNo" name="idCardNo" value="<%= data.idCardNo %>"><br>
             </div>
             <div class="field">
                 <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
-                <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร"> Yes<br>
-                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร"> No<br>
+                <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร" <% if (data.militaryService === "เคยเกณฑ์ทหาร"){%> checked <% } %>> Yes<br>
+                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร" <% if (data.militaryService === "ไม่เคยเกณฑ์ทหาร"){%> checked <% } %>> No<br>
             </div>
             <div class="field">
                 <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
-                <input type="text" id="militaryData" name="militaryData" value=""><br>
+                <input type="text" id="militaryData" name="militaryData" value="<%= data.militaryData %>"><br>
             </div>
             <div class="field">
                 <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
-                <input type="radio" name="crimeStatus" value="เคยมีคดี"> Yes <br>
-                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี"> No<br>
+                <input type="radio" name="crimeStatus" value="เคยมีคดี" <% if (data.crimeStatus === "เคยมีคดี"){%> checked <% } %>> Yes <br>
+                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี" <% if (data.crimeStatus === "ไม่เคยมีคดี"){%> checked <% } %>> No<br>
             </div>
             <div class="field">
                 <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
-                <input type="text" id="crimeData" name="crimeData" value=""><br>
+                <input type="text" id="crimeData" name="crimeData" value="<%= data.crimeData %>"><br>
             </div>
             <div class="field">
                 <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
-                <input type="radio" name="disease" value="มีโรค"> Yes <br>
-                <input type="radio" name="disease" value="ไม่มีโรค"> No<br>
+                <input type="radio" name="disease" value="มีโรค" <% if (data.disease === "มีโรค"){%> checked <% } %>> Yes <br>
+                <input type="radio" name="disease" value="ไม่มีโรค" <% if (data.disease === "ไม่มีโรค"){%> checked <% } %>> No<br>
+
                 <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
-                <input type="text" id="diseaseData" name="diseaseData" value=""><br>
+                <input type="text" id="diseaseData" name="diseaseData" value="<%= data.diseaseData %>"><br>
                 <br>
-                <button type="button" class="next-btn" onclick="createData()">Next</button>
+                <button type="button" class="next-btn" onclick="Updatedata('<%= data.generalID %>')">Next</button>
             </div>
 
         </div>
-        <div class="step step-2 active">
+        <div class="step step-2 ">
             <h4>Application Data</h4>
 
             <label id="position1" for="position1"><b> ตำแหน่งที่ 1:</b></label><br>
-            <input type="radio" name="position1" value="positionA"> positionA <br>
-            <input type="radio" name="position1" value="positionB"> positionB<br>
-            <input type="radio" name="position1" value="positionC"> positionC<br>
+            <input type="radio" name="position1" value="positionA" <% if (dataapplication.position1 === "positionA"){%> checked <% } %>> positionA <br>
+            <input type="radio" name="position1" value="positionB" <% if (dataapplication.position1 === "positionB"){%> checked <% } %>> positionB<br>
+            <input type="radio" name="position1" value="positionC" <% if (dataapplication.position1 === "positionC"){%> checked <% } %>> positionC<br>
 
             <label id="position2" for="position2"><b> ตำแหน่งที่ 2:</b></label><br>
-            <input type="radio" name="position2" value="positionA"> positionA <br>
-            <input type="radio" name="position2" value="positionB"> positionB<br>
-            <input type="radio" name="position2" value="positionC"> positionC<br>
+            <input type="radio" name="position2" value="positionA" <% if (dataapplication.position2 === "positionA"){%> checked <% } %>> positionA <br>
+            <input type="radio" name="position2" value="positionB" <% if (dataapplication.position2 === "positionB"){%> checked <% } %>> positionB<br>
+            <input type="radio" name="position2" value="positionC" <% if (dataapplication.position2 === "positionC"){%> checked <% } %>> positionC<br>
 
             <label for="expectedSalary"><b> เงินเดือนที่ต้องการ:</b></label><br>
-            <input type="text" id="expectedSalary" name="expectedSalary" value="<%= data.expectedSalary %>"><br>
+            <input type="text" id="expectedSalary" name="expectedSalary" value="<%= dataapplication.expectedSalary %>"><br>
 
             <!-- <label for="availableDate"><b> วันที่พร้อมเริ่มงาน:</b></label><br>
             <input type="date" id="availableDate" name="availableDate" value=""><br>
             <br> -->
 
             <label id="status" for="status"><b> สถานะ :</b></label><br>
-            <input type="radio" name="status" value="statusA"> statusA <br>
-            <input type="radio" name="status" value="statusB"> statusB<br>
-            <input type="radio" name="status" value="statusC"> statusC<br>
+            <input type="radio" name="status" value="statusA" <% if (dataapplication.status === "statusA"){%> checked <% } %>> statusA <br>
+            <input type="radio" name="status" value="statusB" <% if (dataapplication.status === "statusB"){%> checked <% } %>> statusB<br>
+            <input type="radio" name="status" value="statusC" <% if (dataapplication.status === "statusC"){%> checked <% } %>> statusC<br>
 
             <br>
             <br>
-            <button type="button" class="next-btn" onclick="createData2()">Next</button>
+            <button type="button" class="next-btn" onclick="Updatedata2('<%= dataapplication.applicationID %>')">Next</button>
             <button type="button" class="previous-btn">Prev</button>
+            <div id="generalID" hidden></div>
 
         </div>
-        <div class="step step-3 ">
+        <div class="step step-3">
             <h4>Contact-Address Data</h4>
             <label for="detailTH"><b>ที่อยู่ (ไทย):</b></label><br>
             <input type="text" id="detailTH" name="detailTH" value=""><br>
@@ -599,7 +608,7 @@
             <label for="contactEmail"><b>E-mail:</b></label><br>
             <input type="email" id="contactEmail" name="contactEmail" value=""><br>
             <br>
-            <button type="button" class="next-btn" onclick="createData3()">Next</button>
+            <button type="button" class="next-btn" onclick="createData3(id)">Next</button>
             <button type="button" class="previous-btn">Prev</button>
 
         </div>
@@ -618,7 +627,7 @@
             <label for="drivingType"><b>drivingType:</b></label><br>
             <input type="text" id="drivingType" name="drivingType" value=""><br>
 
-            <label for="drivingLicenseNo"><b>เลขใบขับขี่:</b></label><br>
+            <label for="drivingLicenseNo"><b>เลขที่ใบขับขี่:</b></label><br>
             <input type="text" id="drivingLicenseNo" name="drivingLicenseNo" value=""><br>
 
             <!-- <label for="drivingExpiryDate"><b>วันหมดอายุ:</b></label><br>

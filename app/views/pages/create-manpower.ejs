@@ -42,8 +42,7 @@
             console.log(englishTestScoreval)
             const skillAndKnowledgeList = []
             skillAndKnowledgeList.push(document.getElementById("skillAndKnowledge").value);
-            // const skillAndKnowledgeval = document.getElementById("skillAndKnowledge").value;
-            // console.log(skillAndKnowledgeval)
+  
             const requestedByval = document.getElementById("requestedBy").value;
             console.log(requestedByval)
             const positionRequisitionval = document.getElementById("positionRequisition").value;
@@ -95,14 +94,17 @@
 
                 })
             })
+            .then(response => (response.json()))
+                .catch(err => console.log(err))
+
+
             Swal.fire({
                 icon: 'success',
                 title: 'Good job!',
                 text: 'Add Data Complete',
-                // footer: '<a href="/manpower">Back to ManPower</a>'
+
 })
-                .then(response => (response))
-                .catch(err => console.log(err))
+           
             
                
             

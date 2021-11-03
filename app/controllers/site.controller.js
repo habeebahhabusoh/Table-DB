@@ -12,7 +12,7 @@ exports.manpower = async function (request, response){
     const content = require("../models/manpower.model");
     const manpower = await content.findAll();
     response.render("pages/manpower.ejs",{
-        data: manpower
+        data:manpower
     });  
 };
 
@@ -31,25 +31,27 @@ exports.application = async function (request, response){
     response.render("pages/application.ejs",{
         data:application,
         data2:general
-    });  
+    }); 
+    console.log(application) 
 };
-
 exports.addmanpower = function (request, response){
     response.render("pages/create-manpower.ejs");
 };
-
 exports.addpagecontrol = function (request, response){
     response.render("pages/page-control.ejs");
 };
 
 exports.editpagecontrol = async function (request, response){
     const content = require("../models/application.model");
-    const application = await content.findById(request.params.id)
-    const contractaddress = await content.findById(request.params.id)
+    console.log(request.params.id)
+    const general = await content.findByIdGen(request.params.generalID)
+    const application = await content.findById(request.params.applicationID)
     response.render("pages/edit-pagecontrol.ejs",{
-        data: application
+        data:general,
+        dataapplication: application
     });  
 };
+
 
 exports.addapplication = function (request, response){
     response.render("pages/create-application.ejs");
@@ -63,7 +65,7 @@ exports.editManPower = async function (request, response){
     const content = require("../models/manpower.model");
     const manPower = await content.findById(request.params.id)
     response.render("pages/edit-manpower.ejs",{
-        data2:manPower
+        data:manPower
     });  
 };
 
