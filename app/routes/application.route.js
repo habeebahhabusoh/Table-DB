@@ -6,7 +6,7 @@ router.get('/all', controller.findAllApplicationContents);
 router.get('/:id', controller.findAllByApplication);
 // router.get('/:id', controller.findById);
 router.post('/', controller.addApplication);
-router.put('/:id', controller.updateApplicationById);
+router.put('/:id/:id', controller.updateApplicationById);
 router.delete('/:id', controller.deleteApplicationById);
 
 module.exports = router;
