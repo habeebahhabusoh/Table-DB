@@ -28,9 +28,20 @@ exports.application = async function (request, response){
     const content = require("../models/application.model");
     const application = await content.findAll();
     const general = await content.findAllGeneral();
+    const contractaddress = await content.findAllcontract();
+    const driving = await content.findAlldriving();
+    const history = await content.findAllhistory();
+    const education = await content.findAlleducation();
+    const skill = await content.findAllskill();
     response.render("pages/application.ejs",{
         data:application,
-        data2:general
+        data2:general,
+        data3:contractaddress,
+        data4:driving,
+        data5:history,
+        data6:education,
+        data7:skill
+
     }); 
     console.log(application) 
 };
@@ -46,9 +57,19 @@ exports.editpagecontrol = async function (request, response){
     console.log(request.params.id)
     const general = await content.findByIdGen(request.params.generalID)
     const application = await content.findById(request.params.applicationID)
+    const contractaddress = await content.findByIdcontractaddress(request.params.contractID)
+    const driving = await content.findByIddriving(request.params.drivingID)
+    const history = await content.findByIdhistory(request.params.historyID)
+    const education = await content.findByIdeducation(request.params.educationID)
+    const skill = await content.findByIdskill(request.params.skillID)
     response.render("pages/edit-pagecontrol.ejs",{
         data:general,
-        dataapplication: application
+        dataapplication: application,
+        datacontractaddress: contractaddress,
+        datadriving: driving,
+        datahistory:history,
+        dataeducation:education,
+        dataskill:skill
     });  
 };
 

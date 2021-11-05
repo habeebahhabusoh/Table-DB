@@ -20,6 +20,12 @@
                 .then(response => console.log(response))
                 .catch(err => console.log(err));
         }
+
+        function deleteRow(row){
+         var d = row.parentNode.parentNode.rowIndex;
+        document.getElementById('dsTable').deleteRow(d);
+         }
+        
     </script>
 </head>
 
@@ -31,8 +37,8 @@
     <a class="btn btn-secondary" href="/pagecontrol">addData</a>
     <div class="card-body">
         <% if(data.length){ %>
-            <% if(data2.length){ %>
-        <table class="table">
+         
+        <table id="dsTable"" class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -47,29 +53,29 @@
             </thead>
             <tbody>
                 <% for (let i = 0; i < data.length; i++){ %>
-                    <% for (let j = 0; j < data2.length; j++){ %>
+                  
                     <% console.log(data.length) %>
                     <% console.log(data2.length) %>
                 <tr>
-                    <th scope="row"><%= (j+1) %></th>
+                    <th scope="row"><%= (i+1) %></th>
                     <td><%= data[i].applicationID %></td>
                     <td><%= data[i].generalID %></td>
-                    <td><%= data2[j].firstNameTH %></jd>
+                    <td><%= data2[i].firstNameTH %></jd>
                     <td><%= data[i].numberOrder %></td>
                     <td><%= data[i].position1 %></td>
                     <td><%= data[i].status %></td>
                    
                   
                     <td>
-                        <a href="/editpagecontrol/<%= data[i].generalID %>/<%= data[i].applicationID %>" class="btn btn-success edit">Edit</a>
-                        <a onclick="DeleteData('<%= data[i].generalID %>')" class="btn btn-danger delete">Delete</a>
+                        <a href="/editpagecontrol/<%= data[i].generalID %>/<%= data[i].applicationID %>/<%= data3[i].contractID %>/<%= data4[i].drivingID %>/<%= data5[i].historyID %>/<%= data6[i].educationID %>/<%= data7[i].skillID %>" class="btn btn-success edit">Edit</a>
+<button type="button" id ="deleteDep" value="Delete" onclick = "deleteRow(this)" class="btn btn-danger delete deleteBtn">Delete</button>
                     </td>
                 </tr>
-                    <% } %>
+              
                 <% } %>
             </tbody>
         </table>
-            <% } %>
+           
         <% } %>
     </div>
     </div>

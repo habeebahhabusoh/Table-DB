@@ -11,7 +11,7 @@ router.get("/application", siteController.application);
 router.get("/addApplication", siteController.addapplication);
 
 router.get("/pagecontrol", siteController.addpagecontrol);
-router.get("/editpagecontrol/:generalID/:applicationID", siteController.editpagecontrol);
+router.get("/editpagecontrol/:generalID/:applicationID/:contractID/:drivingID/:historyID/:educationID/:skillID", siteController.editpagecontrol);
 
 router.get("/general", siteController.general);
 router.get("/addGeneral", siteController.addgeneral);

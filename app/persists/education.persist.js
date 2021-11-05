@@ -39,7 +39,9 @@ exports.isExistsPerson = function (educationID) {
 
 exports.findAll = function () {
   return sequelize.models.Education
-    .findAll()
+  .findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then(function (result) {
       return result;
     })

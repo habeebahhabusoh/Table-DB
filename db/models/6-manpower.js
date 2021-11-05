@@ -51,6 +51,7 @@ module.exports = (sequelize) => {
     remark:DataTypes.STRING,
   }, {
     sequelize,
+    paranoid:true,
     tableName: 'ManPower',
     modelName: 'ManPower',
   });

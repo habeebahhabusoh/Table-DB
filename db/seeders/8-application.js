@@ -16,8 +16,7 @@ module.exports = {
             availableDate: new Date(),
             status:"VIP",
             createdAt:new Date(),
-            updatedAt:new Date(),
-           
+            updatedAt:new Date(),  
           }
         ]
       );

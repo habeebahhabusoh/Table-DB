@@ -14,6 +14,7 @@ exports.addApplication = function (content) {
       status: content.status,
       createdAt:new Date(),
       updatedAt:new Date(),
+
     })
     .then(function (result) {
       return result;

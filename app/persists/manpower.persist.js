@@ -38,6 +38,7 @@ exports.addManPower = async function (content) {
       remark: content.remark,
       createdAt: new Date(),
       updatedAt: new Date(),
+      deletedAt: null,
     })
     .then(function (result) {
       return result;
