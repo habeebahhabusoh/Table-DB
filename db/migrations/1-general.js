@@ -70,7 +70,8 @@ module.exports = {
       },
       idCardNo: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       expiryDate: {
         allowNull: false,

@@ -52,6 +52,10 @@ exports.addpagecontrol = function (request, response){
     response.render("pages/page-control.ejs");
 };
 
+exports.userRegister = function (request, response){
+    response.render("pages/user-register.ejs");
+};
+
 exports.editpagecontrol = async function (request, response){
     const content = require("../models/application.model");
     console.log(request.params.id)
@@ -97,3 +101,12 @@ exports.editgeneral = async function (request, response){
         data:general
     });  
 };
+
+exports.findIdCardNo = async function (request, response){
+    const content = require("../models/general.model");
+    const idCardNo = await content.findByIdCard(request.params.idCardNo)
+    response.render("pages/user-register.ejs",{
+        data:idCardNo
+    });
+};
+

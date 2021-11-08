@@ -66,6 +66,10 @@ exports.findByIdskill = function (skillID) {
     return skillPersist.findById(skillID);
 };
 
+exports.findIdCardNo = function (idCardNo){
+    return generalPersist.findIdCardNo(idCardNo)
+}
+
 exports.addApplication = async function (content) {
     const json = {
         successfully: true,

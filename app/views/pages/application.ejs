@@ -21,10 +21,7 @@
                 .catch(err => console.log(err));
         }
 
-        function deleteRow(row){
-         var d = row.parentNode.parentNode.rowIndex;
-        document.getElementById('dsTable').deleteRow(d);
-         }
+
         
     </script>
 </head>
@@ -68,7 +65,7 @@
                   
                     <td>
                         <a href="/editpagecontrol/<%= data[i].generalID %>/<%= data[i].applicationID %>/<%= data3[i].contractID %>/<%= data4[i].drivingID %>/<%= data5[i].historyID %>/<%= data6[i].educationID %>/<%= data7[i].skillID %>" class="btn btn-success edit">Edit</a>
-<button type="button" id ="deleteDep" value="Delete" onclick = "deleteRow(this)" class="btn btn-danger delete deleteBtn">Delete</button>
+<button type="button" id ="deleteDep" value="Delete" onclick = "DeleteData('<%= data[i].applicationID %>')" class="btn btn-danger delete deleteBtn">Delete</button>
                     </td>
                 </tr>
               

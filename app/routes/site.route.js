@@ -17,5 +17,7 @@ router.get("/general", siteController.general);
 router.get("/addGeneral", siteController.addgeneral);
 router.get("/editgeneral/:id", siteController.editgeneral);
 
+router.get("/userRegister", siteController.userRegister);
+
 
 module.exports = router;
