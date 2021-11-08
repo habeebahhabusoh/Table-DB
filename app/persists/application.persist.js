@@ -82,6 +82,22 @@ exports.deleteById = function (applicationID) {
 };
 
 
+exports.paranoidById = function (applicationID) {
+  return sequelize.models.Application
+    .destroy({
+      where: {
+        applicationID: applicationID,
+      },
+    })
+    .then(function (result) {
+      return result;
+    })
+    .catch(function (error) {
+      throw new Error(error.original);
+    });
+};
+
+
 exports.findAllByApplication = function (applicationID) {
   return sequelize.models.Application
     .findOne({

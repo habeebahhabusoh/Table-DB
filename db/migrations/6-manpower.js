@@ -43,7 +43,8 @@ module.exports = {
        },
       employeeType: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       hiringPeriod: {
         allowNull: false,
@@ -141,10 +142,18 @@ module.exports = {
       allowNull: false,
       type: Sequelize.DATE,
     },
+    deletedAt:{
+      allowNull: true,
+      // paranoid: false,
+      type: Sequelize.DATE,
+    },
     });
   },
+
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('ManPower');
   }
 };
+
+

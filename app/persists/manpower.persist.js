@@ -38,6 +38,7 @@ exports.addManPower = async function (content) {
       remark: content.remark,
       createdAt: new Date(),
       updatedAt: new Date(),
+      deletedAt: null
     })
     .then(function (result) {
       return result;
@@ -100,6 +101,7 @@ exports.findById = function (manPowerID) {
     })
     .then(function (result) {
       return result;
+      
     })
     .catch(function (error) {
       throw new Error(error.original);
