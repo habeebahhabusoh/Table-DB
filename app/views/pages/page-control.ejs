@@ -61,7 +61,6 @@
     }
 </style>
 <script>
-    
     async function createData() {
         const perfixTHval = document.querySelector('input[name="perfixTH"]:checked').value;
         console.log(perfixTHval)
@@ -86,6 +85,9 @@
 
         const lastNameENval = document.getElementById("lastNameEN").value;
         console.log(lastNameENval)
+
+        const birthDateval = document.getElementById("birthDate").value;
+        console.log(birthDateval)
 
         const ageval = document.getElementById("age").value;
         console.log(ageval)
@@ -126,12 +128,12 @@
         const diseaseDataval = document.getElementById("diseaseData").value;
         console.log(diseaseDataval)
 
+        let test = document.getElementById("generalID")
         let response = await fetch('http://localhost:8080/api/general/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            
             body: JSON.stringify({
                 "perfixTH": perfixTHval,
                 "firstNameTH": firstNameTHval,
@@ -155,17 +157,25 @@
                 "disease": diseaseval,
                 "diseaseData": diseaseDataval,
             })
-            
+        }) 
+        .then(async response =>  {
+           let data1 =  await response.json()
+           test.innerHTML = data1.result.generalID
         })
-        .then(res => console.log(res.json()))
-        .catch(err => console.log(err))
-        
+            .catch(err => console.log(err))
+
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
+            
     }
 
-   
     async function createData2() {
-    
-
+        let generalID = document.getElementById("generalID").innerHTML
+       
+        console.log(generalID)
         const position1val = document.querySelector('input[name="position1"]:checked').value;
         console.log(position1val)
 
@@ -175,11 +185,13 @@
         const expectedSalaryval = document.getElementById("expectedSalary").value;
         console.log(expectedSalaryval)
 
-        // const availableDateval = document.getElementById("availableDate").value;
-        // console.log(availableDateval)
+        const availableDateval = document.getElementById("availableDate").value;
+        console.log(availableDateval)
 
         const statusval = document.querySelector('input[name="status"]:checked').value;
         console.log(statusval)
+
+        
 
 
         let response2 = await fetch('http://localhost:8080/api/application/', {
@@ -188,20 +200,27 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "900c7911-c614-40ba-b81e-a21f0ebd15f3" ,
+                "generalID": generalID,
                 "position1": position1val,
                 "position2": position2val,
                 "expectedSalary": expectedSalaryval,
-                // "availableDate": availableDateval,
+                "availableDate": availableDateval,
                 "status": statusval,
             })
         })
-        .then(res => console.log(res.json()))
-            .catch(err => console.log(err))
+        .then(response2 => console.log(response2.json()))
+        .catch(err => console.log(err))
 
-  
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
     }
     async function createData3() {
+        let generalID = document.getElementById("generalID").innerHTML
+        console.log(generalID)
         const detailTHval = document.getElementById("detailTH").value;
         console.log(detailTHval)
 
@@ -245,7 +264,7 @@
         console.log(presentAddressProvinceval)
 
         const presentAddressPostalCodeval = document.getElementById("presentAddressPostalCode").value;
-        console.log(presentAddressPostalCode)
+        console.log(presentAddressPostalCodeval)
         
         const contactEmailval = document.getElementById("contactEmail").value;
         console.log(contactEmailval)
@@ -256,10 +275,10 @@
         let response3 = await fetch('http://localhost:8080/api/contractaddress/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "900c7911-c614-40ba-b81e-a21f0ebd15f3" ,
+                "generalID": generalID ,
                 "detailTH": detailTHval,
                 "subAreaTH": subAreaTHval,
                 "areaTH": areaTHval,
@@ -284,9 +303,18 @@
         .then(response3 => console.log(response3.json()))
             .catch(err => console.log(err))
 
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
+
     }
 
     async function createData4() {
+        let generalID = document.getElementById("generalID").innerHTML
+        console.log(generalID)
+
         const drivingLicenseTypeval = document.querySelector('input[name="drivingLicenseType"]:checked').value;
         console.log(drivingLicenseTypeval)
       
@@ -296,6 +324,9 @@
         const drivingLicenseNoval = document.getElementById("drivingLicenseNo").value;
         console.log(drivingLicenseNoval)
 
+        const drivingExpiryDateval = document.getElementById("drivingExpiryDate").value;
+        console.log(drivingExpiryDateval)
+
        
         let response3 = await fetch('http://localhost:8080/api/driving/', {
             method: 'POST',
@@ -303,19 +334,29 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "drivingLicenseType": drivingLicenseTypeval,
                 "drivingType": drivingTypeval,
                 "drivingLicenseNo": drivingLicenseNoval,
+                "drivingExpiryDate": drivingExpiryDateval
 
             })
         })
         .then(response3 => console.log(response3.json()))
             .catch(err => console.log(err))
 
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
+
     }
 
     async function createData5() {
+        let generalID = document.getElementById("generalID").innerHTML
+        console.log(generalID)
+
         const companyNameHistoryList = []
         companyNameHistoryList.push(document.getElementById("companyNameHistory").value);
       
@@ -324,6 +365,12 @@
 
         const salaryHistoryList = []
         salaryHistoryList.push(document.getElementById("salaryHistory").value);
+
+        const startDateval = document.getElementById("startDate").value;
+        console.log(startDateval)
+
+        const endDateval = document.getElementById("endDate").value;
+        console.log(endDateval)
        
         let response5 = await fetch('http://localhost:8080/api/history/', {
             method: 'POST',
@@ -331,18 +378,28 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "companyNameHistory": companyNameHistoryList,
                 "positionHistory": positionHistoryList,
                 "salaryHistory": salaryHistoryList,
+                "startDate":startDateval,
+                "endDate":endDateval
 
             })
         })
         .then(response5 => console.log(response5.json()))
             .catch(err => console.log(err))
 
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
+
     }
     async function createData6() {
+        let generalID = document.getElementById("generalID").innerHTML
+        console.log(generalID)
 
         const educationLevelval = document.querySelector('input[name="educationLevel"]:checked').value;
         console.log(educationLevelval)
@@ -353,6 +410,12 @@
         const majorval = document.getElementById("major").value;
         console.log(majorval)
 
+        const startDateval = document.getElementById("startDate").value;
+        console.log(startDateval)
+
+        const endDateval = document.getElementById("endDate").value;
+        console.log(endDateval)
+
        
         let response6 = await fetch('http://localhost:8080/api/education/', {
             method: 'POST',
@@ -360,18 +423,28 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "educationLevel": educationLevelval,
                 "name": nameval,
                 "major": majorval,
+                "startDate":startDateval,
+                "endDate":endDateval
 
             })
         })
         .then(response6 => console.log(response6.json()))
             .catch(err => console.log(err))
 
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
+
     }
     async function createData7() {
+        let generalID = document.getElementById("generalID").innerHTML
+        console.log(generalID)
 
         const typeOfSkillval = document.querySelector('input[name="typeOfSkill"]:checked').value;
         console.log(typeOfSkillval)
@@ -388,13 +461,19 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "generalID": "55ac7ad0-5eab-4e70-af50-aecc1fd04c88" ,
+                "generalID": generalID ,
                 "typeOfSkill": typeOfSkillval,
                 "level": levelval,
             })
         })
         .then(response6 => console.log(response6.json()))
             .catch(err => console.log(err))
+
+            Swal.fire({
+            icon: 'success',
+            title: 'Good job!',
+            text: 'Add Data Complete'
+        })
 
         }
 
@@ -414,38 +493,42 @@
             <h4>General Data</h4>
             <div class="field">
                 <label id="perfixTH" for="perfixTH"><b> คำนำหน้า (ไทย):</b></label><br>
-                <input type="radio" name="perfixTH" value="นาย"> นาย<br>
+                <input type="radio" name="perfixTH" value="นาย" > นาย<br>
                 <input type="radio" name="perfixTH" value="นาง"> นาง<br>
                 <input type="radio" name="perfixTH" value="นางสาว"> นางสาว<br>
             </div>
             <div class="field">
                 <label for="firstNameTH"><b> ชื่อ:</b></label><br>
-                <input type="text" id="firstNameTH" name="firstNameTH" value="dd"><br>
+                <input type="text" id="firstNameTH" name="firstNameTH" value=""><br>
             </div>
             <div class="field">
                 <label for="middleNameTH"><b> ชื่อกลาง (ถ้ามี):</b></label><br>
-                <input type="text" id="middleNameTH" name="middleNameTH" value="dd"><br>
+                <input type="text" id="middleNameTH" name="middleNameTH" value=""><br>
             </div>
             <div class="field">
                 <label for="lastNameTH"><b> นามสกุล:</b></label><br>
-                <input type="text" id="lastNameTH" name="lastNameTH" value="dd"><br>
+                <input type="text" id="lastNameTH" name="lastNameTH" value=""><br>
             </div>
             <div class="field">
                 <label id="perfixEN" for="perfixEN"><b> คำนำหน้า (อังกฤษ):</b></label><br>
-                <input type="radio" name="perfixEN" value="Mr."> Mr. <br>
+                <input type="radio" name="perfixEN" value="Mr." > Mr. <br>
                 <input type="radio" name="perfixEN" value="Ms."> Ms.<br>
             </div>
             <div class="field">
                 <label for="firstNameEN"><b> ชื่อ (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="firstNameEN" name="firstNameEN" value="dd"><br>
+                <input type="text" id="firstNameEN" name="firstNameEN" value=""><br>
             </div>
             <div class="field">
                 <label for="middleNameEN"><b> ชื่อกลาง (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="middleNameEN" name="middleNameEN" value="dd"><br>
+                <input type="text" id="middleNameEN" name="middleNameEN" value=""><br>
             </div>
             <div class="field">
                 <label for="lastNameEN"><b> นามสกุล (ภาษาอังกฤษ): </b></label><br>
-                <input type="text" id="lastNameEN" name="lastNameEN" value="dd"><br>
+                <input type="text" id="lastNameEN" name="lastNameEN" value=""><br>
+            </div>
+            <div class="field">
+                <label for="birthDate"><b>วัน-เดือน-ปีเกิด:</b></label><br>
+                <input type="date" id="birthDate" name="birthDate" value=""><br>
             </div>
             <div class="field">
                 <label for="age"><b>อายุ:</b></label><br>
@@ -453,53 +536,53 @@
             </div>
             <div class="field">
                 <label for="maritalStatus"><b>ทักษะความรู้:</b></label><br>
-                <input type="text" id="maritalStatus" name="maritalStatus" value="dd"><br>
+                <input type="text" id="maritalStatus" name="maritalStatus" value=""><br>
             </div>
             <div class="field">
                 <label id="sex" for="sex"><b> เพศ :</b></label><br>
-                <input type="radio" name="sex" value="Male"> Male <br>
+                <input type="radio" name="sex" value="Male" > Male <br>
                 <input type="radio" name="sex" value="Female"> Female<br>
             </div>
             <div class="field">
                 <label for="height"><b> ส่วนสูง:</b></label><br>
-                <input type="text" id="height" name="height" value="dd"><br>
+                <input type="text" id="height" name="height" value=""><br>
             </div>
             <div class="field">
                 <label for="weight"><b> น้ำหนัก:</b></label><br>
-                <input type="text" id="weight" name="weight" value="dd"><br>
+                <input type="text" id="weight" name="weight" value=""><br>
             </div>
             <div class="field">
                 <label for="nationality"><b> สัญชาติ: </b></label><br>
-                <input type="text" id="nationality" name="nationality" value="dd"><br>
+                <input type="text" id="nationality" name="nationality" value=""><br>
             </div>
             <div class="field">
                 <label for="idCardNo"><b>เลขประจำตัวประชาชน:</b></label><br>
-                <input type="text" id="idCardNo" name="idCardNo" value="dd"><br>
+                <input type="text" id="idCardNo" name="idCardNo" value=""><br>
             </div>
             <div class="field">
                 <label id="militaryService" for="militaryService"><b> เคยผ่านเกณฑ์ทหารหรือไม่:</b></label><br>
                 <input type="radio" name="militaryService" value="เคยเกณฑ์ทหาร"> Yes<br>
-                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร"> No<br>
+                <input type="radio" name="militaryService" value="ไม่เคยเกณฑ์ทหาร" > No<br>
             </div>
             <div class="field">
                 <label for="militaryData"><b>ข้อมูลเพิ่มเติมทางการทหาร:</b></label><br>
-                <input type="text" id="militaryData" name="militaryData" value="dd"><br>
+                <input type="text" id="militaryData" name="militaryData" value=""><br>
             </div>
             <div class="field">
                 <label for="crimeStatus"><b>ท่านเคยต้องโทษคดีอาญาหรือไม่:</b></label><br>
                 <input type="radio" name="crimeStatus" value="เคยมีคดี"> Yes <br>
-                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี"> No<br>
+                <input type="radio" name="crimeStatus" value="ไม่เคยมีคดี" > No<br>
             </div>
             <div class="field">
                 <label for="crimeData"><b>ข้อมูลเพิ่มเติมทางคดี:</b></label><br>
-                <input type="text" id="crimeData" name="crimeData" value="dd"><br>
+                <input type="text" id="crimeData" name="crimeData" value=""><br>
             </div>
             <div class="field">
                 <label for="disease"><b>ท่านป่วยเป็นโรคติดต่อหรือไม่:</b></label><br>
                 <input type="radio" name="disease" value="มีโรค"> Yes <br>
-                <input type="radio" name="disease" value="ไม่มีโรค"> No<br>
+                <input type="radio" name="disease" value="ไม่มีโรค" > No<br>
                 <label for="diseaseData"><b>ข้อมูลโรคติดต่อเพิ่มเติม:</b></label><br>
-                <input type="text" id="diseaseData" name="diseaseData" value="dd"><br>
+                <input type="text" id="diseaseData" name="diseaseData" value=""><br>
                 <br>
                 <button type="button" class="next-btn" onclick="createData()">Next</button>
             </div>
@@ -521,9 +604,9 @@
             <label for="expectedSalary"><b> เงินเดือนที่ต้องการ:</b></label><br>
             <input type="text" id="expectedSalary" name="expectedSalary" value=""><br>
 
-            <!-- <label for="availableDate"><b> วันที่พร้อมเริ่มงาน:</b></label><br>
+            <label for="availableDate"><b> วันที่พร้อมเริ่มงาน:</b></label><br>
             <input type="date" id="availableDate" name="availableDate" value=""><br>
-            <br> -->
+            <br>
 
             <label id="status" for="status"><b> สถานะ :</b></label><br>
             <input type="radio" name="status" value="statusA"> statusA <br>
@@ -534,7 +617,7 @@
             <br>
             <button type="button" class="next-btn" onclick="createData2()">Next</button>
             <button type="button" class="previous-btn">Prev</button>
-
+             <div id="generalID" hidden></div>
         </div>
         <div class="step step-3 ">
             <h4>Contact-Address Data</h4>
@@ -598,22 +681,16 @@
             <label id="drivingLicenseType" for="drivingLicenseType"><b> ใบขับขี่:</b></label><br>
             <input type="radio" name="drivingLicenseType" value="drivingLicenseTypeA"> ใบขับขี่รถจักรยานยนต์ <br>
             <input type="radio" name="drivingLicenseType" value="drivingLicenseTypeB"> ใบขับขี่รถยนต์<br>
-            <!-- 
-            <label for="drivingLicenseType"><b>ใบขับขี่:</b></label>
-            <select name="drivingLicenseType" id="drivingLicenseType" form="statusform">
-                <option value="drivingLicenseTypeA">ใบขับขี่รถจักรยานยนต์</option>
-                <option value="drivingLicenseTypB">ใบขับขี่รถยนต์</option>
-            </select>
-            <br> -->
+           
             <label for="drivingType"><b>drivingType:</b></label><br>
             <input type="text" id="drivingType" name="drivingType" value=""><br>
 
             <label for="drivingLicenseNo"><b>เลขใบขับขี่:</b></label><br>
             <input type="text" id="drivingLicenseNo" name="drivingLicenseNo" value=""><br>
 
-            <!-- <label for="drivingExpiryDate"><b>วันหมดอายุ:</b></label><br>
+            <label for="drivingExpiryDate"><b>วันหมดอายุ:</b></label><br>
             <input type="date" id="drivingExpiryDate" name="drivingExpiryDate" value=""><br>
-            <br> -->
+            <br>
             <button type="button" class="next-btn" onclick="createData4()">Next</button>
             <button type="button" class="previous-btn">Prev</button>
         </div>
@@ -628,12 +705,12 @@
             <label for="salaryHistory"><b>เงินเดือน:</b></label><br>
             <input type="text" id="salaryHistory" name="salaryHistory" value=""><br>
 
-            <!-- <label for="startDate"><b>วันที่เริ่มงาน:</b></label><br>
-            <input type="date" id="startDate" name="startDate" value=""><br> -->
+            <label for="startDate"><b>วันที่เริ่มงาน:</b></label><br>
+            <input type="date" id="startDate" name="startDate" value=""><br>
 
-            <!-- <label for="endDate"><b>ถึง:</b></label><br>
+            <label for="endDate"><b>ถึง:</b></label><br>
             <input type="date" id="endDate" name="endDate" value=""><br>
-            <br> -->
+            <br>
 
             <button type="button" class="next-btn" onclick="createData5()">Next</button>
             <button type="button" class="previous-btn">Prev</button>
@@ -651,12 +728,12 @@
             <label for="major"><b>วิชาที่ศึกษา/วุฒติที่ได้รับ:</b></label><br>
             <input type="text" id="major" name="major" value=""><br>
 
-            <!-- <label for="startDate"><b>ปีที่เริ่มศึษา:</b></label><br>
+            <label for="startDate"><b>ปีที่เริ่มศึษา:</b></label><br>
             <input type="date" id="startDate" name="startDate" value=""><br>
 
             <label for="endDate"><b>ปีที่จบการศึกษา:</b></label><br>
             <input type="date" id="endDate" name="endDate" value=""><br>
-            <br> -->
+            <br>
 
 
             <button type="button" class="next-btn" onclick="createData6()">Next</button>

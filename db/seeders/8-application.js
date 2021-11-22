@@ -9,7 +9,7 @@ module.exports = {
           {
             applicationID: "55ac7ad0-5eab-4e70-af50-aecc1fd04c90",
             generalID : "55ac7ad0-5eab-4e70-af50-aecc1fd04c88",
-            numberOrder: 1,
+            numberOrder: 1222,
             position1: "1115",
             position2 : "1515154851312",
             expectedSalary: "12000",
@@ -17,7 +17,7 @@ module.exports = {
             status:"VIP",
             createdAt:new Date(),
             updatedAt:new Date(),
-           
+            deletedAt: null,  
           }
         ]
       );

@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Application', {
       applicationID: {
-        primaryKey: true,
+      primaryKey: true,
        allowNull: false,
        type: Sequelize.UUID,
       },
@@ -47,6 +47,10 @@ module.exports = {
       },
       updatedAt:{
         allowNull: false,
+        type: Sequelize.DATE,
+      },
+      deletedAt:{
+        allowNull: true,
         type: Sequelize.DATE,
       },
 

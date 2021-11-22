@@ -37,7 +37,9 @@ exports.addContractAddress = async function (content) {
 
 exports.findAll = function () {
   return sequelize.models.ContractAddress
-    .findAll()
+  .findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then(function (result) {
       return result;
     })

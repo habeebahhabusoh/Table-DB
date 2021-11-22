@@ -39,7 +39,9 @@ exports.isExistsHistoryID = function (historyID) {
 
 exports.findAll = function () {
   return sequelize.models.History
-    .findAll()
+  .findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then(function (result) {
       return result;
     })

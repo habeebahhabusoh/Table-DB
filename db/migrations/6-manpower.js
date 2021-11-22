@@ -144,7 +144,6 @@ module.exports = {
     },
     deletedAt:{
       allowNull: true,
-      // paranoid: false,
       type: Sequelize.DATE,
     },
     });

@@ -23,7 +23,9 @@ exports.addDriving = function (content) {
 
 exports.findAll = function () {
   return sequelize.models.Driving
-    .findAll()
+  .findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then(function (result) {
       return result;
     })

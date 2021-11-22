@@ -25,6 +25,10 @@ exports.findById = function(generalID){
     return generalPersist.findById(generalID);
 };
 
+exports.findByIdCard = function(idCardNo){
+    return generalPersist.findById(idCardNo);
+};
+
 exports.updateGeneralById = async function (generalID,content){
     const json = {
         successfully: true,

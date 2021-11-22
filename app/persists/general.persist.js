@@ -56,7 +56,9 @@ exports.isExistsFirstNameTH = function (firstNameTH) {
 
 exports.findAll = function () {
   return sequelize.models.General
-    .findAll()
+    .findAll({
+      order: [["createdAt", "DESC"]],
+    })
     .then(function (result) {
       return result;
     })

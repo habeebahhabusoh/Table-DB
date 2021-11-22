@@ -1,6 +1,10 @@
 const applicationPersist = require('../persists/application.persist');
 const generalPersist = require('../persists/general.persist');
-
+const contractaddressPersist = require('../persists/contractaddress.persist');
+const drivingPersist = require('../persists/driving.persist');
+const historyPersist = require('../persists/history.persist');
+const educationPersist = require('../persists/education.persist');
+const skillPersist = require('../persists/skill.persist');
 
 exports.findAll = async function () {
     const application = await applicationPersist.findAll();
@@ -9,6 +13,27 @@ exports.findAll = async function () {
 exports.findAllGeneral = async function () {
     const general = await generalPersist.findAll();
     return general
+};
+
+exports.findAllcontract = async function () {
+    const contractaddress = await contractaddressPersist.findAll();
+    return contractaddress
+};
+exports.findAlldriving = async function () {
+    const driving = await drivingPersist.findAll();
+    return driving
+};
+exports.findAllhistory = async function () {
+    const history = await historyPersist.findAll();
+    return history
+};
+exports.findAlleducation = async function () {
+    const education = await educationPersist.findAll();
+    return education
+};
+exports.findAllskill = async function () {
+    const skill = await skillPersist.findAll();
+    return skill
 };
 
 
@@ -24,6 +49,25 @@ exports.findById = function (applicationID) {
 exports.findByIdGen = function (generalID) {
     return generalPersist.findById(generalID);
 };
+exports.findByIdcontractaddress = function (conractID) {
+    return contractaddressPersist.findById(conractID);
+};
+exports.findByIddriving = function (drivingID) {
+    return drivingPersist.findById(drivingID);
+};
+exports.findByIdhistory = function (historyID) {
+    return historyPersist.findById(historyID);
+};
+exports.findByIdeducation = function (educationID) {
+    return educationPersist.findById(educationID);
+};
+exports.findByIdskill = function (skillID) {
+    return skillPersist.findById(skillID);
+};
+
+exports.findIdCardNo = function (idCardNo){
+    return generalPersist.findIdCardNo(idCardNo)
+}
 
 exports.addApplication = async function (content) {
     const json = {
