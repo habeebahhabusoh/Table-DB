@@ -22,8 +22,12 @@ const modelDefiners = [
    require("../db/models/7-driving"),
    require("../db/models/8-application"),
    require("../db/models/9-requisition"),
-  
-  
+   require("../db/models/10-thai-provinces"),
+   require("../db/models/11-thai-amphures"),
+   require("../db/models/12-thai-tombons"),
+   require("../db/models/13-thai-zipcodes"),
+ 
+ 
 ];
 
 for (const modelDefiner of modelDefiners) {

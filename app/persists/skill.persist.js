@@ -64,11 +64,11 @@ exports.findAllByLevel = function (level) {
     });
 };
 /////// เพิ่ม function
-exports.findById = function (skillID) {
+exports.findById = function (generalID) {
   return sequelize.models.Skill
     .findOne({
       where: {
-        skillID: skillID,
+        generalID: generalID,
       },
     })
     .then(function (result) {

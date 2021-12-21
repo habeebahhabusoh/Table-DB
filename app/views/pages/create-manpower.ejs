@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Manpower</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
         async function createData() {
-            const companyval = document.querySelector('input[name="company"]:checked').value;
+            const companyval = document.getElementById("company").value;
             console.log(companyval)
             const departmentval = document.querySelector('input[name="department"]:checked').value;
             console.log(departmentval)
@@ -23,7 +24,7 @@
             const levelval = document.querySelector('input[name="level"]:checked').value;
             console.log(levelval)
             const employeeTypeval = document.getElementById("employeeType").value;
-            console.log(employeeTypeval)                                                                                                                                                                                                                                
+            console.log(employeeTypeval)
             const hiringPeriodval = document.getElementById("hiringPeriod").value;
             console.log(hiringPeriodval)
             const sexval = document.querySelector('input[name="sex"]:checked').value;
@@ -62,7 +63,7 @@
             console.log(statusval)
             const remarkval = document.getElementById("remark").value;
             console.log(remarkval)
-            
+
             let response = await fetch('http://localhost:8080/api/manpower/', {
                 method: 'POST',
                 headers: {
@@ -96,8 +97,8 @@
 
                 })
             })
-            .then(response => console.log(response.JSON()))
-            .catch(err => console.log(err))
+                .then(response => console.log(response.json()))
+                .catch(err => console.log(err))
             // Swal.fire({
             //     icon: 'success',
             //     title: 'Good job!',
@@ -106,111 +107,230 @@
             // })
             //     .then(response => (response.JSON()))
             //     .catch(err => console.log(err))
-            
-               
-            
+
+
+
         }
     </script>
+
+
 </head>
 
 <body>
-    <%- include ("../layouts/navbar.ejs") -%>
+    <div>
+        <%- include ("../layouts/sidebar.ejs") -%>
     </div>
-    <h1>Add Data</h1>
-   
-    <form action="http://localhost:8080/api/manpower/" method="POST">
 
-        <label id="company" for="company"><b> Company :</b></label><br>
-        <input type="radio" name="company" value="companyA" > Company A<br>
-        <input type="radio" name="company" value="companyB"> Company B<br>
-        <input type="radio" name="company" value="companyC"> Company C<br>
+    <div class="content">
+        <h1>Add Data</h1>
 
-        <label id="department" for="department"><b> Department : </b></label><br>
-        <input type="radio" name="department" value="departmentA" > Department A <br>
-        <input type="radio" name="department" value="departmentB"> Department B<br>
-        <input type="radio" name="department" value="departmentC"> Department C<br>
+        <form action="http://localhost:8080/api/manpower/" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-3 ">
+                    <label>State</label><br />
+                    <select id="state" class="form-control">
+                    </select><br />
+                </div>
+                <div class="form-group col-md-3" id="district_div">
+                    <label>District</label><br />
 
-        <label id="section" for="section"><b>Section : </b></label><br>
-        <input type="radio" name="section" value="sectionA" > Section A <br>
-        <input type="radio" name="section" value="sectionB"> Section B<br>
-        <input type="radio" name="section" value="sectionC"> Section C<br>
+                    <select id="district" class="form-control"></select>
+                </div>
+                <div class="form-group col-md-3" id="city_div">
+                    <label>City</label><br />
+                    <select id="city" class="form-control"></select><br />
+                </div>
+            </div>
 
-        <label id="positionRequired" for="positionRequired"><b>Position :</label></b><br>
-        <input type="radio" name="positionRequired" value="positionRequiredA" > Position A <br>
-        <input type="radio" name="positionRequired" value="positionRequiredB"> Position B<br>
-        <input type="radio" name="positionRequired" value="positionRequiredC"> Position C<br>
+            <div class="form-row">
+                <div class="form-group col-md-3 ">
+                    <label for="company"><b> Company :</b></label><br>
+                    <select id="company" class="form-control">
+                        <option value="companyA">companyA</option>
+                        <option value="companyB">companyB</option>
+                        <option value="companyC" selected="selected">companyC</option>
+                    </select>
+                    <br>
+                </div>
 
-        <label id="level" for="level"><b> Level :</b></label><br>
-        <input type="radio" name="level" value="levelA" > Level A <br>
-        <input type="radio" name="level" value="levelB"> Level B<br>
-        <input type="radio" name="level" value="levelC"> Level C<br>
+                <div class="form-group col-md-3 ">
+                    
+                    <label id="department" for="department"><b> Department : </b></label><br>
+                    <input type="radio" name="department" value="departmentA"> Department A <br>
+                    <input type="radio" name="department" value="departmentB"> Department B<br>
+                    <input type="radio" name="department" value="departmentC"> Department C<br>
+                </div>
 
-
-        <label for="employeeType"><b> EmployeeType :</b></label><br>
-        <input type="text" id="employeeType" name="employeeType" value=""><br>
-
-        <label for="hiringPeriod"><b> ระยะเวลาการว่างจ้าง :</b></label><br>
-        <input type="text" id="hiringPeriod" name="hiringPeriod" value=""><br>
-
-        <label id="sex" for="sex"><b> Gender:</b></label><br>
-        <input type="radio" name="sex" value="sexA" > Male <br>
-        <input type="radio" name="sex" value="sexB"> Female<br>
-
-
-        <label for="age"><b> อายุ:</b></label><br>
-        <input type="text" id="age" name="age" value=""><br>
-
-        <label for="education"><b> การศึกษา: </b></label><br>
-        <input type="text" id="education" name="education" value=""><br>
-
-        <label for="major"><b> สาขาวิชา: </b></label><br>
-        <input type="text" id="major" name="major" value=""><br>
-
-        <label for="experience"><b> ประสบการณ์: </b></label><br>
-        <input type="text" id="experience" name="experience" value=""><br>
-
-        <label for="inField"><b> ทางด้าน: </b></label><br>
-        <input type="text" id="inField" name="inField" value=""><br>
-
-        <label for="englishTestScore"><b> คะแนนภาษาอังทฤษ: </b></label><br>
-        <input type="text" id="englishTestScore" name="englishTestScore" value=""><br>
-
-        <label for="skillAndKnowledge"><b> ทักษะความรู้:</b></label><br>
-        <input type="text" id="skillAndKnowledge" name="skillAndKnowledge" value=""><br>
-
-        <label for="requestedBy"><b> ผู้ขอ: </b></label><br>
-        <input type="text" id="requestedBy" name="requestedBy" value=""><br>
-
-        <label for="positionRequisition"><b> ตำแหน่งผู้ขอ:</b></label><br>
-        <input type="text" id="positionRequisition" name="positionRequisition" value=""><br>
-
-        <label for="commentByDepartmentHead"><b> ความเห็นของผู้บังคับบัญชา:</b></label><br>
-        <input type="text" id="commentByDepartmentHead" name="commentByDepartmentHead" value=""><br>
-
-        <label for="signatureByDepartmentHead"><b> ลงชื่อ: </b></label><br>
-        <input type="text" id="signatureByDepartmentHead" name="signatureByDepartmentHead" value=""><br>
-
-        <label for="commentByHRBP"><b>ความเห็นของฝ่ายทรัพยากรบุคคล:</b></label><br>
-        <input type="text" id="commentByHRBP" name="commentByHRBP" value=""><br>
-
-        <label for="signatureHRBP"><b>ลงชื่อ:</b></label><br>
-        <input type="text" id="signatureHRBP" name="signatureHRBP" value=""><br>
-
-        <label for="signatureByDirectorHR"><b>ลงชื่อ:</b></label><br>
-        <input type="text" id="signatureByDirectorHR" name="signatureByDirectorHR" value=""><br>
-
-        <label for="status"><b>status:</b></label><br>
-        <input type="text" id="status" name="status" value=""><br>
-
-        <label for="remark"><b>remark:</b></label><br>
-        <input type="text" id="remark" name="remark" value=""><br>
-        <br>
+                <div class="form-group col-md-3 ">
+                    <label id="section" for="section"><b>Section : </b></label><br>
+                    <input type="radio" name="section" value="sectionA"> Section A <br>
+                    <input type="radio" name="section" value="sectionB"> Section B<br>
+                    <input type="radio" name="section" value="sectionC"> Section C<br>
+                </div>
+            </div>
 
 
-        <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
-        <button type="button" class="btn btn-secondary"  ><a href="/manpower">Home</a> </button>
+            <label id="positionRequired" for="positionRequired"><b>Position :</label></b><br>
+            <input type="radio" name="positionRequired" value="positionRequiredA"> Position A <br>
+            <input type="radio" name="positionRequired" value="positionRequiredB"> Position B<br>
+            <input type="radio" name="positionRequired" value="positionRequiredC"> Position C<br>
 
-    </form>
+
+            <label id="level" for="level"><b> Level :</b></label><br>
+            <input type="radio" name="level" value="levelA"> Level A <br>
+            <input type="radio" name="level" value="levelB"> Level B<br>
+            <input type="radio" name="level" value="levelC"> Level C<br>
+
+
+            <label for="employeeType"><b> EmployeeType :</b></label><br>
+            <input type="text" id="employeeType" name="employeeType" value=""><br>
+
+            <label for="hiringPeriod"><b> ระยะเวลาการว่างจ้าง :</b></label><br>
+            <input type="text" id="hiringPeriod" name="hiringPeriod" value=""><br>
+
+            <label id="sex" for="sex"><b> Gender:</b></label><br>
+            <input type="radio" name="sex" value="sexA"> Male <br>
+            <input type="radio" name="sex" value="sexB"> Female<br>
+
+
+            <label for="age"><b> อายุ:</b></label><br>
+            <input type="text" id="age" name="age" value=""><br>
+
+            <label for="education"><b> การศึกษา: </b></label><br>
+            <input type="text" id="education" name="education" value=""><br>
+
+            <label for="major"><b> สาขาวิชา: </b></label><br>
+            <input type="text" id="major" name="major" value=""><br>
+
+            <label for="experience"><b> ประสบการณ์: </b></label><br>
+            <input type="text" id="experience" name="experience" value=""><br>
+
+            <label for="inField"><b> ทางด้าน: </b></label><br>
+            <input type="text" id="inField" name="inField" value=""><br>
+
+            <label for="englishTestScore"><b> คะแนนภาษาอังทฤษ: </b></label><br>
+            <input type="text" id="englishTestScore" name="englishTestScore" value=""><br>
+
+            <label for="skillAndKnowledge"><b> ทักษะความรู้:</b></label><br>
+            <input type="text" id="skillAndKnowledge" name="skillAndKnowledge" value=""><br>
+
+            <label for="requestedBy"><b> ผู้ขอ: </b></label><br>
+            <input type="text" id="requestedBy" name="requestedBy" value=""><br>
+
+            <label for="positionRequisition"><b> ตำแหน่งผู้ขอ:</b></label><br>
+            <input type="text" id="positionRequisition" name="positionRequisition" value=""><br>
+
+            <label for="commentByDepartmentHead"><b> ความเห็นของผู้บังคับบัญชา:</b></label><br>
+            <input type="text" id="commentByDepartmentHead" name="commentByDepartmentHead" value=""><br>
+
+            <label for="signatureByDepartmentHead"><b> ลงชื่อ: </b></label><br>
+            <input type="text" id="signatureByDepartmentHead" name="signatureByDepartmentHead" value=""><br>
+
+            <label for="commentByHRBP"><b>ความเห็นของฝ่ายทรัพยากรบุคคล:</b></label><br>
+            <input type="text" id="commentByHRBP" name="commentByHRBP" value=""><br>
+
+            <label for="signatureHRBP"><b>ลงชื่อ:</b></label><br>
+            <input type="text" id="signatureHRBP" name="signatureHRBP" value=""><br>
+
+            <label for="signatureByDirectorHR"><b>ลงชื่อ:</b></label><br>
+            <input type="text" id="signatureByDirectorHR" name="signatureByDirectorHR" value=""><br>
+
+            <label for="status"><b>status:</b></label><br>
+            <input type="text" id="status" name="status" value=""><br>
+
+            <label for="remark"><b>remark:</b></label><br>
+            <input type="text" id="remark" name="remark" value=""><br>
+            <br>
+
+
+            <button type="button" class="btn btn-secondary" onclick="createData() "><a>addData</a> </button>
+
+
+        </form>
+
+    </div>
+    <script>
+        console.log("JavaScript Multi Level Dropdown");
+
+        const state_dropdown = document.getElementById("state");
+        const district_dropdown = document.getElementById("district");
+        const address_dropdown = document.getElementById("city");
+
+
+
+
+        async function getStates() {
+            var response = await fetch("http://localhost:8080/api/thai-provinces/all");
+            var json_data = await response.json();
+
+            console.log(json_data.result);
+
+            state_dropdown.innerHTML = "";
+            json_data.result.forEach((item, index) => {
+                var option = document.createElement("option");
+                option.text = item.name_th;
+                option.value = item.id;
+
+                state_dropdown.appendChild(option);
+            });
+        }
+
+        async function getDistrict(province_id) {
+
+            var response = await fetch(
+                `http://localhost:8080/api/thai-amphures/${province_id}`
+            );
+
+            var json_data = await response.json();
+
+            console.log(json_data);
+
+            district_dropdown.innerHTML = "";
+            json_data.result.forEach((item, index) => {
+                var option = document.createElement("option");
+                option.value = item.id;
+                option.text = item.name_th;
+
+                district_dropdown.appendChild(option);
+            });
+
+        }
+
+        async function getAddress(amphur_id) {
+
+            var response = await fetch(
+                `http://localhost:8080/api/thai-tombons/${amphur_id}`
+            );
+
+            var json_data = await response.json();
+
+            console.log(json_data);
+
+            address_dropdown.innerHTML = "";
+            json_data.result.forEach((item, index) => {
+                var option = document.createElement("option");
+                option.value = item.id;
+                option.text = item.name_th;
+
+                address_dropdown.appendChild(option);
+            });
+
+        }
+        getStates();
+
+        state_dropdown.onchange = function () {
+            getDistrict(state_dropdown.value);
+        };
+
+        district_dropdown.onchange = function () {
+            getAddress(district_dropdown.value);
+        };
+
+        address_dropdown.onchange = function () {
+            getAddress(address_dropdown.value);
+        };
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

@@ -11,6 +11,11 @@ module.exports = function (app) {
     app.use('/api/application',require('./application.route'));
     app.use('/api/history',require('./history.route'));
     app.use('/api/requisition',require('./requisition.route'));
-    
+    app.use('/api/thai-provinces',require('./thai-provinces.route'));
+    app.use('/api/thai-amphures',require('./thai-amphures.route'));
+    app.use('/api/thai-tombons',require('./thai-tombons.route'));
+    app.use('/api/thai-zipcodes',require('./thai-zipcodes.route'));
 
+    
+ 
 }

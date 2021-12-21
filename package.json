@@ -32,7 +32,8 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5",
-    "sweetalert2": "^11.1.9"
+    "sweetalert2": "^11.1.9",
+    "thai-address-database": "0.0.29"
   },
   "devDependencies": {}
 }
